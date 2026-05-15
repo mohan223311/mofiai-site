@@ -10,7 +10,6 @@ import {
 
 import appCss from "../styles.css?url";
 import { Preloader } from "@/components/site/Preloader";
-import { AnimatedBackdrop } from "@/components/site/AnimatedBackdrop";
 
 function NotFoundComponent() {
   return (
