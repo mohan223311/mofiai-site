@@ -119,7 +119,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AnimatedBackdrop />
+      <Preloader />
       <Outlet />
     </QueryClientProvider>
   );
