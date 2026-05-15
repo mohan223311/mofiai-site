@@ -143,13 +143,13 @@ function FormAndDirect() {
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
-          className="rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur p-8"
+          className="rounded-2xl bg-white border border-slate-200 shadow-2xl p-8 text-slate-900"
         >
           <div className="flex items-center gap-3 mb-8">
             <div className="h-12 w-12 rounded-xl bg-lime flex items-center justify-center">
               <Pencil className="h-6 w-6 text-lime-foreground" />
             </div>
-            <h2 className="font-display text-2xl font-black">Send Us a Message</h2>
+            <h2 className="font-display text-2xl font-black text-slate-900">Send Us a Message</h2>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -272,9 +272,9 @@ function FormAndDirect() {
                 Icon={Mail}
                 platform="Email"
                 platformColor="text-indigo-300"
-                values={["admin@profitgrowthai.xyz"]}
+                values={["profitgrowthai223311@gmail.com"]}
                 sub="Response within 24 hours"
-                href="mailto:admin@profitgrowthai.xyz"
+                href="mailto:profitgrowthai223311@gmail.com"
               />
               <ContactMethod
                 color="bg-red-500"
@@ -282,9 +282,19 @@ function FormAndDirect() {
                 Icon={Play}
                 platform="YouTube"
                 platformColor="text-red-400"
-                values={["www.youtube.com/@mofiAI123-f"]}
+                values={["www.youtube.com/@mofiai123-f"]}
                 sub="For free tutorials and content"
-                href="https://www.youtube.com/@mofiAI123-f"
+                href="https://www.youtube.com/@mofiai123-f"
+              />
+              <ContactMethod
+                color="bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600"
+                iconColor="text-white"
+                Icon={Camera}
+                platform="Instagram"
+                platformColor="text-pink-400"
+                values={["instagram.com/mofi_ai"]}
+                sub="Updates, reels and behind-the-scenes"
+                href="https://instagram.com/mofi_ai"
               />
             </div>
           </motion.div>
@@ -298,10 +308,9 @@ function FormAndDirect() {
           >
             <h3 className="font-display text-lg font-black mb-4">Follow Us</h3>
             <div className="space-y-3">
-              <FollowRow color="bg-red-500" Icon={Play} platform="YouTube" platformColor="text-red-400" url="www.youtube.com/@mofiAI123-f" href="https://www.youtube.com/@mofiAI123-f" />
+              <FollowRow color="bg-red-500" Icon={Play} platform="YouTube" platformColor="text-red-400" url="www.youtube.com/@mofiai123-f" href="https://www.youtube.com/@mofiai123-f" />
               <FollowRow color="bg-sky-500" Icon={Send} platform="Telegram Community" platformColor="text-sky-400" url="t.me/ai_telugu_community" href="https://t.me/ai_telugu_community" />
-              <FollowRow color="bg-gradient-to-br from-amber-500 via-pink-500 to-purple-600" Icon={Camera} platform="Camera" platformColor="text-pink-400" url="instagram.com/mofi_ai" href="https://instagram.com/mofi_ai" />
-              <FollowRow color="bg-lime" Icon={Globe} platform="Website" platformColor="text-lime" url="profitgrowthai.in" href="https://profitgrowthai.in" />
+              <FollowRow color="bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600" Icon={Camera} platform="Instagram" platformColor="text-pink-400" url="instagram.com/mofi_ai" href="https://instagram.com/mofi_ai" />
             </div>
           </motion.div>
         </div>
