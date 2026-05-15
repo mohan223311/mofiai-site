@@ -9,7 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import { AnimatedBackdrop } from "@/components/site/AnimatedBackdrop";
+import { Preloader } from "@/components/site/Preloader";
 
 function NotFoundComponent() {
   return (
@@ -118,7 +118,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AnimatedBackdrop />
+      <Preloader />
       <Outlet />
     </QueryClientProvider>
   );

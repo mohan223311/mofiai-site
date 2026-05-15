@@ -1,31 +1,31 @@
 import { motion } from "framer-motion";
 import { SectionLabel } from "../SectionLabel";
-import { Play, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
 
 const items = [
   {
-    title: "1:1 Consultation Client",
+    title: "Sai Krishna",
+    flag: "🇺🇸",
+    location: "United States",
+    quote: "1:1 consultation with MOFI AI completely changed how I approach automation projects.",
+    outcome: "1:1 Consultation Success",
+    shortId: "91dw5lTXZlQ",
+  },
+  {
+    title: "Vivek",
     flag: "🇳🇿",
     location: "New Zealand",
-    quote: "Personalized mentorship completely transformed how I approach automation. Within 3 weeks, I was confident enough to take on my first client project.",
-    outcome: "Now freelancing as automation consultant",
-    href: "https://youtube.com/shorts/iuy-gOCZJ_4?si=Q7WuEGtuZTlCskGf",
+    quote: "Personalized mentorship and real, practical guidance — exactly what I needed.",
+    outcome: "1:1 Consultation Success",
+    shortId: "iuy-gOCZJ_4",
   },
   {
-    title: "Singapore Client — Voice Agent",
-    flag: "🇸🇬",
-    location: "Singapore",
-    quote: "Professional guidance helped us deploy production-ready voice agents. The personalized approach made all the difference.",
-    outcome: "Voice Agent for Retail",
-    href: "https://youtu.be/JHt5pk2D9g8?si=nzUGfskLLuQau--v",
-  },
-  {
-    title: "Website Automation Client",
-    flag: "🌐",
-    location: "Custom Project",
-    quote: "Custom solutions built exactly for our business needs. Not generic templates — actual tailored automation.",
-    outcome: "Complete Website Automation",
-    href: "https://drive.google.com/file/d/1WwyoNmfT7B7vQyT022fOQR9vL6LeFZQn/view?usp=drivesdk",
+    title: "Vineel",
+    flag: "🇺🇸",
+    location: "United States",
+    quote: "Hands-on, customized to my goals — best automation mentorship I've taken.",
+    outcome: "1:1 Consultation Success",
+    shortId: "S3SzCAlE5SM",
   },
 ];
 
@@ -44,39 +44,34 @@ export function MentorTestimonials() {
 
         <div className="mt-14 grid md:grid-cols-3 gap-6">
           {items.map((it, i) => (
-            <motion.a
+            <motion.div
               key={it.title}
-              href={it.href}
-              target="_blank"
-              rel="noreferrer"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -8 }}
-              className="group relative rounded-2xl bg-card border border-border p-6 overflow-hidden block"
+              className="group relative rounded-2xl bg-card border border-border p-6 overflow-hidden"
             >
-              <motion.div
-                animate={{ rotate: [0, 6, -6, 0] }}
-                transition={{ duration: 6, repeat: Infinity, delay: i * 0.3 }}
-                className="absolute -top-6 -right-6 h-24 w-24 rounded-full bg-lime/15 blur-xl"
-              />
+              <div className="aspect-[9/16] rounded-xl overflow-hidden mb-5 border border-border bg-dark">
+                <iframe
+                  src={`https://www.youtube.com/embed/${it.shortId}`}
+                  title={it.title}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
               <Quote className="h-6 w-6 text-lime/50" />
-              <p className="mt-4 text-sm leading-relaxed">"{it.quote}"</p>
-              <div className="mt-6 flex items-center justify-between">
+              <p className="mt-3 text-sm leading-relaxed">"{it.quote}"</p>
+              <div className="mt-4 flex items-center justify-between">
                 <div>
                   <div className="font-medium text-sm">{it.title}</div>
                   <div className="text-xs text-muted-foreground">{it.flag} {it.location}</div>
                 </div>
-                <motion.div
-                  animate={{ scale: [1, 1.15, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="h-11 w-11 rounded-full bg-lime text-lime-foreground flex items-center justify-center shadow-lg"
-                >
-                  <Play className="h-4 w-4 fill-current ml-0.5" />
-                </motion.div>
               </div>
               <div className="mt-3 inline-flex text-xs text-lime">→ {it.outcome}</div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>
