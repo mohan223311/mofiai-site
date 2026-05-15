@@ -1,0 +1,99 @@
+import { motion } from "framer-motion";
+import { SectionLabel } from "../SectionLabel";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ExternalLink } from "lucide-react";
+
+const sections = [
+  { t: "Introduction to N8N", items: ["How to start learning the course", "Understanding the roadmap and structure", "Right mindset for learning", "How to watch, practice, and execute lessons"] },
+  { t: "Fundamentals of AI & Different Branches", items: ["What is Artificial Intelligence", "Different branches of AI and applications", "Present role of AI in the modern world", "Future trends and opportunities"] },
+  { t: "Prompt Engineering in n8n", items: ["What are prompts and why they matter", "How to give effective prompts to AI models", "Prompting techniques specifically for n8n", "Types of prompts: System, User, Assistant"] },
+  { t: "The 14 Important Terms to Start", items: ["14 key terms related to AI agents and automation", "Detailed explanations with examples", "Context for each term in real-world scenarios"] },
+  { t: "No-Code & n8n Overview", items: ["What is No-Code and why it matters", "What is n8n and its capabilities", "Make.com, Zapier, Lindy comparisons", "Why we specifically teach n8n", "How No-Code works in the backend"] },
+  { t: "n8n Installation Methods", items: ["Different installation techniques", "Hostinger VPS setup walkthrough", "Self-hosting options & requirements", "Cloud hosting comparison", "Local hosting for development", "What to use when and why"] },
+  { t: "n8n Introduction & Node Types", items: ["Complete introduction to the platform", "Seven types of nodes in n8n", "Detailed explanation of each", "When to use which node", "Node best practices"] },
+  { t: "n8n Working Concept + Building Our 1st AI Agent", items: ["Understanding n8n workflow concepts", "Building your first AI agent from scratch", "Converting it to a Telegram agent", "Adding tools and capabilities"] },
+  { t: "Problem + Email Classifier Agent Workflow", items: ["Real business problem: email management", "Building an email classifier agent", "AI nodes, code nodes, email nodes", "Complete agent flow breakdown"] },
+  { t: "AI Nodes & HITL Nodes in Detail", items: ["All AI nodes in n8n in depth", "Human-in-the-Loop (HITL) nodes", "Features and capabilities", "Pricing considerations"] },
+  { t: "Data Handling in n8n", items: ["Data formats: JSON, XML, CSV", "Parsing & converting between formats", "Set & Function nodes for transformation", "Validating and cleaning data"] },
+  { t: "Problem + Agent Assignment", items: ["Practical problem-solving with agents", "Assignment-based learning approach", "Real-world scenario practice"] },
+  { t: "Assignment Project Breakdown", items: ["Telegram agent for restaurants", "Text, voice, file, image, video flows", "Complex integrations & scenarios", "Error handling techniques"] },
+  { t: "Top 15 Most Important Nodes + Workflow Examples", items: ["Webhook, HTTP Request, Code", "Set / Edit Field, Sheets / Airtable", "SplitInBatches / Merge / Aggregator", "IF / Switch / Filter, Loop", "HITL, Cron, Slack, File / Binary", "Duplicate, Notion"] },
+  { t: "Credentials, HTTP & APIs", items: ["Credentials management deep dive", "HTTP protocols and methods", "API integration & authentication", "Security best practices"] },
+  { t: "RAG, Vector Databases & Embeddings, Projects", items: ["What is RAG explained simply", "Vector databases and their purpose", "Embeddings with practical examples", "Two practical RAG projects"] },
+  { t: "Vibe Coding Introduction", items: ["What is Vibe Coding", "Lovable, Bolt, V0, Cursor platforms", "How web coding works in no-code/low-code", "Project: integrating n8n with Lovable"] },
+  { t: "n8n AI Workflow Builder", items: ["Intro to AI Workflow Builder", "Connecting OpenAI, Gemini, Claude", "Designing prompts and context flows", "Automating decisions with AI nodes"] },
+  { t: "Self Learning Agent", items: ["Self-learning AI agents", "Long-term memory & feedback loops", "Training with real-time data", "Autonomous decision-making"] },
+  { t: "Scraping in n8n", items: ["What is web scraping", "Legal & ethical considerations", "Multiple scraping projects", "Anti-scraping handling"] },
+  { t: "MCP (Model Context Protocol)", items: ["What is MCP and its purpose", "Building MCP clients and servers", "Examples and projects", "MCP add-ons explained"] },
+  { t: "Error Handling & Backup Systems", items: ["Common errors in workflows", "Error trigger workflows", "Continue on fail option", "Debugging techniques", "Reliable backup systems"] },
+];
+
+export function Syllabus() {
+  const mid = Math.ceil(sections.length / 2);
+  const cols = [sections.slice(0, mid), sections.slice(mid)];
+
+  return (
+    <section id="syllabus" className="bg-dark text-dark-foreground py-24 relative overflow-hidden">
+      <div className="absolute inset-0 dotted-bg opacity-20 pointer-events-none" />
+      <div className="mx-auto max-w-7xl px-6 relative">
+        <SectionLabel light>Complete Curriculum</SectionLabel>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="mt-4 font-display text-5xl md:text-6xl"
+        >
+          22 Sections + 6<br />Real-World Projects
+        </motion.h2>
+        <p className="mt-4 text-dark-foreground/70">Click any section to expand and explore detailed topics covered.</p>
+
+        <motion.a
+          whileHover={{ x: 4 }}
+          href="https://docs.google.com/document/d/1lIqPOvcxXIAIDQ9vYnmTJv0vJvF4QxdZt9cHrDDulIM/edit?usp=drivesdk"
+          target="_blank"
+          rel="noreferrer"
+          className="mt-5 inline-flex items-center gap-2 text-sm text-lime hover:underline"
+        >
+          View Complete Detailed Syllabus <ExternalLink className="h-4 w-4" />
+        </motion.a>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-2 md:gap-6">
+          {cols.map((col, ci) => (
+            <Accordion key={ci} type="multiple" className="space-y-3">
+              {col.map((s, i) => {
+                const idx = ci * mid + i;
+                return (
+                  <motion.div
+                    key={s.t}
+                    initial={{ opacity: 0, x: ci === 0 ? -20 : 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ delay: Math.min(i * 0.03, 0.4) }}
+                  >
+                    <AccordionItem value={`s${idx}`} className="rounded-xl border border-white/10 bg-white/5 backdrop-blur px-5">
+                      <AccordionTrigger className="hover:no-underline">
+                        <span className="flex items-center gap-3 text-left">
+                          <span className="font-display text-lime text-lg w-8">{String(idx + 1).padStart(2, "0")}</span>
+                          <span className="font-medium">{s.t}</span>
+                        </span>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <ul className="pl-11 space-y-2 pb-2">
+                          {s.items.map((it) => (
+                            <li key={it} className="flex items-start gap-2 text-sm text-dark-foreground/70">
+                              <span className="h-1.5 w-1.5 rounded-full bg-lime mt-2 shrink-0" />
+                              {it}
+                            </li>
+                          ))}
+                        </ul>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </motion.div>
+                );
+              })}
+            </Accordion>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

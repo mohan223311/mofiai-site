@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { AnimatedBackdrop } from "@/components/site/AnimatedBackdrop";
 
 function NotFoundComponent() {
   return (
@@ -73,13 +74,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { name: "description", content: "Animated Experience Studio creates dynamic, animated websites with engaging visual effects." },
       { name: "author", content: "Lovable" },
       { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:description", content: "Animated Experience Studio creates dynamic, animated websites with engaging visual effects." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Lovable App" },
+      { name: "twitter:description", content: "Animated Experience Studio creates dynamic, animated websites with engaging visual effects." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/219ee558-ea5f-4d57-84ed-1651087d4b21/id-preview-4f4b5613--12ec0a2a-e0af-45fa-8efd-1e46310084ea.lovable.app-1778212971329.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/219ee558-ea5f-4d57-84ed-1651087d4b21/id-preview-4f4b5613--12ec0a2a-e0af-45fa-8efd-1e46310084ea.lovable.app-1778212971329.png" },
     ],
     links: [
       {
@@ -113,6 +118,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <AnimatedBackdrop />
       <Outlet />
     </QueryClientProvider>
   );
