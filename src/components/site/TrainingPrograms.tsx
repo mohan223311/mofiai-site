@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { BookOpen, Users, GraduationCap, ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { SectionLabel } from "./SectionLabel";
 
 const programs = [
@@ -14,6 +15,7 @@ const programs = [
     includes: ["22 detailed sections", "6 end-to-end real-world projects", "1 year course access", "Private WhatsApp community", "Weekly doubt sessions"],
     best: "Self-learners, students, budget-conscious professionals",
     cta: "Learn More",
+    to: "/course" as const,
   },
   {
     icon: Users,
@@ -27,6 +29,7 @@ const programs = [
     best: "Serious learners, client project goals, career switchers",
     cta: "Learn More",
     highlight: true,
+    to: "/mentorship" as const,
   },
   {
     icon: GraduationCap,
@@ -38,7 +41,8 @@ const programs = [
     desc: "Learn together with a cohort in live group sessions with peer collaboration and projects.",
     includes: ["2 live sessions per week", "Group projects and assignments", "Peer learning and networking", "Lifetime recordings access"],
     best: "Group learners, networking seekers",
-    cta: "Join Waitlist",
+    cta: "Learn More",
+    to: "/batches" as const,
   },
 ];
 
@@ -108,14 +112,14 @@ export function TrainingPrograms() {
                 <div className={`mt-5 text-xs ${p.highlight ? "text-white/50" : "text-muted-foreground"}`}>
                   Best for: {p.best}
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.04 }}
-                  className={`mt-6 inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium ${
+                <Link
+                  to={p.to}
+                  className={`mt-6 inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium transition-transform hover:scale-105 ${
                     p.highlight ? "bg-lime text-lime-foreground" : "bg-foreground text-background"
                   }`}
                 >
                   {p.cta} <ArrowRight className="h-4 w-4" />
-                </motion.button>
+                </Link>
               </motion.div>
             );
           })}
