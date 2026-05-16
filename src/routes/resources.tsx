@@ -225,13 +225,6 @@ function FeaturedVideos() {
                 </div>
                 <span className="absolute bottom-2 right-2 text-[11px] font-semibold bg-black/85 text-white rounded px-1.5 py-0.5">{v.duration}</span>
               </div>
-              <div className="flex items-start gap-2 mt-3">
-                <div className="flex-1">
-                  <h4 className="text-sm font-semibold leading-snug text-white group-hover:text-lime transition-colors line-clamp-2">{v.title}</h4>
-                  <p className="text-xs text-white/50 mt-1">{v.meta}</p>
-                </div>
-                <MoreVertical className="h-4 w-4 text-white/40" />
-              </div>
             </motion.a>
           ))}
         </div>
