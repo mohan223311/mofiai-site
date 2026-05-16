@@ -72,53 +72,96 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative h-[320px] hidden md:flex items-center justify-center"
+          className="relative h-[380px] hidden md:flex items-center justify-center"
         >
-          <div className="absolute h-[280px] w-[280px] rounded-full border border-dashed border-lime/30" />
-          <div className="absolute h-[200px] w-[200px] rounded-full border border-dashed border-lime/20" />
+          {/* Pulsing rings */}
+          <motion.div
+            animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.1, 0.4] }}
+            transition={{ duration: 4, repeat: Infinity }}
+            className="absolute h-[320px] w-[320px] rounded-full border border-dashed border-lime/40"
+          />
+          <motion.div
+            animate={{ scale: [1, 1.25, 1], opacity: [0.3, 0.05, 0.3] }}
+            transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+            className="absolute h-[220px] w-[220px] rounded-full border border-dashed border-lime/30"
+          />
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="absolute h-[280px] w-[280px] rounded-full border border-lime/10"
+          />
 
           {/* Envelope card */}
           <motion.div
-            animate={{ y: [0, -8, 0], rotate: [6, 8, 6] }}
-            transition={{ duration: 5, repeat: Infinity }}
-            className="relative h-[180px] w-[220px] rounded-xl bg-gradient-to-br from-lime/30 to-lime/10 border border-lime/40 shadow-2xl shadow-lime/20"
+            animate={{ y: [0, -12, 0], rotate: [4, 8, 4] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.06, rotate: 0 }}
+            className="relative h-[190px] w-[230px] rounded-xl bg-gradient-to-br from-lime/40 to-lime/10 border border-lime/50 shadow-2xl shadow-lime/30 cursor-pointer"
           >
-            <div className="absolute -top-12 left-4 right-4 h-[110px] rounded-lg bg-white/95 text-slate-800 p-4 -rotate-2 shadow-xl">
+            <motion.div
+              animate={{ rotate: [-2, 2, -2] }}
+              transition={{ duration: 6, repeat: Infinity }}
+              className="absolute -top-14 left-4 right-4 h-[120px] rounded-lg bg-white/95 text-slate-800 p-4 shadow-xl"
+            >
               <p className="italic font-bold text-slate-900">Let's Connect!</p>
               <div className="mt-2 space-y-1">
                 <div className="h-0.5 w-4/5 bg-slate-200 rounded" />
                 <div className="h-0.5 w-3/5 bg-slate-200 rounded" />
                 <div className="h-0.5 w-2/3 bg-slate-200 rounded" />
               </div>
-            </div>
+              <motion.div
+                animate={{ opacity: [0.4, 1, 0.4] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="mt-3 h-2 w-2 rounded-full bg-lime"
+              />
+            </motion.div>
           </motion.div>
 
           {/* Floating chat icon */}
           <motion.div
-            animate={{ y: [0, -10, 0] }}
+            animate={{ y: [0, -14, 0], rotate: [-5, 5, -5] }}
             transition={{ duration: 3.5, repeat: Infinity }}
-            className="absolute left-2 top-4 h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-xl"
+            whileHover={{ scale: 1.2 }}
+            className="absolute left-2 top-4 h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-xl shadow-blue-500/40"
           >
             <MessageCircle className="h-7 w-7 text-white" />
           </motion.div>
 
           {/* WhatsApp icon */}
           <motion.div
-            animate={{ y: [0, -10, 0] }}
+            animate={{ y: [0, -12, 0], scale: [1, 1.08, 1] }}
             transition={{ duration: 4, repeat: Infinity, delay: 0.6 }}
-            className="absolute right-0 top-0 h-14 w-14 rounded-full bg-gradient-to-br from-lime/80 to-lime flex items-center justify-center shadow-xl"
+            whileHover={{ scale: 1.25, rotate: 12 }}
+            className="absolute right-0 top-0 h-14 w-14 rounded-full bg-gradient-to-br from-lime/80 to-lime flex items-center justify-center shadow-xl shadow-lime/40"
           >
             <Phone className="h-6 w-6 text-lime-foreground" />
           </motion.div>
 
           {/* @ icon */}
           <motion.div
-            animate={{ y: [0, -6, 0] }}
+            animate={{ y: [0, -8, 0], rotate: [0, 12, 0] }}
             transition={{ duration: 4.5, repeat: Infinity, delay: 0.3 }}
+            whileHover={{ scale: 1.25 }}
             className="absolute left-8 bottom-2 h-12 w-12 rounded-full bg-gradient-to-br from-lime/40 to-lime/20 border border-lime/40 flex items-center justify-center shadow-xl text-lime font-black text-xl"
           >
             @
           </motion.div>
+
+          {/* Sparkle dots */}
+          {[
+            { x: "10%", y: "20%", d: 0 },
+            { x: "85%", y: "30%", d: 0.4 },
+            { x: "75%", y: "80%", d: 0.8 },
+            { x: "15%", y: "75%", d: 1.2 },
+          ].map((s, i) => (
+            <motion.div
+              key={i}
+              animate={{ opacity: [0, 1, 0], scale: [0.5, 1.2, 0.5] }}
+              transition={{ duration: 2.5, repeat: Infinity, delay: s.d }}
+              className="absolute h-1.5 w-1.5 rounded-full bg-lime"
+              style={{ left: s.x, top: s.y }}
+            />
+          ))}
         </motion.div>
       </div>
     </section>
