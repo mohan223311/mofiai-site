@@ -94,6 +94,7 @@ function Hero() {
         animate={{ scale: [1, 1.1, 1], x: [0, -30, 0] }}
         transition={{ duration: 22, repeat: Infinity }}
       />
+      <FloatingParticles count={18} color="red" />
 
       <div className="relative mx-auto max-w-7xl px-6 pt-32 pb-24 grid lg:grid-cols-2 gap-12 items-center">
         <div>
