@@ -632,7 +632,7 @@ function QuoteFooter() {
 /* ---------- Page ---------- */
 function ResourcesPage() {
   return (
-    <div className="min-h-screen bg-dark">
+    <div className="theme-red min-h-screen bg-dark">
       <ScrollProgress />
       <Header />
       <YTHero />
