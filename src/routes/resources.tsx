@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   Play, PlayCircle as Youtube, Link2, GraduationCap, Lightbulb, RefreshCw,
-  MoreVertical, ListVideo, Send, Camera as Instagram, Globe, Bell,
+  ListVideo, Send, Camera as Instagram, Globe, Bell,
   MessageSquare, Gift, Video, Users, ExternalLink, Rocket,
   CheckCircle2, Sparkles, ArrowRight, UserPlus as UserStar,
 } from "lucide-react";
