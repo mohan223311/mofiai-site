@@ -461,7 +461,7 @@ function FAQ() {
   ];
   return (
     <section className="py-20">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-3xl px-6">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -469,25 +469,24 @@ function FAQ() {
         >
           Frequently Asked Questions
         </motion.h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="space-y-3">
           {faqs.map((f, i) => (
-            <motion.div
+            <motion.details
               key={f.q}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              custom={i}
-              whileHover={{ y: -4 }}
-              className="rounded-xl bg-card border border-border p-5 hover:border-lime/40 transition-colors"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.05 }}
+              className="group rounded-xl bg-card border border-border hover:border-lime/40 px-5 py-4 open:border-lime/60 open:shadow-lg open:shadow-lime/10 transition-all [&_summary::-webkit-details-marker]:hidden"
             >
-              <div className="flex items-start gap-2 mb-2">
-                <div className="h-6 w-6 rounded-full bg-lime text-lime-foreground flex items-center justify-center font-black text-xs flex-shrink-0">?</div>
-                <p className="text-sm font-bold text-foreground leading-snug">Q: {f.q}</p>
-              </div>
-              <p className="text-xs text-muted-foreground leading-relaxed pl-8">
+              <summary className="flex items-center gap-3 cursor-pointer list-none">
+                <div className="h-7 w-7 rounded-full bg-lime text-lime-foreground flex items-center justify-center font-black text-xs flex-shrink-0">Q</div>
+                <p className="flex-1 text-sm font-semibold text-foreground leading-snug">{f.q}</p>
+                <ChevronDown className="h-4 w-4 text-muted-foreground transition-transform group-open:rotate-180 shrink-0" />
+              </summary>
+              <p className="mt-3 ml-10 text-sm text-muted-foreground leading-relaxed">
                 <span className="font-semibold text-foreground">A:</span> {f.a}
               </p>
-            </motion.div>
+            </motion.details>
           ))}
         </div>
       </div>
