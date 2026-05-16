@@ -246,7 +246,7 @@ function WhatAreBatches() {
           viewport={{ margin: "-80px" }}
           className="rounded-2xl border border-border bg-card p-8"
         >
-          <h3 className="font-display text-2xl text-lime-foreground">Why Group Learning Works:</h3>
+          <h3 className="font-display text-2xl font-black text-foreground">Why Group Learning Works:</h3>
           <ul className="mt-6 space-y-4">
             {points.map((p, i) => (
               <motion.li
@@ -368,7 +368,7 @@ function BatchStructure() {
             <div>
               <div className="flex items-center gap-4">
                 <div className="h-px flex-1 bg-border" />
-                <h3 className="font-display text-2xl md:text-3xl text-center text-lime-foreground">
+                <h3 className="font-display text-2xl md:text-3xl text-center font-black text-foreground">
                   4-Week Intensive Program
                 </h3>
                 <div className="h-px flex-1 bg-border" />
@@ -435,7 +435,7 @@ function BottomBanner() {
             <Megaphone className="h-6 w-6 text-lime-foreground" />
           </div>
           <div className="flex-1 text-center md:text-left">
-            <p className="font-display text-xl text-lime-foreground">
+            <p className="font-display text-xl font-black text-foreground">
               Live learning. Real collaboration. Career transformation.
             </p>
             <p className="mt-1 text-muted-foreground text-sm">
@@ -851,7 +851,7 @@ function WaitlistAndFAQ() {
                   <textarea
                     rows={3}
                     placeholder="Tell us about your goals and how n8n will help you…"
-                    className="mt-1 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground resize-none"
+                    className="mt-1 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/40 resize-none"
                   />
                 </div>
               </label>
@@ -896,19 +896,17 @@ function WaitlistAndFAQ() {
                 initial={{ opacity: 0, x: 10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.04 }}
-                className="group rounded-xl border border-border bg-secondary/40 px-5 py-4 [&_summary::-webkit-details-marker]:hidden"
+                className="group rounded-xl border border-border bg-secondary/40 px-5 py-4 [&_summary::-webkit-details-marker]:hidden open:bg-secondary/70 open:border-purple-500/40 transition-colors"
               >
                 <summary className="flex items-start gap-3 cursor-pointer list-none">
                   <span className="h-7 w-7 rounded-md bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-bold flex items-center justify-center shrink-0">Q</span>
-                  <div className="flex-1">
-                    <div className="font-medium">{f.q}</div>
-                    <div className="mt-2 text-sm text-muted-foreground flex gap-2">
-                      <span className="text-lime font-bold">A:</span>
-                      <span>{f.a}</span>
-                    </div>
-                  </div>
+                  <div className="flex-1 font-semibold text-foreground">{f.q}</div>
                   <ArrowRight className="h-4 w-4 text-muted-foreground rotate-90 group-open:rotate-[270deg] transition-transform shrink-0 mt-1" />
                 </summary>
+                <div className="mt-3 ml-10 text-sm text-muted-foreground flex gap-2">
+                  <span className="text-lime font-bold">A:</span>
+                  <span>{f.a}</span>
+                </div>
               </motion.details>
             ))}
           </div>
@@ -924,7 +922,7 @@ function Field({ icon: Icon, label, placeholder }: { icon: any; label: string; p
       <Icon className="h-4 w-4 text-lime shrink-0" />
       <div className="flex-1">
         <div className="text-xs font-semibold">{label}</div>
-        <input className="mt-0.5 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground" placeholder={placeholder} />
+        <input className="mt-0.5 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/40" placeholder={placeholder} />
       </div>
     </label>
   );
@@ -987,7 +985,7 @@ function ContactBanner() {
               </div>
               <div className="text-sm">
                 <div className="font-semibold">Email</div>
-                <div className="text-dark-foreground/80">admin@profitgrowthai.xyz</div>
+                <div className="text-dark-foreground/80">profitgrowthai223311@gmail.com</div>
               </div>
             </div>
           </div>
