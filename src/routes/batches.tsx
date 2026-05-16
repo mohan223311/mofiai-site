@@ -851,7 +851,7 @@ function WaitlistAndFAQ() {
                   <textarea
                     rows={3}
                     placeholder="Tell us about your goals and how n8n will help you…"
-                    className="mt-1 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground resize-none"
+                    className="mt-1 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/40 resize-none"
                   />
                 </div>
               </label>
@@ -922,7 +922,7 @@ function Field({ icon: Icon, label, placeholder }: { icon: any; label: string; p
       <Icon className="h-4 w-4 text-lime shrink-0" />
       <div className="flex-1">
         <div className="text-xs font-semibold">{label}</div>
-        <input className="mt-0.5 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground" placeholder={placeholder} />
+        <input className="mt-0.5 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/40" placeholder={placeholder} />
       </div>
     </label>
   );
