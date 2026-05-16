@@ -51,9 +51,12 @@ export const Route = createFileRoute("/batches")({
   component: BatchesPage,
 });
 
+import batchesHero from "@/assets/batches-hero.png";
+import { FloatingParticles } from "@/components/site/CursorGlow";
+
 function BatchesPage() {
   return (
-    <div className="min-h-screen">
+    <div className="theme-red min-h-screen">
       <ScrollProgress />
       <Hero />
       <WhatAreBatches />
