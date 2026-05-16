@@ -334,8 +334,6 @@ function LatestUploads() {
                 </div>
                 <span className="absolute bottom-2 right-2 text-[11px] font-semibold bg-black/85 rounded px-1.5 py-0.5">{v.duration}</span>
               </div>
-              <h4 className="text-sm font-semibold mt-3 text-white group-hover:text-lime transition-colors line-clamp-2">{v.title}</h4>
-              <p className="text-xs text-white/50 mt-1">{v.meta}</p>
             </motion.a>
           ))}
         </div>
