@@ -374,7 +374,7 @@ function NeverMiss() {
             >
               <Play className="h-12 w-12 text-lime-foreground ml-1" fill="currentColor" />
             </motion.div>
-            <div className="mt-6 font-display text-4xl text-white">9.87K+</div>
+            <div className="mt-6 font-display text-4xl text-white">4K+</div>
             <div className="text-sm text-white/60 flex items-center gap-1.5"><Users className="h-4 w-4" /> Subscribers</div>
           </div>
 
@@ -576,7 +576,7 @@ function KeepLearning() {
             </motion.a>
             <div className="mt-3 flex items-center justify-center gap-2 rounded-md bg-white/[0.05] py-2.5 text-sm">
               <Users className="h-4 w-4 text-white/60" />
-              <span className="text-white font-bold">9.87K+</span>
+              <span className="text-white font-bold">4K+</span>
               <span className="text-white/60">Subscribers</span>
             </div>
           </div>
