@@ -246,7 +246,7 @@ function WhatAreBatches() {
           viewport={{ margin: "-80px" }}
           className="rounded-2xl border border-border bg-card p-8"
         >
-          <h3 className="font-display text-2xl text-lime-foreground">Why Group Learning Works:</h3>
+          <h3 className="font-display text-2xl font-black text-foreground">Why Group Learning Works:</h3>
           <ul className="mt-6 space-y-4">
             {points.map((p, i) => (
               <motion.li
@@ -368,7 +368,7 @@ function BatchStructure() {
             <div>
               <div className="flex items-center gap-4">
                 <div className="h-px flex-1 bg-border" />
-                <h3 className="font-display text-2xl md:text-3xl text-center text-lime-foreground">
+                <h3 className="font-display text-2xl md:text-3xl text-center font-black text-foreground">
                   4-Week Intensive Program
                 </h3>
                 <div className="h-px flex-1 bg-border" />
