@@ -332,8 +332,8 @@ function FormAndDirect() {
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
     <div>
-      <label className="text-xs font-semibold text-white/80 mb-1.5 flex items-center gap-1 uppercase tracking-wider">
-        {label} {required && <span className="text-red-400">*</span>}
+      <label className="text-xs font-semibold text-slate-700 mb-1.5 flex items-center gap-1 uppercase tracking-wider">
+        {label} {required && <span className="text-red-500">*</span>}
       </label>
       {children}
     </div>
