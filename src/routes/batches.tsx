@@ -987,7 +987,7 @@ function ContactBanner() {
               </div>
               <div className="text-sm">
                 <div className="font-semibold">Email</div>
-                <div className="text-dark-foreground/80">admin@profitgrowthai.xyz</div>
+                <div className="text-dark-foreground/80">profitgrowthai223311@gmail.com</div>
               </div>
             </div>
           </div>
