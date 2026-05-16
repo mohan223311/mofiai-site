@@ -143,51 +143,61 @@ function FormAndDirect() {
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
-          className="rounded-2xl bg-white border border-slate-200 shadow-2xl p-8 text-slate-900"
+          className="relative rounded-2xl bg-white border border-slate-200 shadow-2xl p-8 text-slate-900 overflow-hidden"
         >
-          <div className="flex items-center gap-3 mb-8">
-            <div className="h-12 w-12 rounded-xl bg-lime flex items-center justify-center">
+          {/* Soft animated accent */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-gradient-to-br from-lime/30 via-emerald-300/20 to-transparent blur-2xl"
+          />
+          <div className="relative flex items-center gap-3 mb-8">
+            <motion.div
+              animate={{ rotate: [0, -8, 8, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="h-12 w-12 rounded-xl bg-lime flex items-center justify-center shadow-lg shadow-lime/30"
+            >
               <Pencil className="h-6 w-6 text-lime-foreground" />
-            </div>
+            </motion.div>
             <h2 className="font-display text-2xl font-black text-slate-900">Send Us a Message</h2>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="relative space-y-5">
             <Field label="Full Name" required>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <input
                   required maxLength={100}
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder="Enter your name"
-                  className="w-full rounded-lg bg-white/5 border border-white/10 pl-10 pr-3 py-3 text-sm focus:border-lime focus:outline-none placeholder:text-white/30"
+                  className="w-full rounded-lg bg-slate-50 border border-slate-200 text-slate-900 pl-10 pr-3 py-3 text-sm focus:border-lime focus:bg-white focus:ring-2 focus:ring-lime/30 focus:outline-none placeholder:text-slate-300 transition"
                 />
               </div>
             </Field>
 
             <Field label="Email Address" required>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <input
                   required type="email" maxLength={255}
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="your@email.com"
-                  className="w-full rounded-lg bg-white/5 border border-white/10 pl-10 pr-3 py-3 text-sm focus:border-lime focus:outline-none placeholder:text-white/30"
+                  className="w-full rounded-lg bg-slate-50 border border-slate-200 text-slate-900 pl-10 pr-3 py-3 text-sm focus:border-lime focus:bg-white focus:ring-2 focus:ring-lime/30 focus:outline-none placeholder:text-slate-300 transition"
                 />
               </div>
             </Field>
 
             <Field label="Phone Number (WhatsApp)" required>
               <div className="relative">
-                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
+                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <input
                   required maxLength={20}
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   placeholder="+91"
-                  className="w-full rounded-lg bg-white/5 border border-white/10 pl-10 pr-3 py-3 text-sm focus:border-lime focus:outline-none placeholder:text-white/30"
+                  className="w-full rounded-lg bg-slate-50 border border-slate-200 text-slate-900 pl-10 pr-3 py-3 text-sm focus:border-lime focus:bg-white focus:ring-2 focus:ring-lime/30 focus:outline-none placeholder:text-slate-300 transition"
                 />
               </div>
             </Field>
@@ -198,16 +208,16 @@ function FormAndDirect() {
                   required
                   value={form.interest}
                   onChange={(e) => setForm({ ...form, interest: e.target.value })}
-                  className="w-full appearance-none rounded-lg bg-white/5 border border-white/10 px-3 py-3 text-sm focus:border-lime focus:outline-none text-white/90"
+                  className={`w-full appearance-none rounded-lg bg-slate-50 border border-slate-200 px-3 py-3 text-sm focus:border-lime focus:bg-white focus:ring-2 focus:ring-lime/30 focus:outline-none transition ${form.interest ? "text-slate-900" : "text-slate-300"}`}
                 >
-                  <option value="" className="bg-dark">Select an option</option>
-                  <option value="N8N Course" className="bg-dark">N8N Course</option>
-                  <option value="1:1 Mentorship" className="bg-dark">1:1 Mentorship</option>
-                  <option value="Live Batches" className="bg-dark">Live Batches</option>
-                  <option value="Automation Services" className="bg-dark">Automation Services</option>
-                  <option value="Other" className="bg-dark">Other</option>
+                  <option value="" className="text-slate-300">Select an option</option>
+                  <option value="N8N Course" className="text-slate-900">N8N Course</option>
+                  <option value="1:1 Mentorship" className="text-slate-900">1:1 Mentorship</option>
+                  <option value="Live Batches" className="text-slate-900">Live Batches</option>
+                  <option value="Automation Services" className="text-slate-900">Automation Services</option>
+                  <option value="Other" className="text-slate-900">Other</option>
                 </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40 pointer-events-none" />
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
               </div>
             </Field>
 
@@ -217,24 +227,24 @@ function FormAndDirect() {
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 placeholder="Tell us about your requirements, questions, or goals..."
-                className="w-full min-h-[120px] rounded-lg bg-white/5 border border-white/10 px-3 py-3 text-sm focus:border-lime focus:outline-none placeholder:text-white/30 resize-y"
+                className="w-full min-h-[120px] rounded-lg bg-slate-50 border border-slate-200 text-slate-900 px-3 py-3 text-sm focus:border-lime focus:bg-white focus:ring-2 focus:ring-lime/30 focus:outline-none placeholder:text-slate-300 resize-y transition"
               />
             </Field>
 
             <motion.button
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, boxShadow: "0 20px 40px -10px rgb(160 220 80 / 0.6)" }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full rounded-lg bg-lime text-lime-foreground font-bold py-4 flex items-center justify-center gap-2 shadow-lg shadow-lime/30"
+              className="w-full rounded-lg bg-gradient-to-r from-lime to-emerald-400 text-lime-foreground font-bold py-4 flex items-center justify-center gap-2 shadow-lg shadow-lime/30"
             >
               <Send className="h-4 w-4" /> Send Message
             </motion.button>
 
-            <div className="flex items-start gap-2 text-sm text-white/60">
+            <div className="flex items-start gap-2 text-sm text-slate-500">
               <Info className="h-4 w-4 mt-0.5 flex-shrink-0" />
               <p>
                 We typically respond within 24 hours. For urgent queries, contact us directly on{" "}
-                <a href="https://wa.me/919347301449" target="_blank" rel="noreferrer" className="text-lime font-semibold hover:underline">
+                <a href="https://wa.me/919347301449" target="_blank" rel="noreferrer" className="text-emerald-600 font-semibold hover:underline">
                   WhatsApp.
                 </a>
               </p>
