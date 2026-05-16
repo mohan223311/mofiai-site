@@ -59,6 +59,7 @@ function YTHero() {
   return (
     <section className="relative bg-dark text-dark-foreground overflow-hidden pt-32 pb-20">
       <div className="absolute inset-0 dotted-bg opacity-30" />
+      <FloatingParticles count={20} color="red" />
       <motion.div
         aria-hidden
         className="absolute -top-32 -left-32 h-[420px] w-[420px] rounded-full blur-3xl"
