@@ -153,6 +153,53 @@
   50% { transform: rotate(1deg); }
 }
 
+@keyframes drift {
+  0%, 100% { transform: translate(0,0) rotate(0deg); }
+  25% { transform: translate(20px,-30px) rotate(3deg); }
+  50% { transform: translate(-15px,-50px) rotate(-2deg); }
+  75% { transform: translate(-25px,-20px) rotate(2deg); }
+}
+
+/* Red brand-theme override for YouTube/Batches pages */
+.theme-red {
+  --lime: oklch(0.62 0.24 25);
+  --lime-foreground: oklch(0.99 0.005 25);
+  --dark: oklch(0.16 0.04 25);
+  --dark-foreground: oklch(0.98 0.01 25);
+  --primary: oklch(0.62 0.24 25);
+  --primary-foreground: oklch(0.99 0.005 25);
+  --accent: oklch(0.62 0.24 25);
+  --accent-foreground: oklch(0.99 0.005 25);
+}
+.theme-red .text-shimmer-dark {
+  background: linear-gradient(90deg, #fff 0%, #fff 30%, #ff3b5c 50%, #fff 70%, #fff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-shimmer 6s linear infinite;
+}
+
+/* Global cursor glow */
+.cursor-glow {
+  position: fixed;
+  top: 0; left: 0;
+  width: 380px; height: 380px;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, oklch(0.88 0.16 125 / 0.18), transparent 60%);
+  mix-blend-mode: screen;
+  transition: background 0.4s ease;
+}
+.theme-red .cursor-glow,
+[data-theme="red"] .cursor-glow {
+  background: radial-gradient(circle, oklch(0.62 0.24 25 / 0.28), transparent 60%);
+}
+
+.float-drift { animation: drift 14s ease-in-out infinite; }
+
 .animated-grid {
   background-image:
     linear-gradient(to right, oklch(0.5 0.05 180 / 0.08) 1px, transparent 1px),
