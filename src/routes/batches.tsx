@@ -51,9 +51,12 @@ export const Route = createFileRoute("/batches")({
   component: BatchesPage,
 });
 
+import batchesHero from "@/assets/batches-hero.png";
+import { FloatingParticles } from "@/components/site/CursorGlow";
+
 function BatchesPage() {
   return (
-    <div className="min-h-screen">
+    <div className="theme-red min-h-screen">
       <ScrollProgress />
       <Hero />
       <WhatAreBatches />
@@ -91,6 +94,7 @@ function Hero() {
         animate={{ scale: [1, 1.1, 1], x: [0, -30, 0] }}
         transition={{ duration: 22, repeat: Infinity }}
       />
+      <FloatingParticles count={18} color="red" />
 
       <div className="relative mx-auto max-w-7xl px-6 pt-32 pb-24 grid lg:grid-cols-2 gap-12 items-center">
         <div>
@@ -159,24 +163,27 @@ function Hero() {
           </div>
         </div>
 
-        {/* Image placeholder */}
+        {/* Hero image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="relative"
+          className="relative flex items-center justify-center"
         >
-          <div className="absolute -top-4 -left-4 h-14 w-14 rounded-xl bg-lime/20 border border-lime/40 flex items-center justify-center">
-            <Users className="h-6 w-6 text-lime" />
-          </div>
-          <div className="aspect-[4/3] rounded-2xl border border-white/10 bg-white/5 backdrop-blur overflow-hidden flex items-center justify-center">
-            {/* Image placeholder — user will provide link */}
-            <div className="text-center text-dark-foreground/40">
-              <Video className="h-12 w-12 mx-auto mb-3 text-lime/60" />
-              <p className="text-sm">Group Batch Image</p>
-              <p className="text-xs mt-1">[Image link to be added]</p>
-            </div>
-          </div>
+          <motion.div
+            aria-hidden
+            className="absolute -inset-6 rounded-3xl"
+            style={{ background: "radial-gradient(circle, oklch(0.62 0.24 25 / 0.35), transparent 70%)" }}
+            animate={{ scale: [1, 1.08, 1], opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 4, repeat: Infinity }}
+          />
+          <motion.img
+            src={batchesHero}
+            alt="Live N8N AI Agents & Automations Group Batches"
+            className="relative w-full max-w-xl rounded-2xl shadow-2xl border border-white/10"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          />
         </motion.div>
       </div>
     </section>

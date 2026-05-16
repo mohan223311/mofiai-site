@@ -10,6 +10,7 @@ import {
 
 import appCss from "../styles.css?url";
 import { Preloader } from "@/components/site/Preloader";
+import { CursorGlow } from "@/components/site/CursorGlow";
 
 function NotFoundComponent() {
   return (
@@ -119,6 +120,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Preloader />
+      <CursorGlow />
       <Outlet />
     </QueryClientProvider>
   );

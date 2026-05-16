@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   Play, PlayCircle as Youtube, Link2, GraduationCap, Lightbulb, RefreshCw,
-  MoreVertical, ListVideo, Send, Camera as Instagram, Globe, Bell,
+  ListVideo, Send, Camera as Instagram, Globe, Bell,
   MessageSquare, Gift, Video, Users, ExternalLink, Rocket,
   CheckCircle2, Sparkles, ArrowRight, UserPlus as UserStar,
 } from "lucide-react";
@@ -11,6 +11,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { SectionLabel } from "@/components/site/SectionLabel";
+import { FloatingParticles } from "@/components/site/CursorGlow";
 
 export const Route = createFileRoute("/resources")({
   head: () => ({
@@ -58,6 +59,7 @@ function YTHero() {
   return (
     <section className="relative bg-dark text-dark-foreground overflow-hidden pt-32 pb-20">
       <div className="absolute inset-0 dotted-bg opacity-30" />
+      <FloatingParticles count={20} color="red" />
       <motion.div
         aria-hidden
         className="absolute -top-32 -left-32 h-[420px] w-[420px] rounded-full blur-3xl"
@@ -107,45 +109,33 @@ function YTHero() {
           </div>
         </div>
 
-        {/* Laptop mockup placeholder */}
+        {/* Live YouTube channel preview */}
         <motion.div
           initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2, duration: 0.7 }}
           className="relative"
         >
-          <div className="rounded-2xl border border-lime/30 bg-white/[0.04] backdrop-blur p-3 shadow-2xl">
-            <div className="aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-purple-950 via-dark to-black relative">
-              <div className="absolute inset-0 dotted-bg opacity-30" />
-              <div className="relative h-full flex flex-col">
-                <div className="h-8 bg-black/80 flex items-center px-3 gap-2 border-b border-white/10">
-                  <Youtube className="h-4 w-4 text-red-500" />
-                  <div className="flex-1 h-4 rounded bg-white/10" />
-                </div>
-                <div className="flex-1 p-4 flex flex-col items-center justify-center gap-2 text-center">
-                  <motion.div animate={{ rotate: [0, 360] }} transition={{ duration: 14, repeat: Infinity, ease: "linear" }}>
-                    <Sparkles className="h-8 w-8 text-lime" />
-                  </motion.div>
-                  <div className="font-display text-2xl">MOFI AI</div>
-                  <div className="text-[10px] tracking-[0.2em] text-white/70">AUTOMATE. INNOVATE. GROW.</div>
-                  <div className="flex gap-1.5 text-[9px]">
-                    <span className="px-2 py-0.5 rounded-full bg-lime/20 text-lime">N8N</span>
-                    <span className="px-2 py-0.5 rounded-full bg-lime/20 text-lime">AI Agents</span>
-                    <span className="px-2 py-0.5 rounded-full bg-lime/20 text-lime">Automation</span>
-                  </div>
-                  <div className="grid grid-cols-3 gap-1.5 mt-3 w-full">
-                    {[1, 2, 3].map((i) => (
-                      <div key={i} className="aspect-video rounded bg-gradient-to-br from-lime/30 to-purple-900/40 border border-white/10 flex items-center justify-center">
-                        <Play className="h-3 w-3 text-white/80" fill="currentColor" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+          <motion.div
+            aria-hidden
+            className="absolute -inset-6 rounded-3xl"
+            style={{ background: "radial-gradient(circle, oklch(0.62 0.24 25 / 0.45), transparent 70%)" }}
+            animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 4, repeat: Infinity }}
+          />
+          <div className="relative rounded-2xl border border-lime/40 bg-white/[0.04] backdrop-blur p-3 shadow-2xl">
+            <div className="aspect-video rounded-lg overflow-hidden bg-black">
+              <iframe
+                src="https://www.youtube.com/embed/_WIHtqoAmsE?autoplay=0&rel=0&modestbranding=1"
+                title="MOFI AI YouTube Channel Preview"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                className="w-full h-full"
+              />
             </div>
             <div className="h-3 mt-1 rounded-b bg-white/10" />
           </div>
-          {/* floating accent */}
           <motion.div
-            className="absolute -top-6 -right-6 h-20 w-20 rounded-full bg-lime/30 blur-2xl"
+            className="absolute -top-6 -right-6 h-20 w-20 rounded-full bg-lime/40 blur-2xl"
             animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 4, repeat: Infinity }}
           />
         </motion.div>
@@ -236,13 +226,6 @@ function FeaturedVideos() {
                   </motion.div>
                 </div>
                 <span className="absolute bottom-2 right-2 text-[11px] font-semibold bg-black/85 text-white rounded px-1.5 py-0.5">{v.duration}</span>
-              </div>
-              <div className="flex items-start gap-2 mt-3">
-                <div className="flex-1">
-                  <h4 className="text-sm font-semibold leading-snug text-white group-hover:text-lime transition-colors line-clamp-2">{v.title}</h4>
-                  <p className="text-xs text-white/50 mt-1">{v.meta}</p>
-                </div>
-                <MoreVertical className="h-4 w-4 text-white/40" />
               </div>
             </motion.a>
           ))}
@@ -353,8 +336,6 @@ function LatestUploads() {
                 </div>
                 <span className="absolute bottom-2 right-2 text-[11px] font-semibold bg-black/85 rounded px-1.5 py-0.5">{v.duration}</span>
               </div>
-              <h4 className="text-sm font-semibold mt-3 text-white group-hover:text-lime transition-colors line-clamp-2">{v.title}</h4>
-              <p className="text-xs text-white/50 mt-1">{v.meta}</p>
             </motion.a>
           ))}
         </div>
@@ -395,7 +376,7 @@ function NeverMiss() {
             >
               <Play className="h-12 w-12 text-lime-foreground ml-1" fill="currentColor" />
             </motion.div>
-            <div className="mt-6 font-display text-4xl text-white">9.87K+</div>
+            <div className="mt-6 font-display text-4xl text-white">4K+</div>
             <div className="text-sm text-white/60 flex items-center gap-1.5"><Users className="h-4 w-4" /> Subscribers</div>
           </div>
 
@@ -597,7 +578,7 @@ function KeepLearning() {
             </motion.a>
             <div className="mt-3 flex items-center justify-center gap-2 rounded-md bg-white/[0.05] py-2.5 text-sm">
               <Users className="h-4 w-4 text-white/60" />
-              <span className="text-white font-bold">9.87K+</span>
+              <span className="text-white font-bold">4K+</span>
               <span className="text-white/60">Subscribers</span>
             </div>
           </div>
@@ -644,7 +625,7 @@ function QuoteFooter() {
 /* ---------- Page ---------- */
 function ResourcesPage() {
   return (
-    <div className="min-h-screen bg-dark">
+    <div className="theme-red min-h-screen bg-dark">
       <ScrollProgress />
       <Header />
       <YTHero />
