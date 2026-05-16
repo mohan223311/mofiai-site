@@ -896,19 +896,17 @@ function WaitlistAndFAQ() {
                 initial={{ opacity: 0, x: 10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.04 }}
-                className="group rounded-xl border border-border bg-secondary/40 px-5 py-4 [&_summary::-webkit-details-marker]:hidden"
+                className="group rounded-xl border border-border bg-secondary/40 px-5 py-4 [&_summary::-webkit-details-marker]:hidden open:bg-secondary/70 open:border-purple-500/40 transition-colors"
               >
                 <summary className="flex items-start gap-3 cursor-pointer list-none">
                   <span className="h-7 w-7 rounded-md bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-bold flex items-center justify-center shrink-0">Q</span>
-                  <div className="flex-1">
-                    <div className="font-medium">{f.q}</div>
-                    <div className="mt-2 text-sm text-muted-foreground flex gap-2">
-                      <span className="text-lime font-bold">A:</span>
-                      <span>{f.a}</span>
-                    </div>
-                  </div>
+                  <div className="flex-1 font-semibold text-foreground">{f.q}</div>
                   <ArrowRight className="h-4 w-4 text-muted-foreground rotate-90 group-open:rotate-[270deg] transition-transform shrink-0 mt-1" />
                 </summary>
+                <div className="mt-3 ml-10 text-sm text-muted-foreground flex gap-2">
+                  <span className="text-lime font-bold">A:</span>
+                  <span>{f.a}</span>
+                </div>
               </motion.details>
             ))}
           </div>
