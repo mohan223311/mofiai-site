@@ -435,7 +435,7 @@ function BottomBanner() {
             <Megaphone className="h-6 w-6 text-lime-foreground" />
           </div>
           <div className="flex-1 text-center md:text-left">
-            <p className="font-display text-xl text-lime-foreground">
+            <p className="font-display text-xl font-black text-foreground">
               Live learning. Real collaboration. Career transformation.
             </p>
             <p className="mt-1 text-muted-foreground text-sm">
