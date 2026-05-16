@@ -11,6 +11,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { SectionLabel } from "@/components/site/SectionLabel";
+import { FloatingParticles } from "@/components/site/CursorGlow";
 
 export const Route = createFileRoute("/resources")({
   head: () => ({
