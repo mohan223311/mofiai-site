@@ -33,7 +33,7 @@ export function ExtendedSupport() {
             <motion.div
               animate={{ rotate: [0, 8, -8, 0] }}
               transition={{ duration: 5, repeat: Infinity }}
-              className="h-14 w-14 rounded-2xl bg-lime/15 border border-lime/30 text-lime flex items-center justify-center"
+              className="h-14 w-14 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-700 text-white shadow-lg shadow-indigo-500/40 flex items-center justify-center"
             >
               <GraduationCap className="h-6 w-6" />
             </motion.div>
