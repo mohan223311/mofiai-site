@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { SectionLabel } from "../SectionLabel";
+import { AnimatedLines } from "../AnimatedHeading";
 import { GraduationCap, Lightbulb, MessagesSquare, Users, Smartphone, ArrowRight } from "lucide-react";
 
 const support = [
