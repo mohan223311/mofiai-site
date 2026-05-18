@@ -92,7 +92,7 @@ export function HowItWorks() {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                className="h-12 w-12 rounded-xl bg-lime/15 border border-lime/30 text-lime flex items-center justify-center"
+                className="h-12 w-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 text-white shadow-lg shadow-emerald-500/40 flex items-center justify-center"
               >
                 <Clock className="h-5 w-5" />
               </motion.div>
