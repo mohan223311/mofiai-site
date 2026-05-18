@@ -484,12 +484,42 @@ function StructuredLearning() {
 }
 
 /* ---------- 8. Social ---------- */
+import { YouTubeIcon, TelegramIcon, InstagramIcon } from "@/components/site/BrandIcons";
+
 function Social() {
   const items = [
-    { Icon: Youtube, name: "YouTube", desc: "Free tutorials, project walkthroughs and automation tips", link: "youtube.com/@mofiAI123-f", href: "https://www.youtube.com/@mofiAI123-f" },
-    { Icon: Send, name: "Telegram Community", desc: "Join our community, ask doubts, get help and network", link: "t.me/ai_telugu_community", href: "https://t.me/ai_telugu_community" },
-    { Icon: Instagram, name: "Instagram", desc: "Behind the scenes, updates, tips and automation reels", link: "instagram.com/mofi_ai", href: "https://instagram.com/mofi_ai" },
-    { Icon: Globe, name: "Website", desc: "Learn more about our services, courses and resources", link: "profitgrowthai.in", href: "https://profitgrowthai.in" },
+    {
+      Icon: YouTubeIcon,
+      name: "YouTube",
+      desc: "Free tutorials, project walkthroughs and automation tips",
+      href: "https://www.youtube.com/@mofiAI123-f",
+      btnBg: "#FF0000",
+      btnLabel: "Subscribe",
+    },
+    {
+      Icon: TelegramIcon,
+      name: "Telegram Community",
+      desc: "Join our community, ask doubts, get help and network",
+      href: "https://t.me/ai_telugu_community",
+      btnBg: "#229ED9",
+      btnLabel: "Join Channel",
+    },
+    {
+      Icon: InstagramIcon,
+      name: "Instagram",
+      desc: "Behind the scenes, updates, tips and automation reels",
+      href: "https://instagram.com/mofi_ai",
+      btnBg: "linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)",
+      btnLabel: "Follow",
+    },
+    {
+      Icon: Globe,
+      name: "Website",
+      desc: "Learn more about our services, courses and resources",
+      href: "https://profitgrowthai.in",
+      btnBg: "#22c55e",
+      btnLabel: "Visit",
+    },
   ];
   return (
     <section className="bg-dark text-dark-foreground py-24 relative">
@@ -499,22 +529,27 @@ function Social() {
         <TitleDecor>Connect on Social Media</TitleDecor>
         <p className="text-white/65 mb-12">Follow us for updates, tips, and community discussions</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {items.map(({ Icon, name, desc, link, href }, i) => (
-            <motion.a
-              key={name} href={href} target="_blank" rel="noreferrer"
+          {items.map(({ Icon, name, desc, href, btnBg, btnLabel }, i) => (
+            <motion.div
+              key={name}
               custom={i} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
               whileHover={{ y: -6 }}
-              className="rounded-2xl border border-lime/20 bg-white/[0.03] p-6 flex flex-col items-center group"
+              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 flex flex-col items-center"
             >
-              <div className="h-14 w-14 rounded-full bg-lime/20 border border-lime/40 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                <Icon className="h-7 w-7 text-lime" />
+              <div className="h-16 w-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-3">
+                <Icon className="h-9 w-9" />
               </div>
-              <h4 className="font-semibold text-lime">{name}</h4>
+              <h4 className="font-semibold text-white">{name}</h4>
               <p className="text-xs text-white/60 mt-2 leading-relaxed mb-4">{desc}</p>
-              <span className="inline-flex w-full items-center justify-center gap-1.5 rounded-md border border-white/15 text-white/80 text-xs px-3 py-2 hover:border-lime/60 hover:text-lime transition-colors">
-                <Icon className="h-3.5 w-3.5" /> {link}
-              </span>
-            </motion.a>
+              <motion.a
+                href={href} target="_blank" rel="noreferrer" aria-label={btnLabel + " " + name}
+                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold text-white shadow-lg"
+                style={{ background: btnBg }}
+              >
+                <Icon className="h-4 w-4" /> {btnLabel}
+              </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>
