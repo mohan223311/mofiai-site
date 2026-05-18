@@ -15,13 +15,11 @@ export function ExtendedSupport() {
     <section className="bg-secondary/40 py-24">
       <div className="mx-auto max-w-7xl px-6">
         <SectionLabel>After Training</SectionLabel>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        <AnimatedLines
+          lines={["Extended Support After", "Training Phase"]}
           className="mt-4 font-display text-5xl md:text-6xl max-w-3xl"
-        >
-          Extended Support After<br />Training Phase
-        </motion.h2>
+          highlight={["Support", "Training"]}
+        />
 
         {/* Phases */}
         <div className="mt-14 grid md:grid-cols-[1fr_auto_1fr] items-center gap-6">
