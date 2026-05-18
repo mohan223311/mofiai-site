@@ -210,8 +210,8 @@ function WhatAreBatches() {
           viewport={{ margin: "-80px" }}
         >
           <div className="flex items-start gap-4">
-            <div className="h-14 w-14 rounded-xl bg-lime/15 border border-lime/30 flex items-center justify-center shrink-0">
-              <Users className="h-6 w-6 text-lime-foreground" />
+            <div className="h-14 w-14 rounded-xl bg-gradient-to-br from-rose-500 to-red-600 text-white shadow-lg shadow-rose-500/40 flex items-center justify-center shrink-0">
+              <Users className="h-6 w-6" />
             </div>
             <div>
               <h2 className="font-display text-4xl md:text-5xl">What Are Live Batches?</h2>
