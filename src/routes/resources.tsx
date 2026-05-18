@@ -499,7 +499,6 @@ function StructuredLearning() {
 }
 
 /* ---------- 8. Social ---------- */
-import { YouTubeIcon, TelegramIcon, InstagramIcon } from "@/components/site/BrandIcons";
 
 function Social() {
   const items = [
