@@ -227,14 +227,19 @@ function WhatAreBatches() {
           </p>
 
           <div className="mt-10 grid grid-cols-4 gap-3 items-end">
-            {["💜", "💛", "💚", "💙"].map((c, i) => (
+            {[
+              { Icon: Users2, tone: "from-violet-500 to-purple-700 shadow-violet-500/40" },
+              { Icon: Video, tone: "from-rose-500 to-red-600 shadow-rose-500/40" },
+              { Icon: Trophy, tone: "from-amber-400 to-orange-600 shadow-amber-500/40" },
+              { Icon: Handshake, tone: "from-emerald-500 to-teal-700 shadow-emerald-500/40" },
+            ].map(({ Icon, tone }, i) => (
               <motion.div
                 key={i}
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 3 + i * 0.3, repeat: Infinity, delay: i * 0.2 }}
-                className="aspect-square rounded-xl bg-secondary/60 border border-border flex items-center justify-center text-3xl"
+                className={`aspect-square rounded-xl bg-gradient-to-br ${tone} text-white flex items-center justify-center shadow-xl`}
               >
-                {c}
+                <Icon className="h-8 w-8" />
               </motion.div>
             ))}
           </div>
