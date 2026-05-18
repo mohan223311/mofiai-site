@@ -103,7 +103,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 rounded-full border border-lime/40 bg-lime/10 px-4 py-1.5 text-xs tracking-widest text-lime"
           >
-            <Rocket className="h-3.5 w-3.5" /> COMING SOON
+            <Rocket className="h-3.5 w-3.5" /> LIVE COHORTS
           </motion.div>
 
           <motion.h1
@@ -210,8 +210,8 @@ function WhatAreBatches() {
           viewport={{ margin: "-80px" }}
         >
           <div className="flex items-start gap-4">
-            <div className="h-14 w-14 rounded-xl bg-lime/15 border border-lime/30 flex items-center justify-center shrink-0">
-              <Users className="h-6 w-6 text-lime-foreground" />
+            <div className="h-14 w-14 rounded-xl bg-gradient-to-br from-rose-500 to-red-600 text-white shadow-lg shadow-rose-500/40 flex items-center justify-center shrink-0">
+              <Users className="h-6 w-6" />
             </div>
             <div>
               <h2 className="font-display text-4xl md:text-5xl">What Are Live Batches?</h2>
@@ -227,14 +227,19 @@ function WhatAreBatches() {
           </p>
 
           <div className="mt-10 grid grid-cols-4 gap-3 items-end">
-            {["💜", "💛", "💚", "💙"].map((c, i) => (
+            {[
+              { Icon: Users2, tone: "from-violet-500 to-purple-700 shadow-violet-500/40" },
+              { Icon: Video, tone: "from-rose-500 to-red-600 shadow-rose-500/40" },
+              { Icon: Trophy, tone: "from-amber-400 to-orange-600 shadow-amber-500/40" },
+              { Icon: Handshake, tone: "from-emerald-500 to-teal-700 shadow-emerald-500/40" },
+            ].map(({ Icon, tone }, i) => (
               <motion.div
                 key={i}
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 3 + i * 0.3, repeat: Infinity, delay: i * 0.2 }}
-                className="aspect-square rounded-xl bg-secondary/60 border border-border flex items-center justify-center text-3xl"
+                className={`aspect-square rounded-xl bg-gradient-to-br ${tone} text-white flex items-center justify-center shadow-xl`}
               >
-                {c}
+                <Icon className="h-8 w-8" />
               </motion.div>
             ))}
           </div>
@@ -340,8 +345,8 @@ function BatchStructure() {
             {/* Sidebar */}
             <div>
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-xl bg-lime/15 border border-lime/30 flex items-center justify-center">
-                  <Calendar className="h-5 w-5 text-lime-foreground" />
+                <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/40 flex items-center justify-center">
+                  <Calendar className="h-5 w-5" />
                 </div>
                 <h3 className="font-display text-3xl">Batch Structure</h3>
               </div>
@@ -431,15 +436,15 @@ function BottomBanner() {
           whileInView={{ opacity: 1, y: 0 }}
           className="rounded-2xl border border-border bg-card p-6 md:p-8 flex flex-col md:flex-row items-center gap-6"
         >
-          <div className="h-14 w-14 rounded-xl bg-lime/15 border border-lime/30 flex items-center justify-center shrink-0">
-            <Megaphone className="h-6 w-6 text-lime-foreground" />
+          <div className="h-14 w-14 rounded-xl bg-gradient-to-br from-rose-500 to-red-600 text-white shadow-lg shadow-rose-500/40 flex items-center justify-center shrink-0">
+            <Megaphone className="h-6 w-6" />
           </div>
           <div className="flex-1 text-center md:text-left">
             <p className="font-display text-xl font-black text-foreground">
               Live learning. Real collaboration. Career transformation.
             </p>
             <p className="mt-1 text-muted-foreground text-sm">
-              Batches starting soon — Join waitlist to get notified first!
+              New cohorts every month — join the waitlist to grab your seat first!
             </p>
           </div>
           <motion.div

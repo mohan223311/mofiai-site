@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { SectionLabel } from "../SectionLabel";
+import { AnimatedLines } from "../AnimatedHeading";
 import { BookOpen, Clock, Video } from "lucide-react";
 
 const topics = [
@@ -15,13 +16,11 @@ export function HowItWorks() {
     <section className="py-24">
       <div className="mx-auto max-w-7xl px-6">
         <SectionLabel>How It Works</SectionLabel>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        <AnimatedLines
+          lines={["Learn Anything.", "Anywhere. In AI."]}
           className="mt-4 font-display text-5xl md:text-6xl max-w-3xl"
-        >
-          Learn Anything.<br />Anywhere. In <span className="text-lime">AI</span>.
-        </motion.h2>
+          highlight={["AI"]}
+        />
         <p className="mt-4 text-muted-foreground">Get started in just 3 simple steps</p>
 
         <div className="relative mt-16 grid md:grid-cols-3 gap-6">
@@ -55,7 +54,7 @@ export function HowItWorks() {
               <motion.div
                 animate={{ rotate: [0, 8, -8, 0] }}
                 transition={{ duration: 5, repeat: Infinity }}
-                className="h-12 w-12 rounded-xl bg-lime/15 border border-lime/30 text-lime flex items-center justify-center"
+                className="h-12 w-12 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-700 text-white shadow-lg shadow-indigo-500/40 flex items-center justify-center"
               >
                 <BookOpen className="h-5 w-5" />
               </motion.div>
@@ -93,7 +92,7 @@ export function HowItWorks() {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                className="h-12 w-12 rounded-xl bg-lime/15 border border-lime/30 text-lime flex items-center justify-center"
+                className="h-12 w-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 text-white shadow-lg shadow-emerald-500/40 flex items-center justify-center"
               >
                 <Clock className="h-5 w-5" />
               </motion.div>
