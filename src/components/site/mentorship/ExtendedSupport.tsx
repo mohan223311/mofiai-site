@@ -70,7 +70,7 @@ export function ExtendedSupport() {
             <motion.div
               animate={{ rotate: [0, -8, 8, 0] }}
               transition={{ duration: 5, repeat: Infinity }}
-              className="h-14 w-14 rounded-2xl bg-amber-400/15 border border-amber-400/30 text-amber-500 flex items-center justify-center"
+              className="h-14 w-14 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/40 flex items-center justify-center"
             >
               <Lightbulb className="h-6 w-6" />
             </motion.div>
