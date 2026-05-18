@@ -444,7 +444,7 @@ function BottomBanner() {
               Live learning. Real collaboration. Career transformation.
             </p>
             <p className="mt-1 text-muted-foreground text-sm">
-              Batches starting soon — Join waitlist to get notified first!
+              New cohorts every month — join the waitlist to grab your seat first!
             </p>
           </div>
           <motion.div
