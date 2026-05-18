@@ -345,8 +345,8 @@ function BatchStructure() {
             {/* Sidebar */}
             <div>
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-xl bg-lime/15 border border-lime/30 flex items-center justify-center">
-                  <Calendar className="h-5 w-5 text-lime-foreground" />
+                <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/40 flex items-center justify-center">
+                  <Calendar className="h-5 w-5" />
                 </div>
                 <h3 className="font-display text-3xl">Batch Structure</h3>
               </div>
