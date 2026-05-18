@@ -16,13 +16,11 @@ export function HowItWorks() {
     <section className="py-24">
       <div className="mx-auto max-w-7xl px-6">
         <SectionLabel>How It Works</SectionLabel>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        <AnimatedLines
+          lines={["Learn Anything.", "Anywhere. In AI."]}
           className="mt-4 font-display text-5xl md:text-6xl max-w-3xl"
-        >
-          Learn Anything.<br />Anywhere. In <span className="text-lime">AI</span>.
-        </motion.h2>
+          highlight={["AI"]}
+        />
         <p className="mt-4 text-muted-foreground">Get started in just 3 simple steps</p>
 
         <div className="relative mt-16 grid md:grid-cols-3 gap-6">
