@@ -103,7 +103,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 rounded-full border border-lime/40 bg-lime/10 px-4 py-1.5 text-xs tracking-widest text-lime"
           >
-            <Rocket className="h-3.5 w-3.5" /> COMING SOON
+            <Rocket className="h-3.5 w-3.5" /> LIVE COHORTS
           </motion.div>
 
           <motion.h1
