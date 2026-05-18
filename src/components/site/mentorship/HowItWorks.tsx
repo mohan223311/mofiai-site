@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { SectionLabel } from "../SectionLabel";
+import { AnimatedLines } from "../AnimatedHeading";
 import { BookOpen, Clock, Video } from "lucide-react";
 
 const topics = [
