@@ -389,9 +389,6 @@ function NeverMiss() {
             >
               <Youtube className="h-5 w-5" /> Subscribe to MOFI AI on YouTube
             </motion.a>
-            <div className="mt-3 text-xs text-white/50 flex items-center gap-1.5">
-              www.youtube.com/@mofiAI123-f <ExternalLink className="h-3 w-3" />
-            </div>
           </div>
         </div>
       </div>
