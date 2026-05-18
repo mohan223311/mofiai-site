@@ -436,8 +436,8 @@ function BottomBanner() {
           whileInView={{ opacity: 1, y: 0 }}
           className="rounded-2xl border border-border bg-card p-6 md:p-8 flex flex-col md:flex-row items-center gap-6"
         >
-          <div className="h-14 w-14 rounded-xl bg-lime/15 border border-lime/30 flex items-center justify-center shrink-0">
-            <Megaphone className="h-6 w-6 text-lime-foreground" />
+          <div className="h-14 w-14 rounded-xl bg-gradient-to-br from-rose-500 to-red-600 text-white shadow-lg shadow-rose-500/40 flex items-center justify-center shrink-0">
+            <Megaphone className="h-6 w-6" />
           </div>
           <div className="flex-1 text-center md:text-left">
             <p className="font-display text-xl font-black text-foreground">
