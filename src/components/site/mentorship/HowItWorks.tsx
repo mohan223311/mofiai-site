@@ -54,7 +54,7 @@ export function HowItWorks() {
               <motion.div
                 animate={{ rotate: [0, 8, -8, 0] }}
                 transition={{ duration: 5, repeat: Infinity }}
-                className="h-12 w-12 rounded-xl bg-lime/15 border border-lime/30 text-lime flex items-center justify-center"
+                className="h-12 w-12 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-700 text-white shadow-lg shadow-indigo-500/40 flex items-center justify-center"
               >
                 <BookOpen className="h-5 w-5" />
               </motion.div>
