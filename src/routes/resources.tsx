@@ -104,9 +104,6 @@ function YTHero() {
               Subscribe to MOFI AI <ArrowRight className="h-4 w-4" />
             </motion.a>
           </motion.div>
-          <div className="mt-5 flex items-center gap-2 text-sm text-white/55">
-            <Link2 className="h-4 w-4" /> www.youtube.com/@mofiAI123-f
-          </div>
         </div>
 
         {/* Live YouTube channel preview */}
