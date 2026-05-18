@@ -12,6 +12,7 @@ import { Footer } from "@/components/site/Footer";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { SectionLabel } from "@/components/site/SectionLabel";
 import { FloatingParticles } from "@/components/site/CursorGlow";
+import { YouTubeIcon, TelegramIcon, InstagramIcon } from "@/components/site/BrandIcons";
 
 export const Route = createFileRoute("/resources")({
   head: () => ({
