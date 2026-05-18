@@ -247,23 +247,36 @@ const playlists = [
 
 function Playlists() {
   return (
-    <section className="bg-dark text-dark-foreground py-24 relative">
-      <div className="absolute inset-0 dotted-bg opacity-20" />
+    <section
+      className="relative py-24 overflow-hidden"
+      style={{ background: "linear-gradient(180deg,#ffffff 0%,#fff5f5 60%,#ffe3e3 100%)" }}
+    >
+      <div
+        aria-hidden
+        className="absolute -top-32 -right-32 h-[420px] w-[420px] rounded-full blur-3xl opacity-30"
+        style={{ background: "radial-gradient(circle,#FF0000,transparent 70%)" }}
+      />
       <div className="relative mx-auto max-w-7xl px-6 text-center">
-        <SectionLabel light>Playlists</SectionLabel>
-        <TitleDecor>Video Playlists</TitleDecor>
-        <p className="text-white/65 mb-12">Curated playlists to help you learn systematically</p>
+        <motion.div
+          initial={{ opacity: 0, x: -16 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="inline-flex items-center gap-2 rounded-full bg-[#FF0000] text-white px-4 py-1.5 text-xs uppercase tracking-[0.18em] font-bold mb-3"
+        >
+          <ListVideo className="h-3.5 w-3.5" /> Playlists
+        </motion.div>
+        <h2 className="font-display text-3xl md:text-4xl text-slate-900 mb-3">Video Playlists</h2>
+        <p className="text-slate-600 mb-12">Curated playlists to help you learn systematically</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
           {playlists.map((p, i) => (
             <motion.div
               key={p.num}
               custom={i} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }}
               whileHover={{ y: -6 }}
-              className="rounded-2xl border border-lime/20 bg-white/[0.03] overflow-hidden group"
+              className="rounded-2xl border border-red-100 bg-white overflow-hidden shadow-lg shadow-red-200/40 hover:shadow-2xl hover:shadow-red-300/50 transition-shadow"
             >
               <div className={`relative aspect-video bg-gradient-to-br ${p.grad} p-4 flex flex-col justify-between`}>
                 <div>
-                  <div className="font-display text-2xl text-lime">{p.big}</div>
+                  <div className="font-display text-2xl text-white">{p.big}</div>
                   <div className="text-[11px] tracking-widest text-white/80 mt-0.5">{p.chip}</div>
                 </div>
                 <span className="self-end inline-flex items-center gap-1 bg-black/70 rounded px-2 py-0.5 text-[10px] text-white">
@@ -271,14 +284,15 @@ function Playlists() {
                 </span>
               </div>
               <div className="p-5">
-                <h4 className="font-semibold text-white">{p.num}. {p.title}</h4>
-                <p className="text-xs text-white/60 mt-2 leading-relaxed">{p.desc}</p>
-                <div className="flex items-center gap-1.5 mt-3 text-xs text-white/50">
-                  <Play className="h-3 w-3 text-lime" fill="currentColor" /> {p.count} videos
+                <h4 className="font-semibold text-slate-900">{p.num}. {p.title}</h4>
+                <p className="text-xs text-slate-600 mt-2 leading-relaxed">{p.desc}</p>
+                <div className="flex items-center gap-1.5 mt-3 text-xs text-slate-500">
+                  <Play className="h-3 w-3 text-[#FF0000]" fill="currentColor" /> {p.count} videos
                 </div>
                 <a
                   href="https://www.youtube.com/@mofiAI123-f/playlists" target="_blank" rel="noreferrer"
-                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md border border-lime/60 text-lime px-3 py-2 text-xs font-semibold hover:bg-lime/10 transition-colors"
+                  aria-label="Watch playlist on YouTube"
+                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#FF0000] text-white px-3 py-2 text-xs font-bold hover:bg-red-700 transition-colors"
                 >
                   <Play className="h-3 w-3" fill="currentColor" /> Watch Playlist
                 </a>
