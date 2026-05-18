@@ -86,6 +86,12 @@ export function ExtendedSupport() {
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {support.map((s, i) => {
             const Icon = s.i;
+            const palettes = [
+              "from-rose-500 to-pink-600 shadow-rose-500/40",
+              "from-sky-500 to-blue-700 shadow-sky-500/40",
+              "from-emerald-500 to-teal-700 shadow-emerald-500/40",
+              "from-violet-500 to-fuchsia-700 shadow-violet-500/40",
+            ];
             return (
               <motion.div
                 key={s.t}
@@ -98,11 +104,11 @@ export function ExtendedSupport() {
                 <motion.div
                   animate={{ y: [0, -4, 0] }}
                   transition={{ duration: 3, repeat: Infinity, delay: i * 0.2 }}
-                  className="h-11 w-11 rounded-xl bg-lime/15 border border-lime/30 text-lime flex items-center justify-center"
+                  className={`h-11 w-11 rounded-xl text-white flex items-center justify-center shadow-lg bg-gradient-to-br ${palettes[i % 4]}`}
                 >
                   <Icon className="h-5 w-5" />
                 </motion.div>
-                <h4 className="mt-4 font-medium">{s.t}</h4>
+                <h4 className="mt-4 font-semibold text-foreground">{s.t}</h4>
                 <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{s.d}</p>
               </motion.div>
             );
