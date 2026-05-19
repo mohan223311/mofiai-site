@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as MentorshipRouteImport } from './routes/mentorship'
 import { Route as CourseRouteImport } from './routes/course'
@@ -16,6 +17,11 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BatchesRouteImport } from './routes/batches'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/course': typeof CourseRoute
   '/mentorship': typeof MentorshipRoute
   '/resources': typeof ResourcesRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/course': typeof CourseRoute
   '/mentorship': typeof MentorshipRoute
   '/resources': typeof ResourcesRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/course': typeof CourseRoute
   '/mentorship': typeof MentorshipRoute
   '/resources': typeof ResourcesRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,8 +90,16 @@ export interface FileRouteTypes {
     | '/course'
     | '/mentorship'
     | '/resources'
+    | '/services'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/batches' | '/contact' | '/course' | '/mentorship' | '/resources'
+  to:
+    | '/'
+    | '/batches'
+    | '/contact'
+    | '/course'
+    | '/mentorship'
+    | '/resources'
+    | '/services'
   id:
     | '__root__'
     | '/'
@@ -91,6 +108,7 @@ export interface FileRouteTypes {
     | '/course'
     | '/mentorship'
     | '/resources'
+    | '/services'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -100,10 +118,18 @@ export interface RootRouteChildren {
   CourseRoute: typeof CourseRoute
   MentorshipRoute: typeof MentorshipRoute
   ResourcesRoute: typeof ResourcesRoute
+  ServicesRoute: typeof ServicesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources': {
       id: '/resources'
       path: '/resources'
@@ -156,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   CourseRoute: CourseRoute,
   MentorshipRoute: MentorshipRoute,
   ResourcesRoute: ResourcesRoute,
+  ServicesRoute: ServicesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

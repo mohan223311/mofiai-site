@@ -8,7 +8,7 @@ const links: { label: string; to: string; hash?: string }[] = [
   { label: "1:1 Mentorship", to: "/mentorship" },
   { label: "Live Batches", to: "/batches" },
   { label: "YouTube", to: "/resources" },
-  { label: "Services", to: "/", hash: "services" },
+  { label: "Services", to: "/services" },
   { label: "Contact", to: "/contact" },
 ];
 
