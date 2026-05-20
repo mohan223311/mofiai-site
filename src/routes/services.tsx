@@ -259,7 +259,8 @@ function Process() {
     <section className="py-24 bg-gradient-to-b from-white to-slate-50">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
-          highlight="You">How We Work With You</AnimatedHeading>
+          highlight="You"
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">How We Work With You</AnimatedHeading>
         <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-5 gap-5">
           {steps.map((s, i) => (
             <motion.div key={s.title}
