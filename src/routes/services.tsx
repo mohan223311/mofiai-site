@@ -342,91 +342,72 @@ const services = [
 
 function DetailedServices() {
   return (
-    <section className="py-24 bg-dark text-dark-foreground relative overflow-hidden">
-      <FloatingParticles count={15} />
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
       <div className="relative mx-auto max-w-7xl px-6">
-        <AnimatedHeading className="text-center font-display text-4xl md:text-5xl"
-          highlight="Services">Our Services Detailed</AnimatedHeading>
-        <p className="text-center text-white/60 mt-3">Professional AI solutions tailored to your business needs</p>
+        <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
+          highlight="Detailed"
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">
+          Our Services Detailed
+        </AnimatedHeading>
+        <p className="text-center text-slate-500 mt-3">Professional AI solutions tailored to your business needs</p>
 
-        <div className="mt-14 space-y-8">
+        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
             <motion.div key={s.n}
               initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05 }}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur p-7 md:p-9 hover:border-white/20 transition-colors"
-              style={{ boxShadow: `0 10px 50px -25px ${s.color}80` }}
+              transition={{ delay: i * 0.06 }} whileHover={{ y: -6 }}
+              className="rounded-2xl border bg-white p-6 flex flex-col"
+              style={{ borderColor: s.color + "55", boxShadow: `0 12px 40px -22px ${s.color}` }}
             >
-              <div className="flex items-start gap-5 mb-6">
+              <div className="flex items-start gap-4 mb-4">
                 <motion.div whileHover={{ rotate: 12, scale: 1.1 }}
-                  className="h-16 w-16 shrink-0 rounded-2xl flex items-center justify-center"
-                  style={{ background: s.color + "22", border: `1px solid ${s.color}66`, color: s.color }}>
-                  <s.icon className="h-8 w-8" />
+                  className="h-14 w-14 shrink-0 rounded-2xl flex items-center justify-center"
+                  style={{ background: s.color + "1a", border: `1px solid ${s.color}55`, color: s.color }}>
+                  <s.icon className="h-7 w-7" />
                 </motion.div>
                 <div>
-                  <div className="text-xs uppercase tracking-widest" style={{ color: s.color }}>
+                  <div className="text-[11px] uppercase tracking-widest font-bold" style={{ color: s.color }}>
                     Service {s.n}
                   </div>
-                  <h3 className="font-display text-2xl md:text-3xl mt-1">{s.title}</h3>
+                  <h3 className="font-display text-lg leading-tight mt-1 text-slate-900">{s.title}</h3>
                 </div>
               </div>
 
-              <p className="text-white/70 mb-6 max-w-4xl">{s.overview}</p>
+              <p className="text-sm text-slate-600 mb-4">{s.overview}</p>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div className="rounded-xl bg-black/30 p-5 border border-white/5">
-                  <div className="text-sm font-bold mb-3" style={{ color: s.color }}>What We Build</div>
-                  <ul className="space-y-2">
-                    {s.build.map(b => (
-                      <li key={b} className="flex items-start gap-2 text-sm text-white/80">
-                        <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0" style={{ color: s.color }} />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="rounded-xl bg-black/30 p-5 border border-white/5">
-                  <div className="text-sm font-bold mb-3" style={{ color: s.color }}>Technologies We Use</div>
-                  <div className="flex flex-wrap gap-2">
-                    {s.tech.map(t => (
-                      <span key={t} className="rounded-md px-3 py-1.5 text-xs font-medium"
-                        style={{ background: s.color + "1a", color: s.color, border: `1px solid ${s.color}44` }}>{t}</span>
-                    ))}
-                  </div>
-                  <div className="mt-5 text-sm font-bold mb-2" style={{ color: s.color }}>Use Cases</div>
-                  <ul className="space-y-1.5">
-                    {s.cases.map(c => (
-                      <li key={c} className="text-sm text-white/75 flex items-start gap-2">
-                        <span style={{ color: s.color }}>✓</span> {c}
-                      </li>
-                    ))}
-                  </ul>
+              <div className="rounded-xl bg-slate-50 border border-slate-100 p-4 mb-3">
+                <div className="text-xs font-bold mb-2" style={{ color: s.color }}>What We Build</div>
+                <ul className="space-y-1.5">
+                  {s.build.slice(0, 5).map(b => (
+                    <li key={b} className="flex items-start gap-2 text-[13px] text-slate-700">
+                      <CheckCircle2 className="h-3.5 w-3.5 mt-0.5 shrink-0" style={{ color: s.color }} />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="rounded-xl bg-slate-50 border border-slate-100 p-4 mb-4">
+                <div className="text-xs font-bold mb-2" style={{ color: s.color }}>Technologies We Use</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {s.tech.map(t => (
+                    <span key={t} className="rounded-md px-2 py-1 text-[11px] font-medium"
+                      style={{ background: s.color + "15", color: s.color, border: `1px solid ${s.color}33` }}>{t}</span>
+                  ))}
                 </div>
               </div>
 
-              {s.roi && (
-                <div className="rounded-lg bg-emerald-500/10 border border-emerald-400/30 p-3 mb-4 text-sm text-emerald-200">
-                  <strong>Typical ROI:</strong> {s.roi}
-                </div>
-              )}
-              {s.note && (
-                <div className="rounded-lg bg-amber-500/10 border border-amber-400/30 p-3 mb-4 text-sm text-amber-100">
-                  <strong>Legal Note:</strong> {s.note}
-                </div>
-              )}
-
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
-                <div className="flex flex-wrap gap-5 text-sm text-white/70">
-                  <span><strong className="text-white">Timeline:</strong> {s.timeline}</span>
-                  <span><strong className="text-white">Starting Price:</strong> {s.price}</span>
-                </div>
-                <a href="https://wa.me/919347301449?text=Quote%20request"
-                  target="_blank" rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-bold text-white hover:scale-105 transition-transform"
-                  style={{ background: s.color, boxShadow: `0 10px 24px -10px ${s.color}` }}>
-                  {s.cta} <ArrowRight className="h-4 w-4" />
-                </a>
+              <div className="mt-auto space-y-2 text-xs text-slate-600 mb-4">
+                <div className="flex items-center gap-2"><span className="text-slate-400">⏱</span><strong className="text-slate-700">Timeline:</strong> {s.timeline}</div>
+                <div className="flex items-center gap-2"><span className="text-slate-400">₹</span><strong className="text-slate-700">Starting:</strong> {s.price}</div>
               </div>
+
+              <a href="https://wa.me/919347301449?text=Quote%20request"
+                target="_blank" rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-bold text-white hover:scale-[1.02] transition-transform"
+                style={{ background: s.color, boxShadow: `0 10px 24px -10px ${s.color}` }}>
+                {s.cta} <ArrowRight className="h-4 w-4" />
+              </a>
             </motion.div>
           ))}
         </div>
