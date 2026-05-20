@@ -57,7 +57,9 @@ function Hero() {
             lines={["AI Automation", "Solutions for", "Your Business"]}
             className="mt-6 font-display text-5xl md:text-6xl leading-[1.05]"
             highlight={["Solutions", "Business"]}
+            highlightClass="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent"
           />
+
 
           <motion.p
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
