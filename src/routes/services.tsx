@@ -57,7 +57,9 @@ function Hero() {
             lines={["AI Automation", "Solutions for", "Your Business"]}
             className="mt-6 font-display text-5xl md:text-6xl leading-[1.05]"
             highlight={["Solutions", "Business"]}
+            highlightClass="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent"
           />
+
 
           <motion.p
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
@@ -115,174 +117,131 @@ function Hero() {
 }
 
 function FloatingIconCluster() {
-  // positions chosen to mirror the reference image (top, right-top, right-bot, bottom, left-bot, left-top)
   const icons = [
-    { Icon: Bot,           label: "Chatbots",       color: "#60a5fa", x: 50, y: 6  },
-    { Icon: Mic,           label: "Voice Agents",   color: "#a78bfa", x: 88, y: 22 },
-    { Icon: BarChart3,     label: "Data & Insights",color: "#38bdf8", x: 92, y: 62 },
-    { Icon: Link2,         label: "Integrations",   color: "#fb923c", x: 52, y: 88 },
-    { Icon: MessageSquare, label: "WhatsApp",       color: "#22c55e", x: 8,  y: 62 },
-    { Icon: Settings2,     label: "Workflows",      color: "#34d399", x: 6,  y: 22 },
+    { Icon: Bot,           label: "Chatbots",        color: "#60a5fa" },
+    { Icon: Mic,           label: "Voice Agents",    color: "#a78bfa" },
+    { Icon: BarChart3,     label: "Data & Insights", color: "#38bdf8" },
+    { Icon: Link2,         label: "Integrations",    color: "#fb923c" },
+    { Icon: MessageSquare, label: "WhatsApp",        color: "#22c55e" },
+    { Icon: Settings2,     label: "Workflows",       color: "#34d399" },
   ];
-  // center of the cube within the SVG viewBox (percent based)
-  const cx = 50, cy = 45;
+  // Cube face labels — different on each side
+  const faces = [
+    { text: "AI",        bg: "linear-gradient(135deg, rgba(124,58,237,0.95), rgba(59,7,100,0.95))",  border: "rgba(167,139,250,0.7)", glow: true },
+    { text: "MOFI",      bg: "linear-gradient(135deg, rgba(76,29,149,0.9), rgba(30,5,60,0.95))",     border: "rgba(167,139,250,0.5)" },
+    { text: "AUTOMATE",  bg: "linear-gradient(135deg, rgba(99,102,241,0.9), rgba(49,46,129,0.95))",  border: "rgba(167,139,250,0.55)" },
+    { text: "SCALE",     bg: "linear-gradient(135deg, rgba(67,56,202,0.9), rgba(30,27,75,0.95))",    border: "rgba(167,139,250,0.5)" },
+    { text: "BUILD",     bg: "linear-gradient(135deg, rgba(167,139,250,0.95), rgba(124,58,237,0.95))", border: "rgba(196,181,253,0.8)" },
+    { text: "GROW",      bg: "linear-gradient(135deg, rgba(49,46,129,0.95), rgba(15,12,40,0.95))",   border: "rgba(99,102,241,0.5)" },
+  ];
+  const transforms = [
+    "translateZ(80px)",
+    "rotateY(180deg) translateZ(80px)",
+    "rotateY(90deg) translateZ(80px)",
+    "rotateY(-90deg) translateZ(80px)",
+    "rotateX(90deg) translateZ(80px)",
+    "rotateX(-90deg) translateZ(80px)",
+  ];
+  const radius = 175; // orbit radius in px
   return (
     <>
-      {/* Connecting dotted lines + glow dots — drawn behind */}
-      <svg
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        className="absolute inset-0 h-full w-full"
-        aria-hidden
-      >
-        <defs>
-          <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#60a5fa" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        {icons.map((it, i) => (
-          <g key={it.label}>
-            <motion.line
-              x1={cx} y1={cy} x2={it.x} y2={it.y}
-              stroke="#60a5fa" strokeOpacity="0.45" strokeWidth="0.22"
-              strokeDasharray="0.8 0.8" vectorEffect="non-scaling-stroke"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: [0.25, 0.7, 0.25] }}
-              transition={{ pathLength: { duration: 1, delay: 0.2 + i * 0.12 }, opacity: { duration: 3, repeat: Infinity, delay: i * 0.3 } }}
-            />
-            <circle cx={it.x} cy={it.y} r="2.2" fill="url(#nodeGlow)" />
-          </g>
-        ))}
-      </svg>
-
       {/* Ambient outer pulsing rings */}
       <motion.div
-        animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.15, 0.4] }}
+        animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.2, 0.5] }}
         transition={{ duration: 5, repeat: Infinity }}
-        className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 h-64 w-64 rounded-full blur-2xl"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-72 w-72 rounded-full blur-3xl"
         style={{ background: "radial-gradient(circle, #a78bfa 0%, transparent 70%)" }}
       />
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-        className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 h-72 w-72 rounded-full border border-dashed border-violet-300/20"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-80 w-80 rounded-full border border-dashed border-violet-300/25"
+      />
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[420px] w-[420px] rounded-full border border-violet-400/10"
       />
 
-      {/* 3D AI CUBE */}
+      {/* 3D AI CUBE — random-looking continuous full revolutions */}
       <div
-        className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2"
-        style={{ perspective: "900px" }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        style={{ perspective: "1000px" }}
       >
         <motion.div
-          animate={{ rotateX: [18, 22, 18], rotateY: [-25, -20, -25], y: [0, -8, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          animate={{
+            rotateY: [0, 120, 240, 360],
+            rotateX: [12, -18, 24, 12],
+            rotateZ: [0, 8, -6, 0],
+          }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
           className="relative"
           style={{ transformStyle: "preserve-3d", width: 160, height: 160 }}
         >
-          {/* Glow base / platform */}
-          <div
-            className="absolute left-1/2 -translate-x-1/2"
-            style={{
-              top: "100%",
-              width: 240, height: 70,
-              transform: "translateY(-10px) rotateX(75deg)",
-              background: "radial-gradient(ellipse at center, rgba(167,139,250,0.55) 0%, rgba(124,58,237,0.25) 40%, transparent 70%)",
-              filter: "blur(8px)",
-            }}
-          />
-          {/* concentric platform rings */}
-          {[260, 210, 170].map((w, i) => (
-            <div key={w}
-              className="absolute left-1/2 -translate-x-1/2 rounded-full"
+          {faces.map((f, i) => (
+            <div
+              key={i}
+              className="absolute inset-0 rounded-xl flex items-center justify-center font-display text-white tracking-wider"
               style={{
-                top: "100%",
-                width: w, height: w * 0.28,
-                transform: `translateY(${-6 + i * 4}px) rotateX(75deg)`,
-                border: "1px solid rgba(167,139,250,0.35)",
-                boxShadow: "0 0 30px rgba(124,58,237,0.4) inset",
+                transform: transforms[i],
+                background: f.bg,
+                border: `1px solid ${f.border}`,
+                boxShadow: f.glow
+                  ? "0 0 50px rgba(167,139,250,0.55), inset 0 0 30px rgba(167,139,250,0.3)"
+                  : "inset 0 0 30px rgba(99,102,241,0.25)",
+                fontSize: f.text.length > 4 ? "1.25rem" : "1.9rem",
               }}
-            />
+            >
+              {f.text}
+            </div>
           ))}
-
-          {/* Cube faces */}
-          {/* Front */}
-          <div className="absolute inset-0 rounded-xl flex items-center justify-center font-display text-3xl text-white"
-               style={{
-                 transform: "translateZ(80px)",
-                 background: "linear-gradient(135deg, rgba(124,58,237,0.9), rgba(59,7,100,0.95))",
-                 border: "1px solid rgba(167,139,250,0.6)",
-                 boxShadow: "0 0 40px rgba(167,139,250,0.5), inset 0 0 30px rgba(167,139,250,0.25)",
-               }}>
-            AI
-          </div>
-          {/* Back */}
-          <div className="absolute inset-0 rounded-xl"
-               style={{
-                 transform: "rotateY(180deg) translateZ(80px)",
-                 background: "linear-gradient(135deg, rgba(76,29,149,0.9), rgba(30,5,60,0.95))",
-                 border: "1px solid rgba(167,139,250,0.4)",
-               }} />
-          {/* Right */}
-          <div className="absolute inset-0 rounded-xl"
-               style={{
-                 transform: "rotateY(90deg) translateZ(80px)",
-                 background: "linear-gradient(135deg, rgba(99,102,241,0.85), rgba(49,46,129,0.95))",
-                 border: "1px solid rgba(167,139,250,0.5)",
-                 boxShadow: "inset 0 0 40px rgba(99,102,241,0.4)",
-               }} />
-          {/* Left */}
-          <div className="absolute inset-0 rounded-xl"
-               style={{
-                 transform: "rotateY(-90deg) translateZ(80px)",
-                 background: "linear-gradient(135deg, rgba(67,56,202,0.85), rgba(30,27,75,0.95))",
-                 border: "1px solid rgba(167,139,250,0.4)",
-               }} />
-          {/* Top */}
-          <div className="absolute inset-0 rounded-xl"
-               style={{
-                 transform: "rotateX(90deg) translateZ(80px)",
-                 background: "linear-gradient(135deg, rgba(167,139,250,0.9), rgba(124,58,237,0.95))",
-                 border: "1px solid rgba(196,181,253,0.7)",
-                 boxShadow: "inset 0 0 30px rgba(255,255,255,0.25)",
-               }} />
-          {/* Bottom */}
-          <div className="absolute inset-0 rounded-xl"
-               style={{
-                 transform: "rotateX(-90deg) translateZ(80px)",
-                 background: "linear-gradient(135deg, rgba(49,46,129,0.95), rgba(15,12,40,0.95))",
-                 border: "1px solid rgba(99,102,241,0.4)",
-               }} />
         </motion.div>
       </div>
 
-      {/* Floating icon cards */}
-      {icons.map(({ Icon, label, color, x, y }, i) => (
+      {/* Orbiting icon cards — revolve around the cube */}
+      <div className="absolute left-1/2 top-1/2 h-0 w-0">
         <motion.div
-          key={label}
-          className="absolute -translate-x-1/2 -translate-y-1/2"
-          style={{ left: `${x}%`, top: `${y}%` }}
-          animate={{ y: [0, -10, 0], rotate: [0, 2, -2, 0] }}
-          transition={{ duration: 4 + (i % 3), repeat: Infinity, delay: i * 0.35, ease: "easeInOut" }}
+          className="absolute"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
         >
-          <div className="flex flex-col items-center gap-1.5">
-            <div
-              className="h-14 w-14 rounded-xl flex items-center justify-center backdrop-blur-md"
-              style={{
-                background: `linear-gradient(135deg, ${color}33, ${color}11)`,
-                border: `1px solid ${color}88`,
-                color,
-                boxShadow: `0 0 25px ${color}55, inset 0 0 15px ${color}33`,
-              }}
-            >
-              <Icon className="h-7 w-7" />
-            </div>
-            <span className="text-[11px] font-semibold text-white/85 whitespace-nowrap px-2 py-0.5 rounded-md bg-white/5 border border-white/10">
-              {label}
-            </span>
-          </div>
+          {icons.map(({ Icon, label, color }, i) => {
+            const angle = (i / icons.length) * 2 * Math.PI;
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+            return (
+              <motion.div
+                key={label}
+                className="absolute"
+                style={{ left: x, top: y, transform: "translate(-50%, -50%)" }}
+                // counter-rotate so icons stay upright while orbiting + add gentle float
+                animate={{ rotate: -360, y: [0, -8, 0] }}
+                transition={{
+                  rotate: { duration: 28, repeat: Infinity, ease: "linear" },
+                  y: { duration: 3 + (i % 3), repeat: Infinity, ease: "easeInOut", delay: i * 0.3 },
+                }}
+              >
+                <div className="flex flex-col items-center gap-1.5">
+                  <div
+                    className="h-14 w-14 rounded-xl flex items-center justify-center backdrop-blur-md"
+                    style={{
+                      background: `linear-gradient(135deg, ${color}33, ${color}11)`,
+                      border: `1px solid ${color}88`,
+                      color,
+                      boxShadow: `0 0 25px ${color}66, inset 0 0 15px ${color}33`,
+                    }}
+                  >
+                    <Icon className="h-7 w-7" />
+                  </div>
+                  <span className="text-[11px] font-semibold text-white/90 whitespace-nowrap px-2 py-0.5 rounded-md bg-white/5 border border-white/10">
+                    {label}
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
-      ))}
+      </div>
     </>
   );
 }
@@ -300,7 +259,8 @@ function Process() {
     <section className="py-24 bg-gradient-to-b from-white to-slate-50">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
-          highlight="You">How We Work With You</AnimatedHeading>
+          highlight="You"
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">How We Work With You</AnimatedHeading>
         <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-5 gap-5">
           {steps.map((s, i) => (
             <motion.div key={s.title}
@@ -383,91 +343,72 @@ const services = [
 
 function DetailedServices() {
   return (
-    <section className="py-24 bg-dark text-dark-foreground relative overflow-hidden">
-      <FloatingParticles count={15} />
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
       <div className="relative mx-auto max-w-7xl px-6">
-        <AnimatedHeading className="text-center font-display text-4xl md:text-5xl"
-          highlight="Services">Our Services Detailed</AnimatedHeading>
-        <p className="text-center text-white/60 mt-3">Professional AI solutions tailored to your business needs</p>
+        <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
+          highlight="Detailed"
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">
+          Our Services Detailed
+        </AnimatedHeading>
+        <p className="text-center text-slate-500 mt-3">Professional AI solutions tailored to your business needs</p>
 
-        <div className="mt-14 space-y-8">
+        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
             <motion.div key={s.n}
               initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05 }}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur p-7 md:p-9 hover:border-white/20 transition-colors"
-              style={{ boxShadow: `0 10px 50px -25px ${s.color}80` }}
+              transition={{ delay: i * 0.06 }} whileHover={{ y: -6 }}
+              className="rounded-2xl border bg-white p-6 flex flex-col"
+              style={{ borderColor: s.color + "55", boxShadow: `0 12px 40px -22px ${s.color}` }}
             >
-              <div className="flex items-start gap-5 mb-6">
+              <div className="flex items-start gap-4 mb-4">
                 <motion.div whileHover={{ rotate: 12, scale: 1.1 }}
-                  className="h-16 w-16 shrink-0 rounded-2xl flex items-center justify-center"
-                  style={{ background: s.color + "22", border: `1px solid ${s.color}66`, color: s.color }}>
-                  <s.icon className="h-8 w-8" />
+                  className="h-14 w-14 shrink-0 rounded-2xl flex items-center justify-center"
+                  style={{ background: s.color + "1a", border: `1px solid ${s.color}55`, color: s.color }}>
+                  <s.icon className="h-7 w-7" />
                 </motion.div>
                 <div>
-                  <div className="text-xs uppercase tracking-widest" style={{ color: s.color }}>
+                  <div className="text-[11px] uppercase tracking-widest font-bold" style={{ color: s.color }}>
                     Service {s.n}
                   </div>
-                  <h3 className="font-display text-2xl md:text-3xl mt-1">{s.title}</h3>
+                  <h3 className="font-display text-lg leading-tight mt-1 text-slate-900">{s.title}</h3>
                 </div>
               </div>
 
-              <p className="text-white/70 mb-6 max-w-4xl">{s.overview}</p>
+              <p className="text-sm text-slate-600 mb-4">{s.overview}</p>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div className="rounded-xl bg-black/30 p-5 border border-white/5">
-                  <div className="text-sm font-bold mb-3" style={{ color: s.color }}>What We Build</div>
-                  <ul className="space-y-2">
-                    {s.build.map(b => (
-                      <li key={b} className="flex items-start gap-2 text-sm text-white/80">
-                        <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0" style={{ color: s.color }} />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="rounded-xl bg-black/30 p-5 border border-white/5">
-                  <div className="text-sm font-bold mb-3" style={{ color: s.color }}>Technologies We Use</div>
-                  <div className="flex flex-wrap gap-2">
-                    {s.tech.map(t => (
-                      <span key={t} className="rounded-md px-3 py-1.5 text-xs font-medium"
-                        style={{ background: s.color + "1a", color: s.color, border: `1px solid ${s.color}44` }}>{t}</span>
-                    ))}
-                  </div>
-                  <div className="mt-5 text-sm font-bold mb-2" style={{ color: s.color }}>Use Cases</div>
-                  <ul className="space-y-1.5">
-                    {s.cases.map(c => (
-                      <li key={c} className="text-sm text-white/75 flex items-start gap-2">
-                        <span style={{ color: s.color }}>✓</span> {c}
-                      </li>
-                    ))}
-                  </ul>
+              <div className="rounded-xl bg-slate-50 border border-slate-100 p-4 mb-3">
+                <div className="text-xs font-bold mb-2" style={{ color: s.color }}>What We Build</div>
+                <ul className="space-y-1.5">
+                  {s.build.slice(0, 5).map(b => (
+                    <li key={b} className="flex items-start gap-2 text-[13px] text-slate-700">
+                      <CheckCircle2 className="h-3.5 w-3.5 mt-0.5 shrink-0" style={{ color: s.color }} />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="rounded-xl bg-slate-50 border border-slate-100 p-4 mb-4">
+                <div className="text-xs font-bold mb-2" style={{ color: s.color }}>Technologies We Use</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {s.tech.map(t => (
+                    <span key={t} className="rounded-md px-2 py-1 text-[11px] font-medium"
+                      style={{ background: s.color + "15", color: s.color, border: `1px solid ${s.color}33` }}>{t}</span>
+                  ))}
                 </div>
               </div>
 
-              {s.roi && (
-                <div className="rounded-lg bg-emerald-500/10 border border-emerald-400/30 p-3 mb-4 text-sm text-emerald-200">
-                  <strong>Typical ROI:</strong> {s.roi}
-                </div>
-              )}
-              {s.note && (
-                <div className="rounded-lg bg-amber-500/10 border border-amber-400/30 p-3 mb-4 text-sm text-amber-100">
-                  <strong>Legal Note:</strong> {s.note}
-                </div>
-              )}
-
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
-                <div className="flex flex-wrap gap-5 text-sm text-white/70">
-                  <span><strong className="text-white">Timeline:</strong> {s.timeline}</span>
-                  <span><strong className="text-white">Starting Price:</strong> {s.price}</span>
-                </div>
-                <a href="https://wa.me/919347301449?text=Quote%20request"
-                  target="_blank" rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-bold text-white hover:scale-105 transition-transform"
-                  style={{ background: s.color, boxShadow: `0 10px 24px -10px ${s.color}` }}>
-                  {s.cta} <ArrowRight className="h-4 w-4" />
-                </a>
+              <div className="mt-auto space-y-2 text-xs text-slate-600 mb-4">
+                <div className="flex items-center gap-2"><span className="text-slate-400">⏱</span><strong className="text-slate-700">Timeline:</strong> {s.timeline}</div>
+                <div className="flex items-center gap-2"><span className="text-slate-400">₹</span><strong className="text-slate-700">Starting:</strong> {s.price}</div>
               </div>
+
+              <a href="https://wa.me/919347301449?text=Quote%20request"
+                target="_blank" rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-bold text-white hover:scale-[1.02] transition-transform"
+                style={{ background: s.color, boxShadow: `0 10px 24px -10px ${s.color}` }}>
+                {s.cta} <ArrowRight className="h-4 w-4" />
+              </a>
             </motion.div>
           ))}
         </div>
@@ -512,7 +453,8 @@ function CaseStudies() {
     <section id="case-studies" className="py-24 bg-gradient-to-b from-slate-50 to-white">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
-          highlight="Results">Real Projects Real Results</AnimatedHeading>
+          highlight="Results"
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">Real Projects Real Results</AnimatedHeading>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
           {studies.map((c, i) => (
             <motion.div key={c.title}
@@ -566,7 +508,8 @@ function TechStack() {
     <section className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
-          highlight="Stack">Our Technology Stack</AnimatedHeading>
+          highlight="Stack"
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">Our Technology Stack</AnimatedHeading>
         <p className="text-center text-slate-500 mt-3">We use modern, reliable, industry-leading technologies</p>
 
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -599,16 +542,17 @@ function TechStack() {
 /* -------------------- PRICING -------------------- */
 function Pricing() {
   const tiers = [
-    { title: "Simple Automation", price: "₹25,000 – ₹50,000", bullets: ["2-3 tool integrations", "Basic workflows", "1-2 weeks development", "e.g., Email-to-CRM sync"], color: "#10b981" },
-    { title: "Medium Complexity", price: "₹50,000 – ₹1,50,000", bullets: ["4-6 tool integrations", "Multiple workflows", "3-4 weeks development", "e.g., WhatsApp bot + CRM"], color: "#f97316", popular: true },
-    { title: "Complex System", price: "₹1,50,000 – ₹5,00,000+", bullets: ["Custom development", "Multiple systems integrated", "6-12 weeks development", "e.g., Voice agent + custom CRM"], color: "#8b5cf6" },
-    { title: "Enterprise Solutions", price: "Custom", bullets: ["Large-scale infrastructure", "Multiple automations", "Ongoing support contracts", "Volume pricing available"], color: "#3b82f6" },
+    { title: "Simple Automation", price: "₹10,000 – ₹25,000", bullets: ["2-3 tool integrations", "Basic workflows", "1-2 weeks development", "e.g., Email-to-CRM sync"], color: "#10b981" },
+    { title: "Medium Complexity", price: "₹25,000 – ₹50,000", bullets: ["4-6 tool integrations", "Multiple workflows", "3-4 weeks development", "e.g., WhatsApp bot + CRM"], color: "#f97316", popular: true },
+    { title: "Complex System", price: "₹50,000 – ₹1,00,000", bullets: ["Custom development", "Multiple systems integrated", "6-12 weeks development", "e.g., Voice agent + custom CRM"], color: "#8b5cf6" },
+    { title: "Enterprise Solutions", price: "Custom", bullets: ["Based on complexity", "Large-scale infrastructure", "Ongoing support contracts", "Volume pricing available"], color: "#3b82f6" },
   ];
   return (
     <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
-          highlight="Packages">Pricing And Packages</AnimatedHeading>
+          highlight="Packages"
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">Pricing And Packages</AnimatedHeading>
         <p className="text-center text-slate-600 mt-3 max-w-2xl mx-auto">
           Custom quotes based on project complexity, integrations required, and ongoing maintenance needs.
         </p>
@@ -662,7 +606,8 @@ function WhyChooseUs() {
     <section className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
-          highlight={["MOFI", "AI"]}>Why Choose MOFI AI</AnimatedHeading>
+          highlight={["MOFI", "AI"]}
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">Why Choose MOFI AI</AnimatedHeading>
         <p className="text-center text-slate-500 mt-3">Your success is our priority</p>
 
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -705,7 +650,8 @@ function GetStarted() {
       />
       <div className="relative mx-auto max-w-7xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl"
-          highlight={["Automate", "Business"]}>Ready to Automate Your Business</AnimatedHeading>
+          highlight={["Automate", "Business"]}
+          highlightClass="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent">Ready to Automate Your Business</AnimatedHeading>
 
         <div className="mt-12 grid md:grid-cols-4 gap-4">
           {steps.map((s, i) => (
@@ -757,17 +703,18 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="py-24 bg-white">
-      <div className="mx-auto max-w-4xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
-          highlight="Questions">Frequently Asked Questions</AnimatedHeading>
+          highlight="Questions"
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">Frequently Asked Questions</AnimatedHeading>
 
-        <div className="mt-10 space-y-3">
+        <div className="mt-10 grid md:grid-cols-2 gap-4">
           {items.map((it, i) => {
             const isOpen = open === i;
             return (
               <motion.div key={it.q}
                 initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }}
-                className="rounded-xl border border-slate-200 bg-white overflow-hidden shadow-sm"
+                className="rounded-xl border border-violet-100 bg-white overflow-hidden shadow-sm h-fit"
               >
                 <button onClick={() => setOpen(isOpen ? null : i)}
                   className="w-full px-5 py-4 flex items-center justify-between gap-4 text-left">
@@ -775,7 +722,7 @@ function FAQ() {
                     <span className="text-violet-500 shrink-0">Q:</span> {it.q}
                   </span>
                   <motion.span animate={{ rotate: isOpen ? 180 : 0 }} className="shrink-0">
-                    <ChevronDown className="h-5 w-5 text-slate-500" />
+                    <ChevronDown className="h-5 w-5 text-violet-500" />
                   </motion.span>
                 </button>
                 <motion.div
@@ -784,7 +731,7 @@ function FAQ() {
                   className="overflow-hidden"
                 >
                   <div className="px-5 pb-4 text-slate-700 text-sm leading-relaxed flex gap-2">
-                    <span className="font-bold text-emerald-600">A:</span> <span>{it.a}</span>
+                    <span className="font-bold text-fuchsia-600">A:</span> <span>{it.a}</span>
                   </div>
                 </motion.div>
               </motion.div>
