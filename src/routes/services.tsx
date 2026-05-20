@@ -650,7 +650,8 @@ function GetStarted() {
       />
       <div className="relative mx-auto max-w-7xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl"
-          highlight={["Automate", "Business"]}>Ready to Automate Your Business</AnimatedHeading>
+          highlight={["Automate", "Business"]}
+          highlightClass="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent">Ready to Automate Your Business</AnimatedHeading>
 
         <div className="mt-12 grid md:grid-cols-4 gap-4">
           {steps.map((s, i) => (
