@@ -703,17 +703,18 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="py-24 bg-white">
-      <div className="mx-auto max-w-4xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
-          highlight="Questions">Frequently Asked Questions</AnimatedHeading>
+          highlight="Questions"
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">Frequently Asked Questions</AnimatedHeading>
 
-        <div className="mt-10 space-y-3">
+        <div className="mt-10 grid md:grid-cols-2 gap-4">
           {items.map((it, i) => {
             const isOpen = open === i;
             return (
               <motion.div key={it.q}
                 initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }}
-                className="rounded-xl border border-slate-200 bg-white overflow-hidden shadow-sm"
+                className="rounded-xl border border-violet-100 bg-white overflow-hidden shadow-sm h-fit"
               >
                 <button onClick={() => setOpen(isOpen ? null : i)}
                   className="w-full px-5 py-4 flex items-center justify-between gap-4 text-left">
@@ -721,7 +722,7 @@ function FAQ() {
                     <span className="text-violet-500 shrink-0">Q:</span> {it.q}
                   </span>
                   <motion.span animate={{ rotate: isOpen ? 180 : 0 }} className="shrink-0">
-                    <ChevronDown className="h-5 w-5 text-slate-500" />
+                    <ChevronDown className="h-5 w-5 text-violet-500" />
                   </motion.span>
                 </button>
                 <motion.div
@@ -730,7 +731,7 @@ function FAQ() {
                   className="overflow-hidden"
                 >
                   <div className="px-5 pb-4 text-slate-700 text-sm leading-relaxed flex gap-2">
-                    <span className="font-bold text-emerald-600">A:</span> <span>{it.a}</span>
+                    <span className="font-bold text-fuchsia-600">A:</span> <span>{it.a}</span>
                   </div>
                 </motion.div>
               </motion.div>
