@@ -11,13 +11,14 @@ export function AnimatedHeading({
   as: Tag = "h2",
   delay = 0,
   highlight,
+  highlightClass = "text-lime",
 }: {
   children: string;
   className?: string;
   as?: "h1" | "h2" | "h3";
   delay?: number;
-  /** word(s) to highlight with .text-lime — match exact word */
   highlight?: string | string[];
+  highlightClass?: string;
 }) {
   const words = children.split(" ");
   const high = Array.isArray(highlight) ? highlight : highlight ? [highlight] : [];
@@ -34,7 +35,7 @@ export function AnimatedHeading({
               show: { opacity: 1, y: 0, filter: "blur(0px)" },
             }}
             transition={{ duration: 0.55, delay: delay + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-            className={`inline-block mr-[0.25em] ${isHigh ? "text-lime" : ""}`}
+            className={`inline-block mr-[0.25em] ${isHigh ? highlightClass : ""}`}
           >
             {w}
           </motion.span>
