@@ -542,16 +542,17 @@ function TechStack() {
 /* -------------------- PRICING -------------------- */
 function Pricing() {
   const tiers = [
-    { title: "Simple Automation", price: "₹25,000 – ₹50,000", bullets: ["2-3 tool integrations", "Basic workflows", "1-2 weeks development", "e.g., Email-to-CRM sync"], color: "#10b981" },
-    { title: "Medium Complexity", price: "₹50,000 – ₹1,50,000", bullets: ["4-6 tool integrations", "Multiple workflows", "3-4 weeks development", "e.g., WhatsApp bot + CRM"], color: "#f97316", popular: true },
-    { title: "Complex System", price: "₹1,50,000 – ₹5,00,000+", bullets: ["Custom development", "Multiple systems integrated", "6-12 weeks development", "e.g., Voice agent + custom CRM"], color: "#8b5cf6" },
-    { title: "Enterprise Solutions", price: "Custom", bullets: ["Large-scale infrastructure", "Multiple automations", "Ongoing support contracts", "Volume pricing available"], color: "#3b82f6" },
+    { title: "Simple Automation", price: "₹10,000 – ₹25,000", bullets: ["2-3 tool integrations", "Basic workflows", "1-2 weeks development", "e.g., Email-to-CRM sync"], color: "#10b981" },
+    { title: "Medium Complexity", price: "₹25,000 – ₹50,000", bullets: ["4-6 tool integrations", "Multiple workflows", "3-4 weeks development", "e.g., WhatsApp bot + CRM"], color: "#f97316", popular: true },
+    { title: "Complex System", price: "₹50,000 – ₹1,00,000", bullets: ["Custom development", "Multiple systems integrated", "6-12 weeks development", "e.g., Voice agent + custom CRM"], color: "#8b5cf6" },
+    { title: "Enterprise Solutions", price: "Custom", bullets: ["Based on complexity", "Large-scale infrastructure", "Ongoing support contracts", "Volume pricing available"], color: "#3b82f6" },
   ];
   return (
     <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
-          highlight="Packages">Pricing And Packages</AnimatedHeading>
+          highlight="Packages"
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">Pricing And Packages</AnimatedHeading>
         <p className="text-center text-slate-600 mt-3 max-w-2xl mx-auto">
           Custom quotes based on project complexity, integrations required, and ongoing maintenance needs.
         </p>
