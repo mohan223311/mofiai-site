@@ -508,7 +508,8 @@ function TechStack() {
     <section className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
-          highlight="Stack">Our Technology Stack</AnimatedHeading>
+          highlight="Stack"
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">Our Technology Stack</AnimatedHeading>
         <p className="text-center text-slate-500 mt-3">We use modern, reliable, industry-leading technologies</p>
 
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
