@@ -50,11 +50,13 @@ export function AnimatedLines({
   className = "",
   delay = 0,
   highlight,
+  highlightClass = "text-lime",
 }: {
   lines: string[];
   className?: string;
   delay?: number;
   highlight?: string | string[];
+  highlightClass?: string;
 }) {
   let cumulative = delay;
   return (
@@ -75,7 +77,7 @@ export function AnimatedLines({
                   whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.55, delay: startDelay + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                  className={`inline-block mr-[0.25em] ${isHigh ? "text-lime" : ""}`}
+                  className={`inline-block mr-[0.25em] ${isHigh ? highlightClass : ""}`}
                 >
                   {w}
                 </motion.span>
