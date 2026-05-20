@@ -453,7 +453,8 @@ function CaseStudies() {
     <section id="case-studies" className="py-24 bg-gradient-to-b from-slate-50 to-white">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
-          highlight="Results">Real Projects Real Results</AnimatedHeading>
+          highlight="Results"
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">Real Projects Real Results</AnimatedHeading>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
           {studies.map((c, i) => (
             <motion.div key={c.title}
