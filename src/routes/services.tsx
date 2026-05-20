@@ -606,7 +606,8 @@ function WhyChooseUs() {
     <section className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedHeading className="text-center font-display text-4xl md:text-5xl text-slate-900"
-          highlight={["MOFI", "AI"]}>Why Choose MOFI AI</AnimatedHeading>
+          highlight={["MOFI", "AI"]}
+          highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">Why Choose MOFI AI</AnimatedHeading>
         <p className="text-center text-slate-500 mt-3">Your success is our priority</p>
 
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
