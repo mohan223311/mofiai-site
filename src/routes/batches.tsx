@@ -934,25 +934,25 @@ function WaitlistAndFAQ() {
   );
 }
 
-function Field({ icon: Icon, label, placeholder }: { icon: any; label: string; placeholder: string }) {
+function Field({ icon: Icon, label, placeholder, name, type = "text" }: { icon: any; label: string; placeholder: string; name: string; type?: string }) {
   return (
     <label className="flex items-center gap-3 rounded-lg border border-border bg-secondary/40 px-4 py-3">
       <Icon className="h-4 w-4 text-lime shrink-0" />
       <div className="flex-1">
         <div className="text-xs font-semibold">{label}</div>
-        <input className="mt-0.5 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/40" placeholder={placeholder} />
+        <input name={name} type={type} className="mt-0.5 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/40" placeholder={placeholder} />
       </div>
     </label>
   );
 }
 
-function SelectField({ icon: Icon, label, placeholder, options }: { icon: any; label: string; placeholder: string; options: string[] }) {
+function SelectField({ icon: Icon, label, placeholder, options, name }: { icon: any; label: string; placeholder: string; options: string[]; name: string }) {
   return (
     <label className="flex items-center gap-3 rounded-lg border border-border bg-secondary/40 px-4 py-3">
       <Icon className="h-4 w-4 text-lime shrink-0" />
       <div className="flex-1">
         <div className="text-xs font-semibold">{label}</div>
-        <select defaultValue="" className="mt-0.5 w-full bg-transparent outline-none text-sm text-muted-foreground">
+        <select name={name} defaultValue="" className="mt-0.5 w-full bg-transparent outline-none text-sm text-muted-foreground">
           <option value="" disabled>{placeholder}</option>
           {options.map((o) => <option key={o} value={o} className="bg-card text-foreground">{o}</option>)}
         </select>
