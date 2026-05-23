@@ -35,14 +35,49 @@ export function Syllabus() {
   return (
     <section id="syllabus" className="bg-dark text-dark-foreground py-24 relative overflow-hidden">
       <div className="absolute inset-0 dotted-bg opacity-20 pointer-events-none" />
+      {/* Premium gold glow accents */}
+      <motion.div
+        aria-hidden
+        className="absolute -top-32 -left-20 h-[420px] w-[420px] rounded-full blur-3xl opacity-30 pointer-events-none"
+        style={{ background: "radial-gradient(circle, #D4AF37 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.15, 1], opacity: [0.25, 0.45, 0.25] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+      <motion.div
+        aria-hidden
+        className="absolute -bottom-40 -right-20 h-[460px] w-[460px] rounded-full blur-3xl opacity-25 pointer-events-none"
+        style={{ background: "radial-gradient(circle, #a78bfa 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
       <div className="mx-auto max-w-7xl px-6 relative">
-        <SectionLabel light>Complete Curriculum</SectionLabel>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.22em] font-bold"
+          style={{
+            background: "linear-gradient(90deg,#fde68a,#D4AF37)",
+            color: "#2a1f0a",
+            boxShadow: "0 10px 30px -10px rgba(212,175,55,0.7)",
+          }}
+        >
+          ★ Complete Curriculum
+        </motion.div>
+
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="mt-4 font-display text-5xl md:text-6xl"
+          className="mt-5 font-display text-5xl md:text-7xl leading-[1.05]"
         >
-          22 Sections + 6<br />Real-World Projects
+          <span
+            className="bg-clip-text text-transparent"
+            style={{ backgroundImage: "linear-gradient(90deg,#FFE9A0,#D4AF37,#FFE9A0)" }}
+          >
+            22 Sections
+          </span>{" "}
+          + 6
+          <br />
+          Real-World <span className="text-lime">Projects</span>
         </motion.h2>
         <p className="mt-4 text-dark-foreground/70">Click any section to expand and explore detailed topics covered.</p>
 
@@ -51,7 +86,7 @@ export function Syllabus() {
           href="https://docs.google.com/document/d/1lIqPOvcxXIAIDQ9vYnmTJv0vJvF4QxdZt9cHrDDulIM/edit?usp=drivesdk"
           target="_blank"
           rel="noreferrer"
-          className="mt-5 inline-flex items-center gap-2 text-sm text-lime hover:underline"
+          className="mt-5 inline-flex items-center gap-2 text-sm font-semibold rounded-full px-4 py-2 border border-amber-300/40 bg-amber-400/10 text-amber-200 hover:bg-amber-400/20 transition-colors"
         >
           View Complete Detailed Syllabus <ExternalLink className="h-4 w-4" />
         </motion.a>
