@@ -238,10 +238,34 @@ function FeaturedVideos() {
 
 /* ---------- 4. Playlists ---------- */
 const playlists = [
-  { num: "1", title: "N8N Beginner Tutorials", desc: "Start here if you're completely new to n8n. Basic concepts, first workflows, and fundamental nodes explained step-by-step.", count: 32, big: "n8n", chip: "BEGINNER TUTORIALS", grad: "from-fuchsia-900 to-black" },
-  { num: "2", title: "AI Agent Projects", desc: "Build complete AI agents from scratch. ChatGPT integration, voice agents, WhatsApp bots, and more.", count: 27, big: "AI AGENT", chip: "PROJECTS", grad: "from-emerald-900 to-black" },
-  { num: "3", title: "Automation Tips & Tricks", desc: "Quick tips, common mistakes, best practices, and workflow optimization techniques.", count: 41, big: "AUTOMATION", chip: "TIPS & TRICKS", grad: "from-blue-950 to-black" },
-  { num: "4", title: "Client Project Walkthroughs", desc: "Real client projects explained. Learn from actual paid work and see how projects are built professionally.", count: 19, big: "CLIENT PROJECT", chip: "WALKTHROUGHS", grad: "from-indigo-950 to-black" },
+  {
+    num: "1",
+    title: "Complete AI Agents & Automations Free Course",
+    desc: "Full free course covering AI Agents and automations end-to-end. Perfect for beginners and intermediates.",
+    url: "https://youtube.com/playlist?list=PLVNfmRMW7-9bpaZ6kmy0h4lixZMkK4Rl1",
+    big: "AI AGENTS", chip: "FREE COURSE", grad: "from-fuchsia-900 to-black",
+  },
+  {
+    num: "2",
+    title: "AI Voice Agents Course in Telugu",
+    desc: "Build voice-driven AI agents from scratch. Step-by-step tutorials in Telugu.",
+    url: "https://youtube.com/playlist?list=PLVNfmRMW7-9Yo2YW4mwGD8uZ6b4R-68hz",
+    big: "AI VOICE", chip: "TELUGU COURSE", grad: "from-emerald-900 to-black",
+  },
+  {
+    num: "3",
+    title: "Top 10 N8N Projects in 2026",
+    desc: "Hands-on n8n project ideas you can build today. Real automations for real businesses.",
+    url: "https://youtube.com/playlist?list=PLVNfmRMW7-9ZUCIvVXASqU77yRBcg5uaI",
+    big: "n8n PROJECTS", chip: "TOP 10 • 2026", grad: "from-blue-950 to-black",
+  },
+  {
+    num: "4",
+    title: "N8N Automation Course",
+    desc: "Complete n8n automation course — nodes, workflows, integrations, and production patterns.",
+    url: "https://youtube.com/playlist?list=PLVNfmRMW7-9ZTvf6mJqRAyHkeh2KX41a6",
+    big: "n8n COURSE", chip: "AUTOMATION", grad: "from-indigo-950 to-black",
+  },
 ];
 
 function Playlists() {
