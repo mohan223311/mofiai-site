@@ -310,11 +310,11 @@ function Playlists() {
                 <h4 className="font-semibold text-slate-900">{p.num}. {p.title}</h4>
                 <p className="text-xs text-slate-600 mt-2 leading-relaxed">{p.desc}</p>
                 <div className="flex items-center gap-1.5 mt-3 text-xs text-slate-500">
-                  <Play className="h-3 w-3 text-[#FF0000]" fill="currentColor" /> {p.count} videos
+                  <Play className="h-3 w-3 text-[#FF0000]" fill="currentColor" /> Full playlist on YouTube
                 </div>
                 <a
-                  href="https://www.youtube.com/@mofiAI123-f/playlists" target="_blank" rel="noreferrer"
-                  aria-label="Watch playlist on YouTube"
+                  href={p.url} target="_blank" rel="noreferrer"
+                  aria-label={`Watch ${p.title} playlist on YouTube`}
                   className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#FF0000] text-white px-3 py-2 text-xs font-bold hover:bg-red-700 transition-colors"
                 >
                   <Play className="h-3 w-3" fill="currentColor" /> Watch Playlist
