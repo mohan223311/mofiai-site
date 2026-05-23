@@ -62,7 +62,8 @@ export function ReadyToStart() {
             <MessageCircle className="h-4 w-4 text-lime" /> +91 70759 79578
           </a>
           <a className="flex items-center gap-2 hover:text-lime" href="mailto:profitgrowthai223311@gmail.com">
-            <Mail className="h-4 w-4 text-lime" /> profitgrowthai223311@gmail.com
+            <Mail className="h-4 w-4 text-lime" />
+            <span>profitgrowthai223311@gmail.com</span>
           </a>
         </div>
       </div>
