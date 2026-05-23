@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { SectionLabel } from "../SectionLabel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ExternalLink } from "lucide-react";
 
