@@ -174,6 +174,7 @@ function FormAndDirect() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    postFormWebhook("contact_form", form);
     const text = `Hello MOFI AI!%0AName: ${encodeURIComponent(form.name)}%0AEmail: ${encodeURIComponent(form.email)}%0APhone: ${encodeURIComponent(form.phone)}%0AInterested in: ${encodeURIComponent(form.interest)}%0AMessage: ${encodeURIComponent(form.message)}`;
     window.open(`https://wa.me/919347301449?text=${text}`, "_blank");
   };
