@@ -48,6 +48,7 @@ export function YouTubeSection() {
           lines={["Watch Our Content", "on YouTube"]}
           className="mt-5 font-display text-5xl md:text-6xl max-w-3xl text-slate-900"
           highlight={["YouTube"]}
+          highlightClass="text-[#FF0000]"
         />
 
         <p className="mt-4 text-slate-600 max-w-xl text-lg">

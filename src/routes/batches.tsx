@@ -607,17 +607,17 @@ function Benefits() {
 function UpcomingSchedule() {
   const batches = [
     {
-      label: "BATCH 1 (Announced Soon)",
-      tone: "bg-purple-500/15 text-purple-300 border-purple-500/40",
+      label: "BATCH 1 (Enrolling Now)",
+      tone: "bg-rose-500/15 text-rose-300 border-rose-500/40",
       icon: PlayCircle,
-      iconTone: "text-purple-400 bg-purple-500/10 border-purple-500/30",
+      iconTone: "text-rose-400 bg-rose-500/10 border-rose-500/30",
       rows: [
-        ["Start Date:", "To Be Announced"],
-        ["Timings:", "Weekday evenings or weekends (To be decided based on student availability)"],
+        ["Start Date:", "May 30, 2026"],
+        ["Timings:", "Weekday evenings & weekend sessions (Telugu)"],
         ["Duration:", "4 weeks"],
-        ["Seats:", "15 maximum"],
+        ["Seats:", "20 maximum"],
       ],
-      status: { label: "Waitlist Open", tone: "bg-purple-500/20 text-purple-300 border-purple-500/40" },
+      status: { label: "Enrollment Open", tone: "bg-rose-500/20 text-rose-300 border-rose-500/40" },
     },
     {
       label: "BATCH 2 (Planned)",
@@ -628,7 +628,7 @@ function UpcomingSchedule() {
         ["Start Date:", "6 weeks after Batch 1"],
         ["Timings:", "To be announced"],
         ["Duration:", "4 weeks"],
-        ["Seats:", "15 maximum"],
+        ["Seats:", "20 maximum"],
       ],
       status: { label: "Early registration opening soon", tone: "bg-blue-500/20 text-blue-300 border-blue-500/40" },
     },
@@ -719,18 +719,17 @@ function Pricing() {
               transition={{ duration: 2, repeat: Infinity }}
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-amber-400/20 border border-amber-300/40 px-4 py-1.5 text-amber-300 text-xs font-bold tracking-widest"
             >
-              <Flame className="h-4 w-4" /> EARLY BIRD PRICE
+              <Flame className="h-4 w-4" /> SPECIAL LAUNCH PRICE
             </motion.div>
 
-            <div className="mt-4 font-display text-6xl text-amber-300">₹8,000</div>
-            <p className="mt-2 text-sm text-dark-foreground/70">(First 10 enrollments in each batch)</p>
+            <div className="mt-4 font-display text-6xl text-amber-300">₹5,999</div>
+            <p className="mt-2 text-sm text-dark-foreground/70">One-time payment · All inclusive</p>
 
             <div className="mt-8 h-px bg-white/10" />
 
-            <div className="mt-6 inline-block rounded-md bg-white/10 px-3 py-1 text-xs tracking-widest text-dark-foreground/80">
-              REGULAR PRICE
+            <div className="mt-6 inline-block rounded-md bg-rose-500/15 border border-rose-400/30 px-3 py-1 text-xs tracking-widest text-rose-200">
+              BATCH STARTS MAY 30
             </div>
-            <div className="mt-2 font-display text-4xl text-dark-foreground/90">₹10,000</div>
 
             <p className="mt-6 inline-flex items-center gap-2 text-sm text-dark-foreground/70">
               <span className="h-5 w-5 rounded-full bg-white/10 flex items-center justify-center text-[10px]">₹</span>
