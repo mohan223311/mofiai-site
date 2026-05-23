@@ -181,9 +181,11 @@ function WhyWatch() {
 
 /* ---------- 3. Featured Videos ---------- */
 const featured = [
-  { title: "Build Your First AI Agent with n8n (Full Tutorial) | OpenAI Integration", meta: "12K views • 3 weeks ago", duration: "31:25", grad: "from-emerald-900 via-dark to-black", chip: "BUILD YOUR FIRST", big: "AI AGENT", small: "with n8n" },
-  { title: "N8N Tutorial for Beginners in Telugu | Complete Guide 2024", meta: "18K views • 1 month ago", duration: "28:45", grad: "from-fuchsia-900 via-purple-950 to-black", chip: "N8N TUTORIAL", big: "FOR BEGINNERS", small: "Complete Guide" },
-  { title: "WhatsApp AI Agent using n8n (Step by Step Tutorial)", meta: "9.6K views • 2 weeks ago", duration: "23:10", grad: "from-green-900 via-dark to-black", chip: "WHATSAPP", big: "AI AGENT", small: "with n8n" },
+  { id: "_WIHtqoAmsE", title: "Build Your First AI Agent with n8n" },
+  { id: "hfl5blRUjK8", title: "N8N Tutorial for Beginners in Telugu" },
+  { id: "vd7NJad_lJg", title: "WhatsApp AI Agent using n8n" },
+  { id: "rxCGsXSFshY", title: "AI Voice Agent — Complete Walkthrough" },
+  { id: "yHlW9QetRTs", title: "n8n Automation Project Tutorial" },
 ];
 
 function FeaturedVideos() {
@@ -194,43 +196,39 @@ function FeaturedVideos() {
           <div className="flex-1"><TitleDecor>Featured Videos</TitleDecor></div>
           <motion.a
             whileHover={{ scale: 1.05 }}
-            href="https://www.youtube.com/@mofiAI123-f/videos" target="_blank" rel="noreferrer"
+            href="https://www.youtube.com/@mofiai123-f/videos" target="_blank" rel="noreferrer"
             className="hidden sm:inline-flex items-center gap-2 rounded-md border border-lime/60 text-lime px-4 py-2 text-sm font-medium hover:bg-lime/10"
           >
             View all videos <ArrowRight className="h-4 w-4" />
           </motion.a>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {featured.map((v, i) => (
             <motion.a
-              key={v.title}
-              href="https://www.youtube.com/@mofiAI123-f" target="_blank" rel="noreferrer"
+              key={v.id}
+              href={`https://youtu.be/${v.id}`} target="_blank" rel="noreferrer"
               custom={i} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }}
               whileHover={{ y: -8 }}
-              className="group block"
+              className="group block rounded-xl overflow-hidden border border-white/10 bg-white/[0.03]"
             >
-              <div className={`relative aspect-video rounded-xl overflow-hidden bg-gradient-to-br ${v.grad} border border-white/10`}>
-                <div className="absolute inset-0 dotted-bg opacity-30" />
-                <div className="relative h-full p-5 flex flex-col justify-between">
-                  <div>
-                    <div className="text-[10px] tracking-widest text-white/80">{v.chip}</div>
-                    <div className="font-display text-3xl text-lime mt-1">{v.big}</div>
-                    <div className="text-xs text-white/70 mt-1">{v.small}</div>
+              <div className="relative aspect-video overflow-hidden">
+                <img
+                  src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
+                  alt={v.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                <motion.div animate={{ scale: [1, 1.12, 1] }} transition={{ duration: 2.4, repeat: Infinity }} className="absolute inset-0 flex items-center justify-center">
+                  <div className="h-14 w-14 rounded-full bg-[#FF0000] flex items-center justify-center shadow-2xl">
+                    <Play className="h-6 w-6 text-white ml-0.5" fill="currentColor" />
                   </div>
-                  <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 2.4, repeat: Infinity }} className="self-center">
-                    <div className="h-12 w-12 rounded-full bg-lime flex items-center justify-center">
-                      <Play className="h-5 w-5 text-lime-foreground ml-0.5" fill="currentColor" />
-                    </div>
-                  </motion.div>
-                </div>
-                <span className="absolute bottom-2 right-2 text-[11px] font-semibold bg-black/85 text-white rounded px-1.5 py-0.5">{v.duration}</span>
+                </motion.div>
+              </div>
+              <div className="p-4">
+                <div className="text-sm font-semibold text-white/90 line-clamp-2">{v.title}</div>
               </div>
             </motion.a>
-          ))}
-        </div>
-        <div className="mt-8 flex justify-center gap-2">
-          {[0, 1, 2, 3].map((d) => (
-            <span key={d} className={`h-2 rounded-full transition-all ${d === 0 ? "w-6 bg-lime" : "w-2 bg-white/20"}`} />
           ))}
         </div>
       </div>
