@@ -52,7 +52,7 @@ export function FinalCTA() {
         <div className="mt-14 grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
           {[
             { icon: MessageCircle, label: "WhatsApp", value: "+91 93473 01449 / +91 70759 79578" },
-            { icon: Mail, label: "Email", value: "admin@profitgrowthai.xyz" },
+            { icon: Mail, label: "Email", value: "profitgrowthai223311@gmail.com" },
             { icon: Clock, label: "Response", value: "Within 24h · Instant on WhatsApp" },
           ].map((c, i) => {
             const Icon = c.icon;
