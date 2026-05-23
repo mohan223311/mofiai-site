@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Users, Globe, Sparkles, Crown, Diamond, Star } from "lucide-react";
-import { Header } from "@/components/site/Header";
 
 export function MentorHero() {
   return (
@@ -11,7 +10,6 @@ export function MentorHero() {
           "radial-gradient(1200px 600px at 20% -10%, rgba(212,175,55,0.18), transparent 60%), radial-gradient(900px 500px at 90% 10%, rgba(167,139,250,0.18), transparent 60%), linear-gradient(180deg,#0a0805 0%,#120c04 45%,#0a0805 100%)",
       }}
     >
-      <Header />
       {/* Gold mesh dots */}
       <div className="absolute inset-0 opacity-25 pointer-events-none"
         style={{
