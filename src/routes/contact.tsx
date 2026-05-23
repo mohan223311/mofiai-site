@@ -9,6 +9,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { SectionLabel } from "@/components/site/SectionLabel";
+import { postFormWebhook } from "@/lib/webhook";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -173,6 +174,7 @@ function FormAndDirect() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    postFormWebhook("contact_form", form);
     const text = `Hello MOFI AI!%0AName: ${encodeURIComponent(form.name)}%0AEmail: ${encodeURIComponent(form.email)}%0APhone: ${encodeURIComponent(form.phone)}%0AInterested in: ${encodeURIComponent(form.interest)}%0AMessage: ${encodeURIComponent(form.message)}`;
     window.open(`https://wa.me/919347301449?text=${text}`, "_blank");
   };

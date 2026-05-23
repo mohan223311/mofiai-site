@@ -1,9 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { SectionLabel } from "@/components/site/SectionLabel";
+import { postFormWebhook } from "@/lib/webhook";
+import { toast } from "sonner";
 import {
   Rocket,
   Puzzle,
@@ -839,13 +842,23 @@ function WaitlistAndFAQ() {
             <p className="mt-2 text-muted-foreground text-sm">Join the waitlist and get priority enrollment + early bird pricing</p>
           </div>
 
-          <form className="mt-8 grid sm:grid-cols-2 gap-4" onSubmit={(e) => e.preventDefault()}>
-            <Field icon={UserIcon} label="Name" placeholder="Enter your full name" />
-            <Field icon={Mail} label="Email" placeholder="Enter your email address" />
-            <Field icon={Phone} label="Phone Number (WhatsApp)" placeholder="Enter your WhatsApp number" />
-            <SelectField icon={Briefcase} label="Current Occupation" placeholder="Select your occupation" options={["Student", "Working Professional", "Career Switcher", "Entrepreneur", "Other"]} />
+          <form
+            className="mt-8 grid sm:grid-cols-2 gap-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const fd = new FormData(e.currentTarget);
+              const data = Object.fromEntries(fd.entries());
+              postFormWebhook("batches_waitlist", data);
+              toast.success("You're on the waitlist! We'll be in touch soon.");
+              (e.currentTarget as HTMLFormElement).reset();
+            }}
+          >
+            <Field icon={UserIcon} name="name" label="Name" placeholder="Enter your full name" />
+            <Field icon={Mail} name="email" type="email" label="Email" placeholder="Enter your email address" />
+            <Field icon={Phone} name="phone" label="Phone Number (WhatsApp)" placeholder="Enter your WhatsApp number" />
+            <SelectField icon={Briefcase} name="occupation" label="Current Occupation" placeholder="Select your occupation" options={["Student", "Working Professional", "Career Switcher", "Entrepreneur", "Other"]} />
             <div className="sm:col-span-2">
-              <SelectField icon={Calendar} label="Preferred Batch Timing" placeholder="Select your preferred timing" options={["Weekday evenings", "Weekend mornings", "Weekend evenings", "Flexible"]} />
+              <SelectField icon={Calendar} name="timing" label="Preferred Batch Timing" placeholder="Select your preferred timing" options={["Weekday evenings", "Weekend mornings", "Weekend evenings", "Flexible"]} />
             </div>
             <div className="sm:col-span-2">
               <label className="flex items-start gap-3 rounded-lg border border-border bg-secondary/40 px-4 py-3">
@@ -853,6 +866,7 @@ function WaitlistAndFAQ() {
                 <div className="flex-1">
                   <div className="text-xs font-semibold">Why do you want to learn n8n? (Optional)</div>
                   <textarea
+                    name="reason"
                     rows={3}
                     placeholder="Tell us about your goals and how n8n will help you…"
                     className="mt-1 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/40 resize-none"
@@ -920,25 +934,25 @@ function WaitlistAndFAQ() {
   );
 }
 
-function Field({ icon: Icon, label, placeholder }: { icon: any; label: string; placeholder: string }) {
+function Field({ icon: Icon, label, placeholder, name, type = "text" }: { icon: any; label: string; placeholder: string; name: string; type?: string }) {
   return (
     <label className="flex items-center gap-3 rounded-lg border border-border bg-secondary/40 px-4 py-3">
       <Icon className="h-4 w-4 text-lime shrink-0" />
       <div className="flex-1">
         <div className="text-xs font-semibold">{label}</div>
-        <input className="mt-0.5 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/40" placeholder={placeholder} />
+        <input name={name} type={type} className="mt-0.5 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/40" placeholder={placeholder} />
       </div>
     </label>
   );
 }
 
-function SelectField({ icon: Icon, label, placeholder, options }: { icon: any; label: string; placeholder: string; options: string[] }) {
+function SelectField({ icon: Icon, label, placeholder, options, name }: { icon: any; label: string; placeholder: string; options: string[]; name: string }) {
   return (
     <label className="flex items-center gap-3 rounded-lg border border-border bg-secondary/40 px-4 py-3">
       <Icon className="h-4 w-4 text-lime shrink-0" />
       <div className="flex-1">
         <div className="text-xs font-semibold">{label}</div>
-        <select defaultValue="" className="mt-0.5 w-full bg-transparent outline-none text-sm text-muted-foreground">
+        <select name={name} defaultValue="" className="mt-0.5 w-full bg-transparent outline-none text-sm text-muted-foreground">
           <option value="" disabled>{placeholder}</option>
           {options.map((o) => <option key={o} value={o} className="bg-card text-foreground">{o}</option>)}
         </select>

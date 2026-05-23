@@ -181,9 +181,11 @@ function WhyWatch() {
 
 /* ---------- 3. Featured Videos ---------- */
 const featured = [
-  { title: "Build Your First AI Agent with n8n (Full Tutorial) | OpenAI Integration", meta: "12K views • 3 weeks ago", duration: "31:25", grad: "from-emerald-900 via-dark to-black", chip: "BUILD YOUR FIRST", big: "AI AGENT", small: "with n8n" },
-  { title: "N8N Tutorial for Beginners in Telugu | Complete Guide 2024", meta: "18K views • 1 month ago", duration: "28:45", grad: "from-fuchsia-900 via-purple-950 to-black", chip: "N8N TUTORIAL", big: "FOR BEGINNERS", small: "Complete Guide" },
-  { title: "WhatsApp AI Agent using n8n (Step by Step Tutorial)", meta: "9.6K views • 2 weeks ago", duration: "23:10", grad: "from-green-900 via-dark to-black", chip: "WHATSAPP", big: "AI AGENT", small: "with n8n" },
+  { id: "_WIHtqoAmsE", title: "Build Your First AI Agent with n8n" },
+  { id: "hfl5blRUjK8", title: "N8N Tutorial for Beginners in Telugu" },
+  { id: "vd7NJad_lJg", title: "WhatsApp AI Agent using n8n" },
+  { id: "rxCGsXSFshY", title: "AI Voice Agent — Complete Walkthrough" },
+  { id: "yHlW9QetRTs", title: "n8n Automation Project Tutorial" },
 ];
 
 function FeaturedVideos() {
@@ -194,43 +196,39 @@ function FeaturedVideos() {
           <div className="flex-1"><TitleDecor>Featured Videos</TitleDecor></div>
           <motion.a
             whileHover={{ scale: 1.05 }}
-            href="https://www.youtube.com/@mofiAI123-f/videos" target="_blank" rel="noreferrer"
+            href="https://www.youtube.com/@mofiai123-f/videos" target="_blank" rel="noreferrer"
             className="hidden sm:inline-flex items-center gap-2 rounded-md border border-lime/60 text-lime px-4 py-2 text-sm font-medium hover:bg-lime/10"
           >
             View all videos <ArrowRight className="h-4 w-4" />
           </motion.a>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {featured.map((v, i) => (
             <motion.a
-              key={v.title}
-              href="https://www.youtube.com/@mofiAI123-f" target="_blank" rel="noreferrer"
+              key={v.id}
+              href={`https://youtu.be/${v.id}`} target="_blank" rel="noreferrer"
               custom={i} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }}
               whileHover={{ y: -8 }}
-              className="group block"
+              className="group block rounded-xl overflow-hidden border border-white/10 bg-white/[0.03]"
             >
-              <div className={`relative aspect-video rounded-xl overflow-hidden bg-gradient-to-br ${v.grad} border border-white/10`}>
-                <div className="absolute inset-0 dotted-bg opacity-30" />
-                <div className="relative h-full p-5 flex flex-col justify-between">
-                  <div>
-                    <div className="text-[10px] tracking-widest text-white/80">{v.chip}</div>
-                    <div className="font-display text-3xl text-lime mt-1">{v.big}</div>
-                    <div className="text-xs text-white/70 mt-1">{v.small}</div>
+              <div className="relative aspect-video overflow-hidden">
+                <img
+                  src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
+                  alt={v.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                <motion.div animate={{ scale: [1, 1.12, 1] }} transition={{ duration: 2.4, repeat: Infinity }} className="absolute inset-0 flex items-center justify-center">
+                  <div className="h-14 w-14 rounded-full bg-[#FF0000] flex items-center justify-center shadow-2xl">
+                    <Play className="h-6 w-6 text-white ml-0.5" fill="currentColor" />
                   </div>
-                  <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 2.4, repeat: Infinity }} className="self-center">
-                    <div className="h-12 w-12 rounded-full bg-lime flex items-center justify-center">
-                      <Play className="h-5 w-5 text-lime-foreground ml-0.5" fill="currentColor" />
-                    </div>
-                  </motion.div>
-                </div>
-                <span className="absolute bottom-2 right-2 text-[11px] font-semibold bg-black/85 text-white rounded px-1.5 py-0.5">{v.duration}</span>
+                </motion.div>
+              </div>
+              <div className="p-4">
+                <div className="text-sm font-semibold text-white/90 line-clamp-2">{v.title}</div>
               </div>
             </motion.a>
-          ))}
-        </div>
-        <div className="mt-8 flex justify-center gap-2">
-          {[0, 1, 2, 3].map((d) => (
-            <span key={d} className={`h-2 rounded-full transition-all ${d === 0 ? "w-6 bg-lime" : "w-2 bg-white/20"}`} />
           ))}
         </div>
       </div>
@@ -240,10 +238,34 @@ function FeaturedVideos() {
 
 /* ---------- 4. Playlists ---------- */
 const playlists = [
-  { num: "1", title: "N8N Beginner Tutorials", desc: "Start here if you're completely new to n8n. Basic concepts, first workflows, and fundamental nodes explained step-by-step.", count: 32, big: "n8n", chip: "BEGINNER TUTORIALS", grad: "from-fuchsia-900 to-black" },
-  { num: "2", title: "AI Agent Projects", desc: "Build complete AI agents from scratch. ChatGPT integration, voice agents, WhatsApp bots, and more.", count: 27, big: "AI AGENT", chip: "PROJECTS", grad: "from-emerald-900 to-black" },
-  { num: "3", title: "Automation Tips & Tricks", desc: "Quick tips, common mistakes, best practices, and workflow optimization techniques.", count: 41, big: "AUTOMATION", chip: "TIPS & TRICKS", grad: "from-blue-950 to-black" },
-  { num: "4", title: "Client Project Walkthroughs", desc: "Real client projects explained. Learn from actual paid work and see how projects are built professionally.", count: 19, big: "CLIENT PROJECT", chip: "WALKTHROUGHS", grad: "from-indigo-950 to-black" },
+  {
+    num: "1",
+    title: "Complete AI Agents & Automations Free Course",
+    desc: "Full free course covering AI Agents and automations end-to-end. Perfect for beginners and intermediates.",
+    url: "https://youtube.com/playlist?list=PLVNfmRMW7-9bpaZ6kmy0h4lixZMkK4Rl1",
+    big: "AI AGENTS", chip: "FREE COURSE", grad: "from-fuchsia-900 to-black",
+  },
+  {
+    num: "2",
+    title: "AI Voice Agents Course in Telugu",
+    desc: "Build voice-driven AI agents from scratch. Step-by-step tutorials in Telugu.",
+    url: "https://youtube.com/playlist?list=PLVNfmRMW7-9Yo2YW4mwGD8uZ6b4R-68hz",
+    big: "AI VOICE", chip: "TELUGU COURSE", grad: "from-emerald-900 to-black",
+  },
+  {
+    num: "3",
+    title: "Top 10 N8N Projects in 2026",
+    desc: "Hands-on n8n project ideas you can build today. Real automations for real businesses.",
+    url: "https://youtube.com/playlist?list=PLVNfmRMW7-9ZUCIvVXASqU77yRBcg5uaI",
+    big: "n8n PROJECTS", chip: "TOP 10 • 2026", grad: "from-blue-950 to-black",
+  },
+  {
+    num: "4",
+    title: "N8N Automation Course",
+    desc: "Complete n8n automation course — nodes, workflows, integrations, and production patterns.",
+    url: "https://youtube.com/playlist?list=PLVNfmRMW7-9ZTvf6mJqRAyHkeh2KX41a6",
+    big: "n8n COURSE", chip: "AUTOMATION", grad: "from-indigo-950 to-black",
+  },
 ];
 
 function Playlists() {
@@ -288,11 +310,11 @@ function Playlists() {
                 <h4 className="font-semibold text-slate-900">{p.num}. {p.title}</h4>
                 <p className="text-xs text-slate-600 mt-2 leading-relaxed">{p.desc}</p>
                 <div className="flex items-center gap-1.5 mt-3 text-xs text-slate-500">
-                  <Play className="h-3 w-3 text-[#FF0000]" fill="currentColor" /> {p.count} videos
+                  <Play className="h-3 w-3 text-[#FF0000]" fill="currentColor" /> Full playlist on YouTube
                 </div>
                 <a
-                  href="https://www.youtube.com/@mofiAI123-f/playlists" target="_blank" rel="noreferrer"
-                  aria-label="Watch playlist on YouTube"
+                  href={p.url} target="_blank" rel="noreferrer"
+                  aria-label={`Watch ${p.title} playlist on YouTube`}
                   className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#FF0000] text-white px-3 py-2 text-xs font-bold hover:bg-red-700 transition-colors"
                 >
                   <Play className="h-3 w-3" fill="currentColor" /> Watch Playlist
