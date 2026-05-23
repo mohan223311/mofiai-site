@@ -842,13 +842,23 @@ function WaitlistAndFAQ() {
             <p className="mt-2 text-muted-foreground text-sm">Join the waitlist and get priority enrollment + early bird pricing</p>
           </div>
 
-          <form className="mt-8 grid sm:grid-cols-2 gap-4" onSubmit={(e) => e.preventDefault()}>
-            <Field icon={UserIcon} label="Name" placeholder="Enter your full name" />
-            <Field icon={Mail} label="Email" placeholder="Enter your email address" />
-            <Field icon={Phone} label="Phone Number (WhatsApp)" placeholder="Enter your WhatsApp number" />
-            <SelectField icon={Briefcase} label="Current Occupation" placeholder="Select your occupation" options={["Student", "Working Professional", "Career Switcher", "Entrepreneur", "Other"]} />
+          <form
+            className="mt-8 grid sm:grid-cols-2 gap-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const fd = new FormData(e.currentTarget);
+              const data = Object.fromEntries(fd.entries());
+              postFormWebhook("batches_waitlist", data);
+              toast.success("You're on the waitlist! We'll be in touch soon.");
+              (e.currentTarget as HTMLFormElement).reset();
+            }}
+          >
+            <Field icon={UserIcon} name="name" label="Name" placeholder="Enter your full name" />
+            <Field icon={Mail} name="email" type="email" label="Email" placeholder="Enter your email address" />
+            <Field icon={Phone} name="phone" label="Phone Number (WhatsApp)" placeholder="Enter your WhatsApp number" />
+            <SelectField icon={Briefcase} name="occupation" label="Current Occupation" placeholder="Select your occupation" options={["Student", "Working Professional", "Career Switcher", "Entrepreneur", "Other"]} />
             <div className="sm:col-span-2">
-              <SelectField icon={Calendar} label="Preferred Batch Timing" placeholder="Select your preferred timing" options={["Weekday evenings", "Weekend mornings", "Weekend evenings", "Flexible"]} />
+              <SelectField icon={Calendar} name="timing" label="Preferred Batch Timing" placeholder="Select your preferred timing" options={["Weekday evenings", "Weekend mornings", "Weekend evenings", "Flexible"]} />
             </div>
             <div className="sm:col-span-2">
               <label className="flex items-start gap-3 rounded-lg border border-border bg-secondary/40 px-4 py-3">
@@ -856,6 +866,7 @@ function WaitlistAndFAQ() {
                 <div className="flex-1">
                   <div className="text-xs font-semibold">Why do you want to learn n8n? (Optional)</div>
                   <textarea
+                    name="reason"
                     rows={3}
                     placeholder="Tell us about your goals and how n8n will help you…"
                     className="mt-1 w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/40 resize-none"
