@@ -103,10 +103,18 @@ export function Syllabus() {
                     viewport={{ margin: "-50px" }}
                     transition={{ delay: Math.min(i * 0.03, 0.4) }}
                   >
-                    <AccordionItem value={`s${idx}`} className="rounded-xl border border-white/10 bg-white/5 backdrop-blur px-5">
+                    <AccordionItem
+                      value={`s${idx}`}
+                      className="rounded-xl border border-amber-300/20 bg-gradient-to-br from-white/[0.07] to-amber-400/[0.04] backdrop-blur px-5 hover:border-amber-300/50 transition-colors"
+                    >
                       <AccordionTrigger className="hover:no-underline">
                         <span className="flex items-center gap-3 text-left">
-                          <span className="font-display text-lime text-lg w-8">{String(idx + 1).padStart(2, "0")}</span>
+                          <span
+                            className="font-display text-lg w-8 bg-clip-text text-transparent"
+                            style={{ backgroundImage: "linear-gradient(90deg,#FFE9A0,#D4AF37)" }}
+                          >
+                            {String(idx + 1).padStart(2, "0")}
+                          </span>
                           <span className="font-medium">{s.t}</span>
                         </span>
                       </AccordionTrigger>
