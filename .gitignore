@@ -20,10 +20,9 @@ dist-ssr
 .wrangler/
 .dev.vars
 
-# Environment secrets
-.env
-.env.*
-!.env.example
+# Environment secrets (keep .env tracked — CDA token is read-only public)
+.env.local
+.env.production.local
 
 # Claude AI memory
 .claude/
