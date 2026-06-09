@@ -14,8 +14,11 @@ import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as MentorshipRouteImport } from './routes/mentorship'
 import { Route as CourseRouteImport } from './routes/course'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as BatchesRouteImport } from './routes/batches'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -42,6 +45,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BatchesRoute = BatchesRouteImport.update({
   id: '/batches',
   path: '/batches',
@@ -52,15 +60,28 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/batches': typeof BatchesRoute
+  '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
   '/course': typeof CourseRoute
   '/mentorship': typeof MentorshipRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,27 +91,35 @@ export interface FileRoutesByTo {
   '/mentorship': typeof MentorshipRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/batches': typeof BatchesRoute
+  '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
   '/course': typeof CourseRoute
   '/mentorship': typeof MentorshipRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/batches'
+    | '/blog'
     | '/contact'
     | '/course'
     | '/mentorship'
     | '/resources'
     | '/services'
+    | '/blog/$slug'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,20 +129,26 @@ export interface FileRouteTypes {
     | '/mentorship'
     | '/resources'
     | '/services'
+    | '/blog/$slug'
+    | '/blog'
   id:
     | '__root__'
     | '/'
     | '/batches'
+    | '/blog'
     | '/contact'
     | '/course'
     | '/mentorship'
     | '/resources'
     | '/services'
+    | '/blog/$slug'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BatchesRoute: typeof BatchesRoute
+  BlogRoute: typeof BlogRouteWithChildren
   ContactRoute: typeof ContactRoute
   CourseRoute: typeof CourseRoute
   MentorshipRoute: typeof MentorshipRoute
@@ -158,6 +193,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/batches': {
       id: '/batches'
       path: '/batches'
@@ -172,12 +214,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
   }
 }
+
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BatchesRoute: BatchesRoute,
+  BlogRoute: BlogRouteWithChildren,
   ContactRoute: ContactRoute,
   CourseRoute: CourseRoute,
   MentorshipRoute: MentorshipRoute,
@@ -187,3 +256,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -14,13 +14,48 @@ import { SectionLabel } from "@/components/site/SectionLabel";
 import { FloatingParticles } from "@/components/site/CursorGlow";
 import { YouTubeIcon, TelegramIcon, InstagramIcon } from "@/components/site/BrandIcons";
 
+const resourcesSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      "name": "Free N8N & AI Automation Tutorials in Telugu — MOFI AI YouTube",
+      "description": "Free N8N automation and AI agent tutorials in Telugu on the MOFI AI YouTube channel. 4K+ subscribers. Popular with learners in Hyderabad and Telangana.",
+      "url": "https://mofiai.com/resources",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@type": "VideoObject", "name": "Build Your First AI Agent with n8n", "url": "https://youtu.be/_WIHtqoAmsE", "thumbnailUrl": "https://i.ytimg.com/vi/_WIHtqoAmsE/hqdefault.jpg", "uploadDate": "2024-01-01", "description": "Step-by-step tutorial to build your first AI agent using n8n automation in Telugu." } },
+        { "@type": "ListItem", "position": 2, "item": { "@type": "VideoObject", "name": "N8N Tutorial for Beginners in Telugu", "url": "https://youtu.be/hfl5blRUjK8", "thumbnailUrl": "https://i.ytimg.com/vi/hfl5blRUjK8/hqdefault.jpg", "uploadDate": "2024-01-01", "description": "Complete beginner's guide to N8N automation in Telugu." } },
+        { "@type": "ListItem", "position": 3, "item": { "@type": "VideoObject", "name": "WhatsApp AI Agent using n8n", "url": "https://youtu.be/vd7NJad_lJg", "thumbnailUrl": "https://i.ytimg.com/vi/vd7NJad_lJg/hqdefault.jpg", "uploadDate": "2024-01-01", "description": "Build a WhatsApp AI agent using N8N — full walkthrough in Telugu." } }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mofiai.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Free Resources", "item": "https://mofiai.com/resources" }
+      ]
+    }
+  ]
+};
+
 export const Route = createFileRoute("/resources")({
   head: () => ({
     meta: [
-      { title: "Free N8N & AI Resources — MOFI AI YouTube" },
-      { name: "description", content: "Free N8N & AI automation tutorials, playlists and latest uploads on the MOFI AI YouTube channel." },
-      { property: "og:title", content: "Free N8N & AI Resources — MOFI AI" },
-      { property: "og:description", content: "Watch free tutorials, walkthroughs and playlists. Subscribe to MOFI AI on YouTube." },
+      { title: "Free N8N & AI Automation Tutorials Telugu — Hyderabad | MOFI AI YouTube" },
+      { name: "description", content: "Free N8N automation & AI agents tutorials in Telugu on MOFI AI YouTube. 4K+ subscribers from Hyderabad, Telangana & India. Beginner-friendly walkthroughs, workflows, and project guides." },
+      { name: "keywords", content: "free n8n tutorials Telugu, AI automation YouTube Telugu, n8n tutorials Hyderabad, free AI course Telugu YouTube, n8n beginners Telugu, automation tutorials Telangana, MOFI AI YouTube Hyderabad" },
+      { property: "og:title", content: "Free N8N & AI Tutorials Telugu — Hyderabad | MOFI AI YouTube" },
+      { property: "og:description", content: "Free automation tutorials, n8n walkthroughs, AI agent guides in Telugu. Popular with Hyderabad & Telangana learners. 4K+ subscribers." },
+      { property: "og:url", content: "https://mofiai.com/resources" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:title", content: "Free AI & N8N Tutorials Telugu — MOFI AI | Hyderabad" },
+      { name: "twitter:description", content: "Free N8N and AI automation tutorials in Telugu. Trusted by Hyderabad & Telangana learners. Subscribe to MOFI AI on YouTube." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://mofiai.com/resources" },
+    ],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(resourcesSchema) },
     ],
   }),
   component: ResourcesPage,

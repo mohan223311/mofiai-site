@@ -12,14 +12,138 @@ import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { AnimatedLines, AnimatedHeading } from "@/components/site/AnimatedHeading";
 import { FloatingParticles } from "@/components/site/CursorGlow";
 import { useState } from "react";
+import {
+  SingaporeFlagIcon,
+  USAFlagIcon,
+  EcomIcon,
+  OpenAIIcon,
+  ClaudeIcon,
+  N8nIcon,
+  TwilioIcon,
+  PythonIcon,
+  MetaIcon,
+  WhatsAppIcon,
+  VoiceAgentIcon,
+  SeleniumIcon,
+  GoogleSheetsIcon,
+  AirtableIcon,
+  PostgresIcon,
+  MongoIcon,
+  NodeIcon,
+  AWSIcon,
+  DigitalOceanIcon,
+  GoogleMapsIcon,
+  HubSpotIcon,
+  ShopifyIcon,
+} from "@/components/site/BrandIcons";
+
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "name": "MOFI AI — AI Automation Services",
+      "description": "Professional AI automation services for Hyderabad & global businesses: AI chatbots, voice agents, N8N workflows, WhatsApp automation, web scraping, and custom API integrations.",
+      "url": "https://mofiai.com/services",
+      "provider": {
+        "@type": "Organization",
+        "@id": "https://mofiai.com/#organization",
+        "name": "MOFI AI"
+      },
+      "areaServed": ["Hyderabad", "Telangana", "Andhra Pradesh", "India", "USA", "Singapore", "New Zealand"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "AI Automation Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Chatbots & Agents" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Voice Agents & Call Automation" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "N8N Workflow Automation" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WhatsApp Business Automation" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Scraping & Lead Generation" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom API Integrations" } }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mofiai.com/" },
+        { "@type": "ListItem", "position": 2, "name": "AI Automation Services", "item": "https://mofiai.com/services" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What AI automation services does MOFI AI offer in Hyderabad?",
+          "acceptedAnswer": { "@type": "Answer", "text": "MOFI AI provides AI chatbots and agents, voice agents (using Retell AI + N8N), N8N workflow automation, WhatsApp Business API automation, web scraping and lead generation, and custom API integrations for businesses in Hyderabad, Telangana, Andhra Pradesh, India, USA, Singapore, and New Zealand." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a typical AI automation project take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Simple automations (WhatsApp auto-reply, basic chatbot) take 1-2 weeks. Medium complexity projects (N8N multi-step workflows, lead gen systems) take 3-4 weeks. Complex systems (voice agents, multi-channel AI systems) take 6-12 weeks. MOFI AI provides exact timelines after a free discovery call." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does AI automation cost for a Hyderabad business?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Simple automation projects start from ₹10,000–₹25,000 INR. Medium complexity projects cost ₹25,000–₹50,000 INR. Complex end-to-end systems start at ₹50,000 and above. International clients can contact MOFI AI for USD pricing." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does MOFI AI build WhatsApp chatbots for businesses in Hyderabad?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. MOFI AI specializes in WhatsApp Business API automation for Hyderabad and Telangana businesses — including automated customer support, order tracking, appointment booking, lead qualification, and marketing broadcasts." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can MOFI AI build an AI voice agent that handles phone calls?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. MOFI AI builds AI voice agents using Retell AI and N8N that can handle inbound phone calls 24/7 — answering FAQs, booking appointments, qualifying leads, and routing calls — ideal for restaurants, clinics, and service businesses in Hyderabad." }
+        },
+        {
+          "@type": "Question",
+          "name": "What tools does MOFI AI use to build automation?",
+          "acceptedAnswer": { "@type": "Answer", "text": "MOFI AI uses N8N (workflow automation), Retell AI (voice agents), OpenAI GPT-4, Anthropic Claude, WhatsApp Business API, Python (for web scraping), and integrates with platforms like HubSpot, Shopify, Google Sheets, Airtable, PostgreSQL, and MongoDB." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does MOFI AI work with international clients?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. MOFI AI has delivered automation projects for clients in India, the USA, Singapore, and New Zealand. All communication is in English for international clients." }
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to Get AI Automation Built for Your Hyderabad Business",
+      "description": "Step-by-step process to get a custom AI automation solution from MOFI AI.",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Contact MOFI AI", "text": "Reach out via WhatsApp at +91 93473 01449 or visit https://mofiai.com/contact to start a conversation about your automation needs." },
+        { "@type": "HowToStep", "position": 2, "name": "Discovery call", "text": "MOFI AI will schedule a free discovery call to understand your business processes, pain points, and automation goals." },
+        { "@type": "HowToStep", "position": 3, "name": "Receive a proposal", "text": "You receive a detailed proposal with timeline, cost estimate, and recommended automation solution within 2-3 business days." },
+        { "@type": "HowToStep", "position": 4, "name": "Development and testing", "text": "MOFI AI builds and tests your automation — chatbot, voice agent, N8N workflow, or API integration — with regular progress updates." },
+        { "@type": "HowToStep", "position": 5, "name": "Deployment and handover", "text": "Your automation goes live. MOFI AI provides training, documentation, and ongoing support so your team can manage it confidently." }
+      ]
+    }
+  ]
+};
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "AI Automation Services — MOFI AI" },
-      { name: "description", content: "Professional AI automation services: chatbots, voice agents, n8n workflows, WhatsApp automation, web scraping & custom integrations." },
-      { property: "og:title", content: "AI Automation Services — MOFI AI" },
-      { property: "og:description", content: "We build intelligent automation systems that scale your operations and eliminate manual work." },
+      { title: "AI Automation Services Hyderabad — Chatbots, Voice Agents, N8N | MOFI AI" },
+      { name: "description", content: "Professional AI automation services for Hyderabad & Telangana businesses: AI chatbots, voice agents, N8N workflow automation, WhatsApp automation, web scraping & custom API integrations. Clients in India, USA, Singapore & New Zealand." },
+      { name: "keywords", content: "AI automation services Hyderabad, AI chatbot Hyderabad, n8n automation Hyderabad, WhatsApp automation Hyderabad, voice agent Hyderabad, AI automation Telangana, chatbot development Hyderabad, workflow automation Hyderabad" },
+      { property: "og:title", content: "AI Automation Services Hyderabad — Chatbots, Voice Agents, N8N | MOFI AI" },
+      { property: "og:description", content: "We build AI chatbots, voice agents, N8N workflows, WhatsApp automation for Hyderabad & Telangana businesses. 20+ projects delivered across 4 countries." },
+      { property: "og:url", content: "https://mofiai.com/services" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:title", content: "AI Automation Services Hyderabad — MOFI AI" },
+      { name: "twitter:description", content: "AI chatbots, voice agents, N8N workflows, WhatsApp automation for Hyderabad & Telangana businesses." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://mofiai.com/services" },
+    ],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(servicesSchema) },
     ],
   }),
   component: ServicesPage,
@@ -341,6 +465,48 @@ const services = [
   },
 ];
 
+const servicesTechMap: Record<string, { icon: React.ComponentType<any>; color: string; label: string }> = {
+  "OpenAI GPT-4": { icon: OpenAIIcon, color: "text-[#10A37F]", label: "GPT-4" },
+  "Claude": { icon: ClaudeIcon, color: "text-[#cc6b49]", label: "Claude" },
+  "Gemini": { icon: Sparkles, color: "text-indigo-400", label: "Gemini" },
+  "n8n": { icon: N8nIcon, color: "text-[#FF6C37]", label: "n8n" },
+  "LangChain": { icon: Cpu, color: "text-yellow-400", label: "LangChain" },
+  "Pinecone / Qdrant": { icon: Database, color: "text-teal-400", label: "Vector DB" },
+
+  "Retell AI": { icon: VoiceAgentIcon, color: "text-[#a78bfa]", label: "Retell AI" },
+  "Twilio": { icon: TwilioIcon, color: "text-[#F22F46]", label: "Twilio" },
+  "OpenAI": { icon: OpenAIIcon, color: "text-[#10A37F]", label: "OpenAI" },
+  "CRM integrations": { icon: Link2, color: "text-sky-400", label: "CRM Sync" },
+
+  "REST APIs & Webhooks": { icon: Link2, color: "text-pink-400", label: "APIs & Webhooks" },
+  "PostgreSQL / MySQL / MongoDB": { icon: PostgresIcon, color: "text-sky-400", label: "SQL / NoSQL" },
+  "Google Sheets": { icon: GoogleSheetsIcon, color: "text-[#0F9D58]", label: "Google Sheets" },
+  "Airtable": { icon: AirtableIcon, color: "text-[#18BFFF]", label: "Airtable" },
+  "200+ apps": { icon: Globe2, color: "text-teal-400", label: "200+ Apps" },
+
+  "WhatsApp Business API": { icon: WhatsAppIcon, color: "text-[#25D366]", label: "WhatsApp API" },
+  "AI responses": { icon: OpenAIIcon, color: "text-[#10A37F]", label: "AI Engine" },
+  "Payment gateways": { icon: IndianRupee, color: "text-amber-500", label: "Payments" },
+  "CRM sync": { icon: Settings2, color: "text-indigo-400", label: "CRM Sync" },
+
+  "Python (Scrapy, Selenium, BS4)": { icon: PythonIcon, color: "text-[#3776AB]", label: "Python Scraper" },
+  "Proxy rotation": { icon: Settings2, color: "text-slate-400", label: "Proxies" },
+  "Data cleaning": { icon: Cpu, color: "text-indigo-400", label: "Data Cleaning" },
+  "Google Sheets / CRM export": { icon: GoogleSheetsIcon, color: "text-[#0F9D58]", label: "Sheets / CRM" },
+
+  "Node.js / Python": { icon: NodeIcon, color: "text-[#339933]", label: "Node / Python" },
+  "Express / FastAPI": { icon: Cpu, color: "text-blue-400", label: "Express / FastAPI" },
+  "PostgreSQL / MongoDB": { icon: PostgresIcon, color: "text-sky-400", label: "SQL / NoSQL" },
+  "Docker": { icon: Settings2, color: "text-[#2496ED]", label: "Docker" },
+  "AWS / DigitalOcean": { icon: AWSIcon, color: "text-[#FF9900]", label: "AWS / Cloud" },
+
+  "Shopify API": { icon: ShopifyIcon, color: "text-[#95BF47]", label: "Shopify" },
+  "WhatsApp API": { icon: WhatsAppIcon, color: "text-[#25D366]", label: "WhatsApp API" },
+  "Python": { icon: PythonIcon, color: "text-[#3776AB]", label: "Python" },
+  "Google Maps API": { icon: GoogleMapsIcon, color: "text-[#EA4335]", label: "Google Maps" },
+  "HubSpot": { icon: HubSpotIcon, color: "text-[#FF7A59]", label: "HubSpot" }
+};
+
 function DetailedServices() {
   return (
     <section className="py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
@@ -389,12 +555,22 @@ function DetailedServices() {
               </div>
 
               <div className="rounded-xl bg-slate-50 border border-slate-100 p-4 mb-4">
-                <div className="text-xs font-bold mb-2" style={{ color: s.color }}>Technologies We Use</div>
-                <div className="flex flex-wrap gap-1.5">
-                  {s.tech.map(t => (
-                    <span key={t} className="rounded-md px-2 py-1 text-[11px] font-medium"
-                      style={{ background: s.color + "15", color: s.color, border: `1px solid ${s.color}33` }}>{t}</span>
-                  ))}
+                <div className="text-xs font-bold mb-2.5" style={{ color: s.color }}>Technologies We Use</div>
+                <div className="flex flex-wrap gap-2">
+                  {s.tech.map(t => {
+                    const item = servicesTechMap[t] || { icon: Cpu, color: "text-slate-500", label: t };
+                    const IconComponent = item.icon;
+                    return (
+                      <motion.div
+                        key={t}
+                        whileHover={{ scale: 1.05, y: -1 }}
+                        className="inline-flex items-center gap-1.5 rounded-lg bg-white border border-slate-200 px-2.5 py-1 text-[11px] font-medium text-slate-700 shadow-sm transition-colors hover:border-slate-300"
+                      >
+                        <IconComponent className={`h-3.5 w-3.5 ${item.color} shrink-0`} />
+                        <span>{item.label}</span>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -421,31 +597,31 @@ function DetailedServices() {
 function CaseStudies() {
   const studies = [
     {
-      flag: "🇸🇬", title: "Voice Agent for Singapore Retail",
+      flag: SingaporeFlagIcon, title: "Voice Agent for Singapore Retail",
       client: "Retail Business, Singapore",
       challenge: "High call volume, limited staff, language barriers",
       solution: "Retell AI voice agent for customer inquiries and orders",
       results: ["200+ calls/day handled automatically", "80% reduction in human workload", "24/7 availability incl. holidays", "Multi-language (English + Mandarin)"],
-      tech: "Retell AI · n8n · Twilio · OpenAI",
+      tech: ["Retell AI", "n8n", "Twilio", "OpenAI"],
       color: "#3b82f6",
       video: "https://youtu.be/JHt5pk2D9g8?si=nzUGfskLLuQau--v",
     },
     {
-      flag: "🛒", title: "Complete Website Automation",
+      flag: EcomIcon, title: "Complete Website Automation",
       client: "E-commerce Business",
       challenge: "Manual order processing, inventory sync issues",
       solution: "Full automation pipeline from order to fulfillment",
       results: ["90% reduction in manual entry", "Real-time inventory sync", "Automated customer notifications", "5 hours/day saved"],
-      tech: "n8n · Shopify API · Google Sheets · WhatsApp API",
+      tech: ["n8n", "Shopify API", "Google Sheets", "WhatsApp API"],
       color: "#10b981",
     },
     {
-      flag: "🇺🇸", title: "Lead Generation System",
+      flag: USAFlagIcon, title: "Lead Generation System",
       client: "B2B Service Company, USA",
       challenge: "Manual lead research taking 20+ hours/week",
       solution: "Automated Google Maps scraping + enrichment",
       results: ["5,000+ qualified leads/month", "20 hours/week saved", "3x increase in outreach capacity", "Clean structured data in CRM"],
-      tech: "Python · n8n · Google Maps API · HubSpot",
+      tech: ["Python", "n8n", "Google Maps API", "HubSpot"],
       color: "#f97316",
     },
   ];
@@ -456,38 +632,64 @@ function CaseStudies() {
           highlight="Results"
           highlightClass="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">Real Projects Real Results</AnimatedHeading>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
-          {studies.map((c, i) => (
-            <motion.div key={c.title}
-              initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.12 }} whileHover={{ y: -8 }}
-              className="rounded-2xl bg-white border border-slate-200 shadow-lg overflow-hidden flex flex-col"
-            >
-              <div className="p-5 flex items-center justify-between text-white" style={{ background: c.color }}>
-                <span className="text-xs uppercase font-bold tracking-widest">Case Study</span>
-                <span className="text-2xl">{c.flag}</span>
-              </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="font-display text-lg text-slate-900">{c.title}</h3>
-                <div className="text-xs text-slate-500 mt-1">{c.client}</div>
-                <div className="mt-4 text-sm"><strong className="text-slate-700">Challenge:</strong> <span className="text-slate-600">{c.challenge}</span></div>
-                <div className="mt-2 text-sm"><strong className="text-slate-700">Solution:</strong> <span className="text-slate-600">{c.solution}</span></div>
-                <ul className="mt-4 space-y-1.5 flex-1">
-                  {c.results.map(r => (
-                    <li key={r} className="text-sm flex items-start gap-2 text-slate-700">
-                      <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0" style={{ color: c.color }} /> {r}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 pt-4 border-t border-slate-100 text-xs text-slate-500"><strong>Tech:</strong> {c.tech}</div>
-                {c.video && (
-                  <a href={c.video} target="_blank" rel="noreferrer"
-                    className="mt-4 inline-flex items-center gap-2 text-sm font-bold hover:underline" style={{ color: c.color }}>
-                    ▶ Watch Video Testimonial
-                  </a>
-                )}
-              </div>
-            </motion.div>
-          ))}
+          {studies.map((c, i) => {
+            const FlagComponent = c.flag;
+            return (
+              <motion.div key={c.title}
+                initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.12 }} whileHover={{ y: -8 }}
+                className="rounded-2xl bg-white border border-slate-200 shadow-lg overflow-hidden flex flex-col"
+              >
+                <div className="p-5 flex items-center justify-between text-white" style={{ background: c.color }}>
+                  <span className="text-xs uppercase font-bold tracking-widest">Case Study</span>
+                  <div className="h-9 w-9 shrink-0 bg-white/10 rounded-full flex items-center justify-center p-0.5 border border-white/20 backdrop-blur shadow-md">
+                    <FlagComponent className="h-full w-full" />
+                  </div>
+                </div>
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-display text-lg text-slate-900 leading-tight">{c.title}</h3>
+                    <div className="text-xs text-slate-500 mt-1">{c.client}</div>
+                    <div className="mt-4 text-sm"><strong className="text-slate-700">Challenge:</strong> <span className="text-slate-600">{c.challenge}</span></div>
+                    <div className="mt-2 text-sm"><strong className="text-slate-700">Solution:</strong> <span className="text-slate-600">{c.solution}</span></div>
+                    <ul className="mt-4 space-y-1.5 flex-1">
+                      {c.results.map(r => (
+                        <li key={r} className="text-sm flex items-start gap-2 text-slate-700">
+                          <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0" style={{ color: c.color }} /> <span>{r}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <div className="mt-5 pt-4 border-t border-slate-100">
+                      <div className="text-[10px] text-slate-400 uppercase tracking-wider mb-2.5 font-bold">Technology Stack</div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {c.tech.map(t => {
+                          const item = servicesTechMap[t] || { icon: Cpu, color: "text-slate-500", label: t };
+                          const IconComponent = item.icon;
+                          return (
+                            <div
+                              key={t}
+                              className="inline-flex items-center gap-1 rounded bg-slate-50 border border-slate-200/60 px-2 py-0.5 text-[10px] font-medium text-slate-600 shadow-sm"
+                            >
+                              <IconComponent className={`h-3 w-3 ${item.color} shrink-0`} />
+                              <span>{item.label}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    {c.video && (
+                      <a href={c.video} target="_blank" rel="noreferrer"
+                        className="mt-4 inline-flex items-center gap-2 text-sm font-bold hover:underline" style={{ color: c.color }}>
+                        ▶ Watch Video Testimonial
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

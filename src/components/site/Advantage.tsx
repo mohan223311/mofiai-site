@@ -41,11 +41,13 @@ export function Advantage() {
           {pills.map((p, i) => (
             <motion.div
               key={p.label}
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 + i * 0.12, type: "spring", stiffness: 200, damping: 20 }}
               className={`absolute ${p.pos} bg-card border border-border rounded-full px-4 py-2 text-sm shadow-lg flex items-center gap-2`}
             >
-              <span className="text-lime">●</span>
+              <span className="h-2 w-2 rounded-full bg-lime shrink-0" aria-hidden="true" />
               {p.label}
             </motion.div>
           ))}
@@ -64,12 +66,14 @@ export function Advantage() {
             <p className="mt-4 text-muted-foreground max-w-md">
               Intelligent automation that improves speed, accuracy, and consistency across every process.
             </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="mt-6 rounded-md bg-lime text-lime-foreground px-5 py-2.5 text-sm font-medium"
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              className="mt-6 inline-flex items-center rounded-md bg-lime text-lime-foreground px-6 py-3 text-sm font-semibold min-h-[44px] shadow-md shadow-lime/25 focus-ring cursor-pointer clickable-element"
             >
               Get Started
-            </motion.button>
+            </motion.a>
 
             {/* Continuous flowing balls line */}
             <div className="relative mt-10 h-6 w-full overflow-hidden">
@@ -97,13 +101,9 @@ export function Advantage() {
               className="relative"
             >
               <span className="absolute -top-12 left-0 h-3 w-3 bg-lime" />
-              <motion.div
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 3, repeat: Infinity, delay: i * 0.3 }}
-                className="text-5xl font-display"
-              >
+              <div className="text-5xl font-display tabular-nums">
                 {s.value}
-              </motion.div>
+              </div>
               <div className="mt-3 font-semibold">{s.label}</div>
               <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
             </motion.div>

@@ -38,9 +38,14 @@ export function ThinkAdapt() {
           <p className="mt-4 text-muted-foreground max-w-md">
             Run complex operations with AI-powered decision-making and automation.
           </p>
-          <motion.button whileHover={{ scale: 1.05 }} className="mt-6 rounded-md bg-lime text-lime-foreground px-5 py-2.5 text-sm font-medium">
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            className="mt-6 inline-flex items-center rounded-md bg-lime text-lime-foreground px-6 py-3 text-sm font-semibold min-h-[44px] shadow-md shadow-lime/25 focus-ring cursor-pointer clickable-element"
+          >
             Get Started
-          </motion.button>
+          </motion.a>
           <div className="mt-12 space-y-6">
             {items.map((it, i) => (
               <motion.div

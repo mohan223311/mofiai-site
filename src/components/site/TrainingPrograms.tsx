@@ -107,7 +107,7 @@ export function TrainingPrograms() {
           Choose the learning path that fits your goals and schedule.
         </p>
 
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+        <div className="mt-14 grid sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
           {programs.map((p, i) => {
             const Icon = p.icon;
             const isPremium = p.highlight;
@@ -119,7 +119,7 @@ export function TrainingPrograms() {
                 viewport={{ margin: "-80px" }}
                 transition={{ delay: i * 0.12 }}
                 whileHover={{ y: -10 }}
-                className={`relative rounded-2xl p-7 border ${p.border} ${isPremium ? "text-white shadow-2xl" : "text-slate-900 shadow-lg"}`}
+                className={`relative rounded-2xl p-5 md:p-7 border ${p.border} ${isPremium ? "text-white shadow-2xl sm:col-span-2 md:col-span-1" : "text-slate-900 shadow-lg"}`}
                 style={{
                   background: p.cardBg,
                   boxShadow: isPremium
@@ -151,9 +151,7 @@ export function TrainingPrograms() {
                   {p.badge}
                 </span>
 
-                <motion.div
-                  animate={{ rotate: [0, 12, -12, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, delay: i * 0.3 }}
+                <div
                   className="inline-flex h-14 w-14 items-center justify-center rounded-xl border"
                   style={{
                     background: isPremium ? "rgba(212,175,55,0.18)" : p.accentSoft,
@@ -162,7 +160,7 @@ export function TrainingPrograms() {
                   }}
                 >
                   <Icon className="h-7 w-7" />
-                </motion.div>
+                </div>
 
                 <h3 className="mt-5 font-display text-2xl">{p.title}</h3>
                 <div className={`mt-2 text-sm ${isPremium ? "text-amber-100/70" : "text-slate-600"}`}>

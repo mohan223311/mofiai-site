@@ -23,13 +23,13 @@ export function Features() {
     <section className="bg-dark text-dark-foreground py-24 relative overflow-hidden">
       <div className="absolute inset-0 dotted-bg opacity-40" />
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="space-y-4 mb-16 overflow-hidden">
+        <div className="space-y-3 md:space-y-4 mb-12 md:mb-16 overflow-hidden -mx-4 sm:mx-0">
           {tags.map((row, ri) => (
             <motion.div
               key={ri}
               animate={{ x: ri % 2 === 0 ? ["-10%", "0%", "-10%"] : ["10%", "0%", "10%"] }}
               transition={{ duration: 12 + ri * 2, repeat: Infinity, ease: "linear" }}
-              className="flex gap-6 whitespace-nowrap"
+              className="flex gap-4 md:gap-6 whitespace-nowrap"
             >
               {row.map((t) => (
                 <motion.div
@@ -38,7 +38,7 @@ export function Features() {
                   className="flex items-center gap-3"
                 >
                   <span className="h-2 w-2 bg-lime/60" />
-                  <span className="border border-white/15 rounded-md px-5 py-2.5 text-white/80">{t}</span>
+                  <span className="border border-white/15 rounded-md px-3.5 md:px-5 py-2 md:py-2.5 text-sm text-white/80">{t}</span>
                 </motion.div>
               ))}
             </motion.div>
@@ -56,11 +56,16 @@ export function Features() {
         <p className="mt-4 text-white/70 max-w-md">
           Everything you need to design, run, and scale workflows across teams and tools.
         </p>
-        <motion.button whileHover={{ scale: 1.05 }} className="mt-6 rounded-md bg-lime text-lime-foreground px-5 py-2.5 text-sm font-medium">
+        <motion.a
+          href="#contact"
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
+          className="mt-6 inline-flex items-center rounded-md bg-lime text-lime-foreground px-6 py-3 text-sm font-semibold min-h-[44px] shadow-md shadow-lime/25 focus-ring cursor-pointer clickable-element"
+        >
           Get Started
-        </motion.button>
+        </motion.a>
 
-        <div className="mt-16 grid md:grid-cols-3 gap-x-10 gap-y-12 border-t border-dashed border-white/15 pt-10">
+        <div className="mt-12 md:mt-16 grid sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 md:gap-y-12 border-t border-dashed border-white/15 pt-10">
           {features.map((f, i) => {
             const Icon = f.icon;
             return (
@@ -74,8 +79,8 @@ export function Features() {
               >
                 <span className="absolute -top-12 left-0 h-3 w-3 bg-lime" />
                 <motion.div
-                  animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: i * 0.3 }}
+                  whileHover={{ scale: 1.1, backgroundColor: "oklch(0.88 0.16 125 / 0.18)" }}
+                  transition={{ duration: 0.2 }}
                   className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-lime/10 border border-lime/30 text-lime"
                 >
                   <Icon className="h-6 w-6" />

@@ -11,13 +11,75 @@ import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { SectionLabel } from "@/components/site/SectionLabel";
 import { postFormWebhook } from "@/lib/webhook";
 
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "MOFI AI",
+      "description": "AI automation services and Telugu training programs serving Hyderabad, Telangana & globally. We build chatbots, voice agents, N8N workflows, and WhatsApp automation solutions.",
+      "url": "https://mofiai.com/contact",
+      "@id": "https://mofiai.com/#organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Vijayawada",
+        "addressRegion": "Andhra Pradesh",
+        "postalCode": "520001",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "16.5062",
+        "longitude": "80.6480"
+      },
+      "telephone": "+91-93474-01449",
+      "email": "profitgrowthai223311@gmail.com",
+      "openingHours": "Mo-Sa 09:00-21:00",
+      "priceRange": "₹₹",
+      "sameAs": [
+        "https://www.youtube.com/@mofiai123-f",
+        "https://instagram.com/mofi_ai",
+        "https://t.me/ai_telugu_community"
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Hyderabad" },
+        { "@type": "State", "name": "Telangana" },
+        { "@type": "State", "name": "Andhra Pradesh" },
+        { "@type": "Country", "name": "India" },
+        { "@type": "Country", "name": "USA" },
+        { "@type": "Country", "name": "Singapore" },
+        { "@type": "Country", "name": "New Zealand" }
+      ],
+      "serviceType": ["AI Automation", "N8N Training", "AI Agent Development", "WhatsApp Automation", "Voice Agent Development"]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mofiai.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://mofiai.com/contact" }
+      ]
+    }
+  ]
+};
+
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — MOFI AI" },
-      { name: "description", content: "Get in touch with MOFI AI for automation services, courses, and 1:1 mentorship. WhatsApp, Email, and YouTube available." },
-      { property: "og:title", content: "Contact — MOFI AI" },
-      { property: "og:description", content: "Let's build something together. Reach us on WhatsApp, Email, or submit the contact form." },
+      { title: "Contact MOFI AI Hyderabad — AI Automation & N8N Course Enquiry" },
+      { name: "description", content: "Contact MOFI AI for AI automation services in Hyderabad, N8N courses, or 1:1 mentorship in Telugu. Reach us on WhatsApp (+91 93474 01449), email, or enquiry form. Serving Hyderabad, Telangana & globally." },
+      { name: "keywords", content: "contact MOFI AI Hyderabad, AI automation Hyderabad enquiry, n8n course enquiry Telugu, AI mentorship Hyderabad, MOFI AI WhatsApp, automation services Hyderabad contact" },
+      { property: "og:title", content: "Contact MOFI AI Hyderabad — AI Automation & N8N Course Enquiry" },
+      { property: "og:description", content: "Talk to MOFI AI about AI automation for your Hyderabad business or enroll in Telugu training. WhatsApp response within minutes." },
+      { property: "og:url", content: "https://mofiai.com/contact" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:title", content: "Contact MOFI AI — AI Automation Hyderabad & Telugu Training" },
+      { name: "twitter:description", content: "Reach MOFI AI on WhatsApp for AI automation services in Hyderabad or Telugu N8N course enquiries." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://mofiai.com/contact" },
+    ],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(contactSchema) },
     ],
   }),
   component: ContactPage,

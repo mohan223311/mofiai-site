@@ -88,15 +88,11 @@ export function YouTubeSection() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <motion.div
-                    animate={{ scale: [1, 1.12, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <div className="h-16 w-16 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-2xl">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="h-16 w-16 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-2xl transition-transform duration-200 group-hover/card:scale-110">
                       <Play className="h-7 w-7 ml-1" fill="currentColor" />
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               </a>
             ))}

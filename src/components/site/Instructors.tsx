@@ -29,7 +29,7 @@ const stats = [
 
 export function Instructors() {
   return (
-    <section id="mentorship" className="bg-secondary/40 py-24">
+    <section id="mentorship" className="bg-dark text-dark-foreground py-24">
       <div className="mx-auto max-w-7xl px-6">
         <SectionLabel>Your Mentors</SectionLabel>
         <motion.h2
@@ -51,12 +51,12 @@ export function Instructors() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.15 }}
               whileHover={{ y: -8 }}
-              className="rounded-2xl bg-card border border-border p-6 flex gap-6 items-center"
+              className="rounded-2xl bg-white/[0.05] border border-white/10 p-5 md:p-6 flex flex-col sm:flex-row gap-5 sm:gap-6 items-start sm:items-center"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.4 }}
-                className="h-28 w-28 shrink-0 rounded-2xl overflow-hidden ring-2 ring-lime/40 shadow-xl bg-gradient-to-br from-lime/20 to-lime/5"
+                className="h-24 w-24 sm:h-28 sm:w-28 shrink-0 rounded-2xl overflow-hidden ring-2 ring-lime/40 shadow-xl bg-gradient-to-br from-lime/20 to-lime/5"
               >
                 <img src={p.image} alt={p.name} className="h-full w-full object-cover" />
               </motion.div>
@@ -81,9 +81,11 @@ export function Instructors() {
           {stats.map((s, i) => (
             <motion.div
               key={s}
-              animate={{ y: [0, -4, 0] }}
-              transition={{ duration: 3, repeat: Infinity, delay: i * 0.2 }}
-              className="rounded-full border border-border bg-card px-4 py-2 text-sm shadow-sm"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm"
             >
               {s}
             </motion.div>

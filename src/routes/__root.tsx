@@ -9,8 +9,8 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import { Preloader } from "@/components/site/Preloader";
 import { CursorGlow } from "@/components/site/CursorGlow";
+import { WhatsAppIcon } from "@/components/site/BrandIcons";
 
 function NotFoundComponent() {
   return (
@@ -74,24 +74,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Animated Experience Studio creates dynamic, animated websites with engaging visual effects." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Animated Experience Studio creates dynamic, animated websites with engaging visual effects." },
+      { title: "MOFI AI — Build AI Agents & Automation That Scale" },
+      { name: "description", content: "Professional AI automation services & Telugu training programs. Build chatbots, voice agents, n8n workflows, WhatsApp bots, and custom integrations." },
+      { name: "author", content: "MOFI AI" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: "MOFI AI — Build AI Agents & Automation That Scale" },
+      { property: "og:description", content: "Professional AI automation services & Telugu training programs. Build chatbots, voice agents, n8n workflows, WhatsApp bots, and custom integrations." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Animated Experience Studio creates dynamic, animated websites with engaging visual effects." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/219ee558-ea5f-4d57-84ed-1651087d4b21/id-preview-4f4b5613--12ec0a2a-e0af-45fa-8efd-1e46310084ea.lovable.app-1778212971329.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/219ee558-ea5f-4d57-84ed-1651087d4b21/id-preview-4f4b5613--12ec0a2a-e0af-45fa-8efd-1e46310084ea.lovable.app-1778212971329.png" },
+      { property: "og:site_name", content: "MOFI AI" },
+      { property: "og:locale", content: "en_IN" },
+      { property: "og:image", content: "https://mofiai.com/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@mofi_ai" },
+      { name: "twitter:title", content: "MOFI AI — AI Agents & Automation" },
+      { name: "twitter:description", content: "Professional AI automation services & Telugu training programs." },
+      { name: "twitter:image", content: "https://mofiai.com/og-image.png" },
     ],
     links: [
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
+      { rel: "shortcut icon", href: "/favicon.png" },
+      { rel: "me", href: "https://www.youtube.com/@mofiai123-f" },
+      { rel: "me", href: "https://instagram.com/mofi_ai" },
+      { rel: "alternate", type: "text/plain", href: "https://mofiai.com/llms.txt", title: "MOFI AI LLM context" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap",
       },
+      { rel: "stylesheet", href: appCss },
     ],
   }),
   shellComponent: RootShell,
@@ -119,9 +133,23 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Preloader />
+      <a
+        href="#main-content"
+        className="fixed top-2 left-2 z-[9999] -translate-y-20 focus:translate-y-0 rounded-md bg-lime text-lime-foreground px-4 py-2 text-sm font-medium transition-transform focus:outline-none"
+      >
+        Skip to content
+      </a>
       <CursorGlow />
       <Outlet />
+      <a
+        href="https://wa.me/919347301449"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full shadow-lg shadow-[#25D366]/30 transition-transform duration-200 hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
+      >
+        <WhatsAppIcon className="h-full w-full drop-shadow-sm" />
+      </a>
     </QueryClientProvider>
   );
 }

@@ -40,15 +40,98 @@ import {
   FileText,
 } from "lucide-react";
 
+const batchesSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Course",
+      "name": "Live Group Batches — N8N & AI Automation in Telugu",
+      "description": "Cohort-based live group training in N8N automation and AI agents in Telugu. 2 sessions per week, group projects, lifetime recordings, peer learning. For Hyderabad and Telangana learners.",
+      "url": "https://mofiai.com/batches",
+      "inLanguage": "te",
+      "provider": {
+        "@type": "Organization",
+        "@id": "https://mofiai.com/#organization",
+        "name": "MOFI AI",
+        "url": "https://mofiai.com"
+      },
+      "educationalLevel": "Beginner to Intermediate",
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "online",
+        "inLanguage": "te"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mofiai.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Live Batches", "item": "https://mofiai.com/batches" }
+      ]
+    },
+    {
+      "@type": "Event",
+      "name": "MOFI AI Live N8N & AI Automation Batch — Telugu",
+      "description": "Live online cohort training in N8N automation and AI agents in Telugu. 2 sessions per week, group projects, lifetime recordings. For learners in Hyderabad, Telangana, Andhra Pradesh and India.",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+      "location": { "@type": "VirtualLocation", "url": "https://mofiai.com/batches" },
+      "organizer": { "@type": "Organization", "@id": "https://mofiai.com/#organization", "name": "MOFI AI" },
+      "inLanguage": "te",
+      "url": "https://mofiai.com/batches",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://mofiai.com/batches",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a live N8N batch at MOFI AI?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A live N8N batch at MOFI AI is a cohort-based online training program where students learn N8N automation and AI agents in Telugu via live sessions. Classes run 2 times per week, and all recordings are available lifetime." }
+        },
+        {
+          "@type": "Question",
+          "name": "How is a live batch different from the self-paced course?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The live batch provides real-time instructor interaction, group projects, peer learning, and doubt-clearing sessions. The self-paced course (₹5,000) is available to study anytime, while live batches offer a structured cohort experience with direct instructor access." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are live N8N batches available in Telugu?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. All MOFI AI live batches are conducted entirely in Telugu, making them accessible for learners in Hyderabad, Telangana, Andhra Pradesh and across India." }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the next N8N batch starting in Hyderabad?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Batch dates are announced regularly. Contact MOFI AI on WhatsApp at +91 93473 01449 or visit https://mofiai.com/batches to register interest for the next batch." }
+        }
+      ]
+    }
+  ]
+};
+
 export const Route = createFileRoute("/batches")({
   head: () => ({
     meta: [
-      { title: "Live Group Batches — MOFI AI" },
-      {
-        name: "description",
-        content:
-          "Join a cohort of learners in structured live N8N training with peer collaboration and group projects.",
-      },
+      { title: "Live N8N Batches in Telugu — AI Automation Training Hyderabad | MOFI AI" },
+      { name: "description", content: "Join live N8N automation & AI agent group batches in Telugu. Open for Hyderabad, Telangana & India. 2 sessions/week, group projects, lifetime recordings. Register for next batch." },
+      { name: "keywords", content: "live n8n course Telugu, n8n batch Hyderabad, live AI training Telangana, AI automation group class Telugu, n8n live classes Hyderabad, automation batch Telugu, MOFI AI batches" },
+      { property: "og:title", content: "Live N8N Batches in Telugu — AI Training Hyderabad | MOFI AI" },
+      { property: "og:description", content: "Cohort-based live N8N training in Telugu. Serving Hyderabad & Telangana. 4-week program, 2 sessions/week, group projects, lifetime recordings." },
+      { property: "og:url", content: "https://mofiai.com/batches" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:title", content: "Live N8N Batches in Telugu — MOFI AI | Hyderabad" },
+      { name: "twitter:description", content: "Join the next live N8N automation batch in Telugu. Open for Hyderabad & Telangana. Group projects, peer learning, recordings included." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://mofiai.com/batches" },
+    ],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(batchesSchema) },
     ],
   }),
   component: BatchesPage,

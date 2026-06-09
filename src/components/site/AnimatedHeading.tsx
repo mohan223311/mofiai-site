@@ -31,8 +31,8 @@ export function AnimatedHeading({
           <motion.span
             key={i}
             variants={{
-              hidden: { opacity: 0, y: 24, filter: "blur(10px)" },
-              show: { opacity: 1, y: 0, filter: "blur(0px)" },
+              hidden: { opacity: 0, y: 24 },
+              show: { opacity: 1, y: 0 },
             }}
             transition={{ duration: 0.55, delay: delay + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
             className={`inline-block mr-[0.25em] ${isHigh ? highlightClass : ""}`}
@@ -73,8 +73,8 @@ export function AnimatedLines({
               return (
                 <motion.span
                   key={i}
-                  initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
-                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.55, delay: startDelay + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
                   className={`inline-block mr-[0.25em] ${isHigh ? highlightClass : ""}`}

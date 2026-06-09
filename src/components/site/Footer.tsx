@@ -9,6 +9,7 @@ const quickLinks = [
   { label: "1:1 Mentorship", href: "/mentorship" },
   { label: "Live Batches", href: "/batches" },
   { label: "YouTube Resources", href: "/resources" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -36,18 +37,16 @@ export function Footer() {
           transition={{ duration: 1 }}
           className="flex items-center justify-center gap-4 md:gap-8 mb-12 select-none pointer-events-none"
         >
-          <motion.div animate={{ rotate: 360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }}>
-            <Sparkles className="h-12 w-12 md:h-20 md:w-20" strokeWidth={1} />
-          </motion.div>
+          <Sparkles className="h-10 w-10 md:h-20 md:w-20" strokeWidth={1} />
           <span
             className="font-display leading-[0.9] tracking-tight"
-            style={{ fontSize: "clamp(3.5rem, 16vw, 13rem)" }}
+            style={{ fontSize: "clamp(3rem, 14vw, 13rem)" }}
           >
             MOFI AI
           </span>
         </motion.div>
 
-        <div className="grid md:grid-cols-4 gap-8 border-t border-dashed border-white/15 pt-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 border-t border-dashed border-white/15 pt-10">
           <div>
             <div className="flex items-center gap-2 mb-3">
               <Sparkles className="h-5 w-5 text-lime" />
@@ -55,7 +54,7 @@ export function Footer() {
             </div>
             <p className="text-sm text-lime mb-2">Empowering Automation Experts</p>
             <p className="text-sm text-white/60 max-w-[260px]">
-              We build AI automation solutions and train the next generation of automation experts in Telugu.
+              We build AI automation solutions and train the next generation of automation experts in Telugu. Serving Hyderabad, Telangana &amp; globally.
             </p>
           </div>
 
@@ -64,7 +63,9 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-white/60">
               {quickLinks.map((q) => (
                 <li key={q.label}>
-                  <a href={q.href} className="hover:text-lime transition-colors">{q.label}</a>
+                  <a href={q.href} className="hover:text-lime transition-colors inline-flex items-center gap-1 group">
+                    <span className="group-hover:translate-x-0.5 transition-transform">{q.label}</span>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -87,8 +88,8 @@ export function Footer() {
           <div>
             <h5 className="font-semibold mb-4">Address</h5>
             <p className="text-sm text-white/60">
-              Vijayawada<br />
-              Andhra Pradesh<br />
+              Vijayawada, Andhra Pradesh<br />
+              <span className="text-white/45">Serving Hyderabad &amp; Telangana</span><br />
               India
             </p>
             <div className="flex gap-3 mt-5">
@@ -109,7 +110,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-dashed border-white/15 pt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-white/60">
+        <div className="mt-12 border-t border-dashed border-white/15 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-sm text-white/60">
           <div>© 2026 MOFI AI. All rights reserved.</div>
           <div>Built with ❤️ for the Telugu automation community</div>
         </div>

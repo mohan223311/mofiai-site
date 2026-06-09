@@ -6,10 +6,28 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// A custom plugin to resolve the missing virtual module 'tanstack-start-injected-head-scripts:v' in development mode.
+const virtualHeadScriptsPlugin = {
+  name: 'virtual-head-scripts-fix',
+  resolveId(id: string) {
+    if (id === 'tanstack-start-injected-head-scripts:v') {
+      return '\0tanstack-start-injected-head-scripts:v';
+    }
+  },
+  load(id: string) {
+    if (id === '\0tanstack-start-injected-head-scripts:v') {
+      return 'export const injectedHeadScripts = "";';
+    }
+  }
+};
+
 // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
 // @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+  vite: {
+    plugins: [virtualHeadScriptsPlugin],
+  }
 });

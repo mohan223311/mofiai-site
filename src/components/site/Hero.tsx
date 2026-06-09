@@ -1,145 +1,236 @@
 import { motion } from "framer-motion";
+import {
+  Mic,
+  Settings,
+  MessageSquare,
+  Bot,
+  RefreshCw,
+  Globe,
+  LineChart,
+  CheckCircle,
+  ArrowRight,
+} from "lucide-react";
+import heroImg from "@/assets/hero-illustration.png";
+import { YouTubeIcon } from "./BrandIcons";
 
 const floatingLabels = [
-  { label: "Voice Agent 🎙️", x: 6, y: 12 },
-  { label: "N8N ⚙️", x: 86, y: 18 },
-  { label: "WhatsApp Bot 💬", x: 4, y: 58 },
-  { label: "AI Agent 🤖", x: 84, y: 54 },
-  { label: "Automation 🔄", x: 14, y: 33 },
-  { label: "API 🔗", x: 80, y: 38 },
-  { label: "Lead Scraper 🗺️", x: 18, y: 76 },
-  { label: "Chatbot 💬", x: 78, y: 76 },
-  { label: "AI Voice Agents 🎧", x: 50, y: 8 },
+  { label: "Voice Agent", icon: Mic, x: 3, y: 12 },
+  { label: "N8N", icon: Settings, x: 88, y: 18 },
+  { label: "WhatsApp Bot", icon: MessageSquare, x: 2, y: 58 },
+  { label: "AI Agent", icon: Bot, x: 86, y: 54 },
 ];
-
-const headline = ["Build", "AI", "Agents", "&"];
-const headline2 = ["Automation", "That", "Scale"];
 
 export function Hero() {
   return (
     <section
-      id="home"
-      className="relative overflow-hidden bg-dark text-dark-foreground pt-32 pb-28 min-h-screen flex items-center"
+      id="main-content"
+      aria-label="Hero"
+      className="relative overflow-hidden bg-dark text-dark-foreground pt-24 pb-16 md:pt-28 md:pb-20 min-h-screen flex items-center"
     >
-      <div className="absolute inset-0 dotted-bg opacity-50" />
+      {/* Background */}
+      <div className="absolute inset-0 dotted-bg opacity-30" />
+      <div
+        aria-hidden
+        className="absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full blur-[120px] opacity-20"
+        style={{ background: "radial-gradient(circle, oklch(0.88 0.16 125), transparent 70%)" }}
+      />
+      <div
+        aria-hidden
+        className="absolute -bottom-40 -left-40 h-[500px] w-[500px] rounded-full blur-[100px] opacity-15"
+        style={{ background: "radial-gradient(circle, oklch(0.7 0.18 200), transparent 70%)" }}
+      />
 
-      {/* Floating labels — slow random drift */}
+      {/* Static floating pills — desktop only, entrance only */}
       {floatingLabels.map((f, i) => {
-        const dur = 14 + ((i * 3) % 11);
-        const dx = i % 2 ? 28 : -32;
-        const dy = i % 3 === 0 ? -22 : 18;
+        const Icon = f.icon;
         return (
           <motion.div
             key={f.label}
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{
-              opacity: [0, 1, 1, 1],
-              scale: 1,
-              x: [0, dx, dx * 0.4, -dx * 0.6, 0],
-              y: [0, dy, -dy * 0.7, dy * 0.5, 0],
-              rotate: [0, i % 2 ? 4 : -4, 0],
-            }}
-            transition={{
-              opacity: { duration: 0.8, delay: 0.4 + i * 0.1 },
-              scale: { duration: 0.8, delay: 0.4 + i * 0.1 },
-              x: { duration: dur, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 },
-              y: { duration: dur + 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 },
-              rotate: { duration: dur, repeat: Infinity, ease: "easeInOut" },
-            }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 1.0 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
             style={{ left: `${f.x}%`, top: `${f.y}%` }}
-            className="absolute hidden md:flex items-center gap-2 rounded-full border border-lime/30 bg-white/[0.06] backdrop-blur-md px-4 py-2 text-xs text-white/85 shadow-lg shadow-lime/10"
+            className="absolute hidden lg:flex items-center gap-2 rounded-full border border-lime/20 bg-white/[0.06] backdrop-blur-md px-3.5 py-1.5 text-[11px] text-white/70 shadow-lg"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-lime animate-pulse" />
+            <Icon className="h-3 w-3 text-lime/80" />
             {f.label}
           </motion.div>
         );
       })}
 
-      <div className="relative mx-auto max-w-5xl px-6 text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-xs tracking-[0.25em] text-lime mb-6 uppercase"
-        >
-          Master AI Automation in Telugu
-        </motion.p>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 w-full">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-        {/* Word-by-word "firming" reveal */}
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-lime leading-[1.05]">
-          <span className="block">
-            {headline.map((w, i) => (
+          {/* Left: Copy */}
+          <div>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-4 py-1.5 text-xs tracking-[0.15em] text-lime uppercase mb-6 md:mb-8"
+            >
+              Telugu AI Training · Hyderabad &amp; Online
+            </motion.div>
+
+            {/* Headline */}
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05]">
               <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.7, delay: 0.3 + i * 0.18, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block mr-3"
+                className="block text-white"
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
               >
-                {w}
+                Build <span className="text-lime">AI</span> Agents
               </motion.span>
-            ))}
-          </span>
-          <span className="block">
-            {headline2.map((w, i) => (
               <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.7, delay: 0.3 + (headline.length + i) * 0.18, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block mr-3"
+                className="block text-white"
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
-                {w}
+                &amp; Automation
               </motion.span>
-            ))}
-          </span>
-        </h1>
+              <motion.span
+                className="block text-white"
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              >
+                That Scale.
+              </motion.span>
+            </h1>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.8 }}
-          className="text-white/70 max-w-xl mx-auto mt-8 text-lg"
-        >
-          Expert training in Telugu & professional AI automation solutions to grow your business.
-        </motion.p>
+            {/* Subheadline */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.0 }}
+              className="text-white/70 max-w-lg mt-5 md:mt-6 text-base md:text-lg leading-relaxed"
+            >
+              Learn N8N, AI Agents &amp; automation — taught in Telugu by practitioners
+              who've delivered real projects globally.
+            </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.0 }}
-          className="mt-10 flex items-center justify-center gap-4 flex-wrap"
-        >
-          <motion.a
-            href="#services"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="rounded-md bg-lime text-lime-foreground px-6 py-3 font-medium shadow-lg shadow-lime/30"
+            {/* Social proof strip */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="mt-4 md:mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[12px] sm:text-[13px] text-white/50"
+            >
+              {[
+                { icon: Globe, text: "Clients in 4 Countries" },
+                { icon: LineChart, text: "20+ Projects Delivered" },
+                { icon: CheckCircle, text: "100% Success Rate" },
+              ].map(({ icon: Icon, text }) => (
+                <span key={text} className="flex items-center gap-1.5">
+                  <Icon className="h-3.5 w-3.5 text-lime/70 shrink-0" />
+                  {text}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.4 }}
+              className="mt-7 md:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
+            >
+              <motion.a
+                href="https://www.superprofile.bio/course/mofiai"
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.04, boxShadow: "0 0 32px oklch(0.88 0.16 125 / 0.45)" }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-lime text-lime-foreground px-7 py-3.5 font-semibold shadow-lg shadow-lime/30 focus-ring text-[15px] min-h-[48px]"
+              >
+                Enroll Now — ₹5,000 <ArrowRight className="h-4 w-4" />
+              </motion.a>
+              <motion.a
+                href="https://www.youtube.com/@mofiai123-f"
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 text-white px-7 py-3.5 font-semibold transition-colors hover:bg-white/5 focus-ring text-[15px] min-h-[48px]"
+              >
+                <YouTubeIcon className="h-4 w-4" />
+                Watch on YouTube
+              </motion.a>
+            </motion.div>
+
+            {/* Subscriber nudge */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.6 }}
+              className="mt-3 text-[12px] text-white/35"
+            >
+              4K+ YouTube subscribers · Free content before you commit
+            </motion.p>
+          </div>
+
+          {/* Right: Illustration — shown on all screens */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: 24 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1.1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="relative mt-4 lg:mt-0"
           >
-            Explore Our Services
-          </motion.a>
-          <motion.a
-            href="#courses"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="rounded-md border border-lime/60 text-lime px-6 py-3 font-medium hover:bg-lime/10 transition-colors"
-          >
-            View Courses
-          </motion.a>
-        </motion.div>
+            <div className="relative">
+              <div
+                className="absolute inset-0 rounded-3xl blur-[60px] opacity-40"
+                style={{ background: "radial-gradient(circle at 50% 50%, oklch(0.88 0.16 125 / 0.4), transparent 70%)" }}
+              />
+              <img
+                src={heroImg}
+                alt="AI Automation Illustration"
+                className="relative rounded-2xl w-full max-w-[480px] sm:max-w-[520px] lg:max-w-[540px] mx-auto"
+                width={540}
+                height={540}
+                loading="eager"
+              />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.2 }}
-          className="mt-14 inline-flex flex-wrap items-center justify-center gap-x-8 gap-y-3 rounded-full border border-white/15 bg-white/5 backdrop-blur px-6 py-3 text-sm text-white/80"
-        >
-          <span>🌍 4 Countries</span>
-          <span className="h-3 w-px bg-white/20" />
-          <span>📊 20+ Projects</span>
-          <span className="h-3 w-px bg-white/20" />
-          <span>⏱️ 1 Year Experience</span>
-        </motion.div>
+              {/* Glass cards — hidden on small screens to prevent overflow */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.0 }}
+                className="hidden sm:block absolute -top-4 -right-4 bg-white/[0.07] backdrop-blur-xl border border-white/15 rounded-xl px-4 py-3 shadow-2xl"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="h-8 w-8 rounded-lg bg-lime/20 flex items-center justify-center">
+                    <Bot className="h-4 w-4 text-lime" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-white/60 uppercase tracking-wider">AI Agents</div>
+                    <div className="text-sm font-semibold text-white">Built &amp; Deployed</div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.1 }}
+                className="hidden sm:block absolute -bottom-4 -left-4 bg-white/[0.07] backdrop-blur-xl border border-white/15 rounded-xl px-4 py-3 shadow-2xl"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="h-8 w-8 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                    <RefreshCw className="h-4 w-4 text-emerald-400" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-white/60 uppercase tracking-wider">Workflows</div>
+                    <div className="text-sm font-semibold text-white">Automated 24/7</div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
